@@ -1,0 +1,69 @@
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/plus-jakarta-sans/600.css';
+@import '@fontsource/plus-jakarta-sans/700.css';
+@import '@fontsource/plus-jakarta-sans/800.css';
+@import 'tailwindcss';
+
+@theme {
+	--color-branco: #ffffff;
+	--color-verde: #4f9808;
+	--color-verde-escuro: #3f7a06;
+	--color-verde-claro: #f3f8ec;
+	--color-marrom: #4e3a3f;
+	--color-marrom-escuro: #281d1e;
+	--color-marrom-claro: #f5f2f2;
+	--color-borda: #e7e2e3;
+	--color-erro: #c62828;
+	--color-erro-claro: #fdeeee;
+	--color-aviso: #b26a00;
+	--color-aviso-claro: #fff6e5;
+	--color-aviso-texto: #8a5000;
+	--font-sans: 'Inter', system-ui, sans-serif;
+	--font-titulo: 'Plus Jakarta Sans', 'Inter', sans-serif;
+	--radius-card: 12px;
+	--shadow-suave: 0 1px 2px rgb(40 29 30 / 0.06), 0 2px 8px rgb(40 29 30 / 0.05);
+}
+
+html {
+	font-size: calc(16px * var(--escala-fonte, 1));
+}
+body {
+	background: var(--color-branco);
+	color: var(--color-marrom-escuro);
+	font-family: var(--font-sans);
+}
+h1, h2, h3, h4 {
+	font-family: var(--font-titulo);
+	color: var(--color-marrom);
+	font-weight: 700;
+}
+:focus-visible {
+	outline: 3px solid var(--color-marrom-escuro);
+	outline-offset: 2px;
+	border-radius: 4px;
+}
+
+/* Alto contraste: preto/branco com verde escuro */
+html.alto-contraste {
+	--color-verde: #2d5704;
+	--color-verde-escuro: #1f3d03;
+	--color-marrom: #000000;
+	--color-marrom-escuro: #000000;
+	--color-borda: #000000;
+	--color-verde-claro: #ffffff;
+	--color-marrom-claro: #ffffff;
+}
+html.alto-contraste :focus-visible {
+	outline-color: #b26a00;
+}
+
+/* Tabelas viram cards empilhados no celular (td com data-label) */
+@media (max-width: 640px) {
+	table.resp thead { display: none; }
+	table.resp, table.resp tbody { display: block; }
+	table.resp tr { display: block; padding: 0.5rem 0; }
+	table.resp td { display: flex; justify-content: space-between; gap: 1rem; padding: 0.35rem 1rem !important; text-align: right; }
+	table.resp td::before { content: attr(data-label); font-weight: 600; color: var(--color-marrom); text-align: left; }
+}

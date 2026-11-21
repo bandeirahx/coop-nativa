@@ -1,0 +1,22 @@
+import { tabela } from './persistente.ts';
+import * as m from '#lib/mock/dados.ts';
+import type { LogCotas } from '#lib/mock/tipos.ts';
+
+export const cooperados = tabela('cooperados', m.cooperados);
+export const propriedades = tabela('propriedades', m.propriedades);
+export const capacidades = tabela('capacidades', m.capacidades);
+export const insumos = tabela('insumos', m.insumos);
+export const campanhas = tabela('campanhas', m.campanhas);
+export const pedidos = tabela('pedidos', m.pedidos);
+export const consolidacoes = tabela('consolidacoes', m.consolidacoes);
+export const fornecedores = tabela('fornecedores', m.fornecedores);
+export const compras = tabela('compras', m.compras);
+export const recebimentos = tabela('recebimentos', m.recebimentos);
+export const estoque = tabela('estoque', m.estoque.map((e) => ({ ...e, id: e.insumoId })));
+export const movimentacoes = tabela('movimentacoes', m.movimentacoes);
+export const distribuicoes = tabela('distribuicoes', m.distribuicoes);
+export const producoes = tabela('producoes', m.producoes);
+export const catalogo = tabela('catalogo', m.catalogo);
+export const compradores = tabela('compradores', m.compradores);
+export const pedidosCom = tabela('pedidosCom', m.pedidosCom);
+export const logCotas = tabela<LogCotas>('logCotas', []);

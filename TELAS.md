@@ -39,7 +39,6 @@ UC04.3: Campanhas abertas (produtor) — rota /produtor/campanhas
 
 RF05: Gerenciar Pedidos de Insumos
 UC05.1: Registrar Pedido de Insumo — rota /gestao/pedidos/nova
-UC05.1: Fazer pedido em passos (produtor) — rota /produtor/pedido
 UC05.2: Consultar Pedido de Insumo — rota /gestao/pedidos
 UC05.2: Detalhe do Pedido — rota /gestao/pedidos/3
 UC05.2: Meus pedidos (produtor) — rota /produtor/pedidos

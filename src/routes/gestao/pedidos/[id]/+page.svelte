@@ -22,7 +22,7 @@
 {#if !p}<EmptyState titulo="Pedido não encontrado" />{:else}
 	<PageHeader titulo="Pedido #{p.id}" uc="RF05: Gerenciar Pedidos de Insumos · UC05.2">
 		{#snippet acoes()}<Button href="/gestao/pedidos" variante="contorno"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>
-			{#if gestor && p.status === 'Pendente'}
+			{#if gestor && (p.status === 'Registrado' || p.status === 'Pendente')}
 				<Button href="/gestao/pedidos/{p.id}/editar" variante="contorno"><Pencil size={16} aria-hidden="true" />Editar</Button>
 				<Button variante="perigo" onclick={() => (confCan = true)}><Ban size={16} aria-hidden="true" />Cancelar pedido</Button>
 				<Button onclick={() => (confPag = true)}><BadgeCheck size={16} aria-hidden="true" />Confirmar pagamento</Button>
@@ -35,7 +35,7 @@
 			<div><dt class="text-sm font-semibold text-marrom">Data</dt><dd>{data(p.data)}</dd></div>
 			<div><dt class="text-sm font-semibold text-marrom">Situação</dt><dd><Badge status={p.status} /></dd></div>
 		</dl>
-		{#if p.status === 'Pendente'}<p class="mt-4 rounded-lg bg-aviso-claro p-3 text-sm text-aviso-texto">O pagamento é confirmado externamente; o sistema não processa pagamentos. A distribuição só é liberada com status "Aprovado/Pago" (RN09).</p>{/if}
+		{#if p.status === 'Registrado' || p.status === 'Pendente'}<p class="mt-4 rounded-lg bg-aviso-claro p-3 text-sm text-aviso-texto">O pagamento é confirmado externamente; o sistema não processa pagamentos. A distribuição só é liberada com status "Aprovado/Pago" (RN09).</p>{/if}
 	</Card>
 	<Table colunas={['Insumo', 'Quantidade', 'Valor unitário', 'Subtotal']}>
 		{#each p.itens as i}<tr><td data-label="Insumo">{nomeInsumo(i.insumoId)}</td><td data-label="Quantidade">{i.quantidade}</td><td data-label="Valor unitário">{moeda(i.valorUnit)}</td><td data-label="Subtotal">{moeda(i.quantidade * i.valorUnit)}</td></tr>{/each}

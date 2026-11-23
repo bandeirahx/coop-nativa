@@ -53,7 +53,7 @@
 		const itens = linhas.filter((l) => l.q > 0).map((l) => ({ insumoId: l.insumoId, quantidade: l.q, valorUnit: l.precoUnit }));
 		const id = editando
 			? (pedidos.alterar(original!.id, { itens }), original!.id)
-			: pedidos.adicionar({ cooperadoId: coop!.id, campanhaId: camp!.id, data: new Date().toISOString().slice(0, 10), status: 'Pendente', itens });
+			: pedidos.adicionar({ cooperadoId: coop!.id, campanhaId: camp!.id, data: new Date().toISOString().slice(0, 10), status: 'Registrado', itens });
 		toast(editando ? 'Pedido atualizado com sucesso.' : 'Pedido registrado com sucesso. Aguardando confirmação de pagamento.');
 		goto(`/gestao/pedidos/${id}`);
 	}

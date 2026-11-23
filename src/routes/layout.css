@@ -33,6 +33,7 @@ body {
 	background: var(--color-branco);
 	color: var(--color-marrom-escuro);
 	font-family: var(--font-sans);
+	overflow-x: hidden;
 }
 h1, h2, h3, h4 {
 	font-family: var(--font-titulo);
@@ -43,6 +44,12 @@ h1, h2, h3, h4 {
 	outline: 3px solid var(--color-marrom-escuro);
 	outline-offset: 2px;
 	border-radius: 4px;
+}
+
+/* Evita que qualquer elemento force rolagem horizontal em telas estreitas */
+@media (max-width: 639px) {
+	* { box-sizing: border-box; }
+	.min-w-0 { min-width: 0; }
 }
 
 /* Alto contraste: preto/branco com verde escuro */
@@ -59,11 +66,36 @@ html.alto-contraste :focus-visible {
 	outline-color: #b26a00;
 }
 
-/* Tabelas viram cards empilhados no celular (td com data-label) */
-@media (max-width: 640px) {
+/* Tabelas viram cards empilhados no celular, cada linha em um bloco com borda */
+@media (max-width: 639px) {
 	table.resp thead { display: none; }
-	table.resp, table.resp tbody { display: block; }
-	table.resp tr { display: block; padding: 0.5rem 0; }
-	table.resp td { display: flex; justify-content: space-between; gap: 1rem; padding: 0.35rem 1rem !important; text-align: right; }
-	table.resp td::before { content: attr(data-label); font-weight: 600; color: var(--color-marrom); text-align: left; }
+	table.resp, table.resp tbody, table.resp tr { display: block; width: 100%; }
+	table.resp tr {
+		display: block;
+		border: 1px solid var(--color-borda);
+		border-radius: var(--radius-card);
+		margin: 0 0 0.75rem 0;
+		padding: 0;
+		overflow: hidden;
+	}
+	table.resp td {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border: none;
+		border-bottom: 1px solid var(--color-marrom-claro);
+		padding: 0.6rem 1rem !important;
+		width: 100%;
+		text-align: left;
+	}
+	table.resp td:last-child { border-bottom: none; }
+	/* quando há data-label, mostra o rótulo à esquerda e o valor à direita */
+	table.resp td::before {
+		content: attr(data-label);
+		font-weight: 700;
+		font-size: 0.75rem;
+		color: var(--color-marrom);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
 }

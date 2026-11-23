@@ -18,7 +18,7 @@
 	<div class="min-h-screen bg-marrom-claro pb-24 text-[1.125rem] leading-[1.6] md:pb-8">
 		<header class="border-b border-borda bg-branco">
 			<div class="mx-auto flex max-w-2xl flex-wrap items-center justify-between gap-2 px-4 py-3">
-				<a href="/produtor"><img src="/logo.png" alt="Nativa Coop – início" class="h-12 w-auto" /></a>
+				<a href="/produtor"><img src="/logo.png" alt="Nativa Coop – início" class="h-10 lg:h-12 w-auto" /></a>
 				<div class="flex items-center gap-2">
 					<AccessibilityBar />
 					<button class="inline-flex min-h-11 items-center gap-1 rounded-lg border border-borda px-3 font-semibold text-marrom" onclick={() => { sair(); goto('/login'); }} aria-label="Sair do sistema"><LogOut size={18} aria-hidden="true" /><span class="hidden sm:inline">Sair</span></button>

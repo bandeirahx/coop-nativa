@@ -17,8 +17,8 @@
 
 <header class="sticky top-0 z-30 border-b border-borda bg-branco/95 backdrop-blur">
 	<div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-2">
-		<img src="/logo.png" alt="Nativa Coop" class="h-12 w-auto" />
-		<div class="flex items-center gap-3"><div class="hidden md:block"><AccessibilityBar /></div><Button href="/login">Entrar</Button></div>
+		<img src="/logo.png" alt="Nativa Coop" class="h-12 w-auto hidden md:flex" />
+		<div class="flex items-center gap-3"><AccessibilityBar /><Button href="/login">Entrar</Button></div>
 	</div>
 </header>
 

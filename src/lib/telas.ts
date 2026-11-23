@@ -22,7 +22,7 @@ export const telas: Tela[] = [
 		['UC04.1', 'Criar Campanha', '/gestao/campanhas/nova'], ['UC04.2', 'Editar Campanha', '/gestao/campanhas/1/editar'],
 		['UC04.3', 'Consultar Campanha', '/gestao/campanhas'], ['UC04.3', 'Detalhe da Campanha', '/gestao/campanhas/1'], ['UC04.3', 'Campanhas abertas (produtor)', '/produtor/campanhas', A]]),
 	...rf('RF05', 'Gerenciar Pedidos de Insumos', [
-		['UC05.1', 'Registrar Pedido de Insumo', '/gestao/pedidos/nova'], ['UC05.1', 'Fazer pedido em passos (produtor)', '/produtor/pedido?campanha=1', A],
+		['UC05.1', 'Registrar Pedido de Insumo', '/gestao/pedidos/nova'],
 		['UC05.2', 'Consultar Pedido de Insumo', '/gestao/pedidos'], ['UC05.2', 'Detalhe do Pedido', '/gestao/pedidos/3'], ['UC05.2', 'Meus pedidos (produtor)', '/produtor/pedidos', A],
 		['UC05.3', 'Editar Pedido de Insumo', '/gestao/pedidos/3/editar']]),
 	...rf('RF06', 'Gerenciar Compras Coletivas', [

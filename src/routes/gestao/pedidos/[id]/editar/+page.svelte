@@ -9,7 +9,7 @@
 </script>
 
 <Guard perfis={['gestor']}>
-	{#if p && p.status === 'Pendente'}{#key p.id}<PedidoForm original={p} />{/key}
-	{:else if p}<EmptyState titulo="Pedido não pode ser editado" texto="Somente pedidos pendentes podem ser alterados." />
+	{#if p && (p.status === 'Registrado' || p.status === 'Pendente')}{#key p.id}<PedidoForm original={p} />{/key}
+	{:else if p}<EmptyState titulo="Pedido não pode ser editado" texto="Somente pedidos registrados ou pendentes podem ser alterados." />
 	{:else}<EmptyState titulo="Pedido não encontrado" />{/if}
 </Guard>

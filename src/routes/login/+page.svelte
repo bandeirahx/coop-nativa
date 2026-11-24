@@ -46,7 +46,7 @@
 	</aside>
 
 	<main class="flex min-w-0 flex-col justify-center gap-6 px-6 py-10 sm:px-16">
-		<div class="flex flex-wrap items-center justify-between gap-3"><a href="/"><img src="/logo.png" alt="Nativa Coop – página inicial" class="h-14 w-auto" /></a><AccessibilityBar /></div>
+		<div class="flex flex-wrap items-center justify-between gap-3"><a href="/"><img src="/logo.svg" alt="Nativa Coop – página inicial" class="h-14 w-auto" /></a><AccessibilityBar /></div>
 		<h1 class="text-3xl">Entrar</h1>
 
 		<form onsubmit={enviar} class="flex flex-col gap-4" novalidate>

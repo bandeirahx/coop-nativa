@@ -8,7 +8,7 @@
 </script>
 
 <nav aria-label="Menu principal" class="flex flex-col gap-5 p-4">
-	<img src="/logo.png" alt="Nativa Coop" class="lg:hidden h-8 w-auto mb-4" />
+	<img src="/logo.svg" alt="Nativa Coop" class="lg:hidden h-8 w-auto mb-4" />
 	<a href={itemDashboard.href} class={link(itemDashboard.href)} onclick={aoNavegar} aria-current={ativo(itemDashboard.href) ? 'page' : undefined}><itemDashboard.icone size={18} aria-hidden="true" />{itemDashboard.rotulo}</a>
 	{#each grupos as g}
 		<div>

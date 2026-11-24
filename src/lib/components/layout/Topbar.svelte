@@ -10,7 +10,7 @@
 <header class="flex h-16 items-center justify-between gap-3 border-b border-borda bg-branco px-3 lg:px-4">
 	<div class="flex items-center gap-2 lg:pl-1">
 		<button class="rounded-lg border border-borda p-2 lg:hidden" onclick={aoAbrirMenu} aria-label="Abrir menu"><Menu size={22} aria-hidden="true" /></button>
-		<img src="/logo.png" alt="Nativa Coop" class="h-10 w-auto hidden md:flex" />
+		<img src="/logo.svg" alt="Nativa Coop" class="h-10 w-auto hidden md:flex" />
 	</div>
 	<div class="flex items-center gap-2">
 		<AccessibilityBar />

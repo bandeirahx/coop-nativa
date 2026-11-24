@@ -26,7 +26,7 @@
 
 <main class="mx-auto flex max-w-5xl flex-col gap-8 p-6">
 	<header class="flex flex-wrap items-center justify-between gap-4">
-		<img src="/logo.png" alt="Nativa Coop" class="h-14 w-auto" />
+		<img src="/logo.svg" alt="Nativa Coop" class="h-14 w-auto" />
 		<AccessibilityBar />
 	</header>
 	<h1 class="text-3xl">Design System</h1>

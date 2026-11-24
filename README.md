@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="logo.png" alt="Logo Nativa Coop" width="160" />
+<img src="logo.svg" alt="Logo Nativa Coop" width="160" />
 
 # 🌱 Nativa Coop
 

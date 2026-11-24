@@ -9,7 +9,7 @@
 
 <svelte:head><title>Índice de telas · Nativa Coop</title></svelte:head>
 <main class="mx-auto max-w-4xl p-6">
-	<img src="/logo.png" alt="Nativa Coop" class="mb-4 h-14 w-auto" />
+	<img src="/logo.svg" alt="Nativa Coop" class="mb-4 h-14 w-auto" />
 	<h1 class="text-3xl">Índice de telas</h1>
 	<p class="mt-1 text-marrom">Para tirar os prints do documento. Escolha o perfil e abra cada tela.</p>
 	<div class="my-4 flex flex-wrap gap-2">

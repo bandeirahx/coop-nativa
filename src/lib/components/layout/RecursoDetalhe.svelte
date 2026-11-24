@@ -21,11 +21,11 @@
 
 {#if !x}
 	<EmptyState titulo="Registro não encontrado" texto="O registro pode ter sido removido ou o endereço está incorreto." />
-	<div class="mt-4"><Button href="/gestao/{r.slug}" variante="secundario"><ArrowLeft size={16} aria-hidden="true" />Voltar para a lista</Button></div>
+	<div class="mt-4"><Button href="/gestao/{r.slug}" variante="contorno"><ArrowLeft size={16} aria-hidden="true" />Voltar para a lista</Button></div>
 {:else}
 	<PageHeader titulo={r.nome(x)} uc="{r.rf} · {r.uc.consultar}">
 		{#snippet acoes()}
-			<Button href="/gestao/{r.slug}" variante="secundario"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>
+			<Button href="/gestao/{r.slug}" variante="contorno"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>
 			{#if escreve && r.uc.editar}<Button href="/gestao/{r.slug}/{x.id}/editar"><Pencil size={16} aria-hidden="true" />Editar</Button>{/if}
 		{/snippet}
 	</PageHeader>

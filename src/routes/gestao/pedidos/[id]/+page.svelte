@@ -21,9 +21,9 @@
 
 {#if !p}<EmptyState titulo="Pedido não encontrado" />{:else}
 	<PageHeader titulo="Pedido #{p.id}" uc="RF05: Gerenciar Pedidos de Insumos · UC05.2">
-		{#snippet acoes()}<Button href="/gestao/pedidos" variante="secundario"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>
+		{#snippet acoes()}<Button href="/gestao/pedidos" variante="contorno"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>
 			{#if gestor && (p.status === 'Registrado' || p.status === 'Pendente')}
-				<Button href="/gestao/pedidos/{p.id}/editar" variante="secundario"><Pencil size={16} aria-hidden="true" />Editar</Button>
+				<Button href="/gestao/pedidos/{p.id}/editar" variante="contorno"><Pencil size={16} aria-hidden="true" />Editar</Button>
 				<Button variante="perigo" onclick={() => (confCan = true)}><Ban size={16} aria-hidden="true" />Cancelar pedido</Button>
 				<Button onclick={() => (confPag = true)}><BadgeCheck size={16} aria-hidden="true" />Confirmar pagamento</Button>
 			{/if}{/snippet}

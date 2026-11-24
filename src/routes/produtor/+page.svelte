@@ -13,18 +13,18 @@
 </script>
 
 <svelte:head><title>Início · Nativa Coop</title></svelte:head>
-<section class="relative isolate mb-6 overflow-hidden rounded-[var(--radius-card)] p-6 text-branco secao-textura secao-folhas">
-	<div class="conteudo-sobre-textura">
-		<p class="text-lg">Bom dia,</p>
-		<h1 class="!text-branco text-3xl font-extrabold font-titulo">{$usuario?.nome.split(' ')[0]}!</h1>
-		<p class="mt-3 inline-block rounded-lg bg-branco px-3 py-1 font-bold text-marrom-profundo">Você tem {$meuCoop?.qtdCotas} cotas</p>
-	</div>
+<section class="relative isolate mb-6 overflow-hidden rounded-[var(--radius-card)] p-6 text-branco">
+	<img src="/images/semente.jpg" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover" />
+	<div class="absolute inset-0 -z-10 bg-marrom-escuro/55"></div>
+	<p class="text-lg">Bom dia,</p>
+	<h1 class="!text-branco text-3xl font-extrabold">{$usuario?.nome.split(' ')[0]}!</h1>
+	<p class="mt-3 inline-block rounded-lg bg-branco px-3 py-1 font-bold text-marrom">Você tem {$meuCoop?.qtdCotas} cotas</p>
 </section>
 <ul class="flex flex-col gap-4">
 	{#each botoes as b}
 		<li><a href={b.h} class="flex min-h-24 items-center gap-4 rounded-[var(--radius-card)] border-2 border-borda bg-branco p-4 shadow-suave">
 			<span class="flex size-14 shrink-0 items-center justify-center rounded-full bg-verde-claro text-verde-escuro"><b.i size={30} aria-hidden="true" /></span>
-			<span><span class="block text-xl font-bold font-titulo">{b.t}</span><span class="block text-base text-marrom-profundo">{b.s}</span></span></a></li>
+			<span><span class="block text-xl font-bold">{b.t}</span><span class="block text-base text-marrom">{b.s}</span></span></a></li>
 	{/each}
 </ul>
-<p class="mt-6 text-center text-xs text-marrom-profundo">UC05.2 · UC04.3 · UC02.3</p>
+<p class="mt-6 text-center text-xs text-marrom">UC05.2 · UC04.3 · UC02.3</p>

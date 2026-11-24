@@ -59,5 +59,5 @@
 			<div class="mt-4"><Input id="obs" label="Observação" bind:value={obs} dica="Descreva divergências ou avarias, se houver." /></div>
 		</Card>
 	{/if}
-	<div class="flex justify-end gap-3"><Button variante="secundario" href="/gestao/recebimento">Cancelar</Button><Button type="submit" disabled={salvando}>Confirmar recebimento</Button></div>
+	<div class="flex justify-end gap-3"><Button variante="contorno" href="/gestao/recebimento">Cancelar</Button><Button type="submit" disabled={salvando}>Confirmar recebimento</Button></div>
 </form>

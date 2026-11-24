@@ -47,7 +47,7 @@
 			{@const baixo = e.qtd < e.minimo}
 			<tr><td data-label="Insumo">{nomeInsumo(e.insumoId)}</td><td data-label="Saldo"><span><strong>{e.qtd}</strong> {unidadeInsumo(e.insumoId)}</span></td><td data-label="Mínimo">{e.minimo}</td>
 				<td data-label="Situação">{#if baixo}<span class="inline-flex items-center gap-1 font-semibold text-aviso-texto"><TriangleAlert size={16} aria-hidden="true" />Estoque baixo</span>{:else}<span class="inline-flex items-center gap-1 font-semibold text-verde-escuro"><CircleCheck size={16} aria-hidden="true" />Adequado</span>{/if}</td>
-				<td data-label="Ações"><Button variante="secundario" class="!min-h-9" onclick={() => abrirAjuste(e.insumoId, e.qtd)}>Atualizar quantidade</Button></td></tr>
+				<td data-label="Ações"><Button variante="contorno" class="!min-h-9" onclick={() => abrirAjuste(e.insumoId, e.qtd)}>Atualizar quantidade</Button></td></tr>
 		{/each}
 	</Table>
 	<p class="mt-3 text-xs text-marrom">Entradas ocorrem pelo recebimento de insumos (UC09.1) e saídas pela distribuição (UC10.2).</p>
@@ -70,6 +70,6 @@
 		<p class="text-sm text-marrom">Insumo: <strong>{nomeInsumo(+ajuste.insumoId)}</strong>. O ajuste gera uma movimentação com identificador único.</p>
 		<Input id="nq" label="Nova quantidade" type="number" bind:value={ajuste.novaQtd} erro={erros.novaQtd} required />
 		<Input id="mo" label="Motivo do ajuste" bind:value={ajuste.motivo} erro={erros.motivo} required />
-		<div class="flex justify-end gap-2"><Button variante="secundario" onclick={() => (modal = false)}>Cancelar</Button><Button type="submit">Salvar</Button></div>
+		<div class="flex justify-end gap-2"><Button variante="contorno" onclick={() => (modal = false)}>Cancelar</Button><Button type="submit">Salvar</Button></div>
 	</form>
 </Modal>

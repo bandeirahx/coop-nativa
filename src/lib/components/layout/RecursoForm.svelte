@@ -92,7 +92,7 @@
 			{/each}
 		</div>
 		<div class="mt-6 flex flex-wrap justify-end gap-3">
-			<Button variante="secundario" href="/gestao/{r.slug}">Cancelar</Button>
+			<Button variante="contorno" href="/gestao/{r.slug}">Cancelar</Button>
 			<Button type="submit" disabled={salvando}>{editando ? 'Revisar alterações' : 'Salvar'}</Button>
 		</div>
 	</Card>
@@ -104,7 +104,7 @@
 		{#each resumo as x}<li class="rounded-lg bg-marrom-claro p-2"><strong>{x.rotulo}:</strong> {x.de} → <strong>{x.para}</strong></li>{/each}
 	</ul>
 	<div class="flex justify-end gap-2">
-		<Button variante="secundario" onclick={() => (confirmar = false)}>Voltar</Button>
+		<Button variante="contorno" onclick={() => (confirmar = false)}>Voltar</Button>
 		<Button disabled={salvando} onclick={() => { confirmar = false; salvar(); }}>Confirmar e salvar</Button>
 	</div>
 </Modal>

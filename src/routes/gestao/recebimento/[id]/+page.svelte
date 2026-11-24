@@ -14,7 +14,7 @@
 
 {#if !r}<EmptyState titulo="Recebimento não encontrado" />{:else}
 	<PageHeader titulo="Recebimento #{r.id}" uc="RF08 · UC08.2 · UC08.3">
-		{#snippet acoes()}<Button href="/gestao/recebimento" variante="secundario"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>{/snippet}
+		{#snippet acoes()}<Button href="/gestao/recebimento" variante="contorno"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>{/snippet}
 	</PageHeader>
 	<Card class="mb-6 max-w-3xl"><p>Compra coletiva <strong>#{r.compraId}</strong> · {data(r.data)}</p>{#if r.observacao}<p class="mt-2 text-marrom">Observação: {r.observacao}</p>{/if}</Card>
 	<Table colunas={['Insumo', 'Previsto', 'Recebido', 'Conferência']}>

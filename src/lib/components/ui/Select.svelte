@@ -11,7 +11,7 @@
 <FormField {label} {id} {erro} {dica} obrigatorio={!!required}>
 	{#snippet children(aria)}
 		<select {id} bind:value {required} {...aria} {...resto}
-			class="campo-select min-h-[2.75rem] w-full rounded-lg border bg-branco px-3 text-base text-marrom-escuro {erro ? 'erro' : 'border-borda'}">
+			class="min-h-11 w-full rounded-lg border bg-branco px-3 text-base text-marrom-escuro {erro ? 'border-erro' : 'border-borda'}">
 			<option value="">{placeholder}</option>
 			{#each opcoes as o}<option value={o.valor}>{o.texto}</option>{/each}
 		</select>

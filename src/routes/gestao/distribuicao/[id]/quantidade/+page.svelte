@@ -55,7 +55,7 @@
 
 {#if !d || !item}<EmptyState titulo="Distribuição não encontrada" />{:else}
 	<PageHeader titulo="Registrar quantidade distribuída" uc="RF10: Gerenciar Distribuição de Insumos · UC10.2">
-		{#snippet acoes()}<Button href="/gestao/distribuicao" variante="secundario"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>{/snippet}
+		{#snippet acoes()}<Button href="/gestao/distribuicao" variante="contorno"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>{/snippet}
 	</PageHeader>
 	{#if d.status === 'Distribuído'}
 		<EmptyState titulo="Distribuição já concluída" texto="A baixa de estoque desta distribuição já foi feita e não pode ser repetida." />
@@ -76,7 +76,7 @@
 			<Card>
 				{#if erro}<p role="alert" class="mb-4 rounded-lg bg-erro-claro p-3 text-sm font-medium text-erro">{erro}</p>{/if}
 				<Input id="qtd" label="Quantidade distribuída" type="number" bind:value={qtd} required dica="A baixa no estoque será feita uma única vez ao confirmar." />
-				<div class="mt-5 flex justify-end gap-3"><Button variante="secundario" href="/gestao/distribuicao">Cancelar</Button><Button type="submit" disabled={confirmado}>Confirmar distribuição</Button></div>
+				<div class="mt-5 flex justify-end gap-3"><Button variante="contorno" href="/gestao/distribuicao">Cancelar</Button><Button type="submit" disabled={confirmado}>Confirmar distribuição</Button></div>
 			</Card>
 		</form>
 	{/if}

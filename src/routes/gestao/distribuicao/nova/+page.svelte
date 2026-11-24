@@ -80,7 +80,7 @@
 	<Card class="max-w-2xl">
 		<p class="flex items-start gap-2 rounded-lg bg-aviso-claro p-4 font-medium text-aviso-texto"><CircleAlert size={22} class="mt-0.5 shrink-0" aria-hidden="true" />
 			<span>Distribuição #{registrada} registrada, mas <strong>ainda não houve baixa no estoque</strong>. A baixa acontece ao registrar a quantidade distribuída (UC10.2).</span></p>
-		<div class="mt-5 flex flex-wrap gap-3"><Button href="/gestao/distribuicao/{registrada}/quantidade">Registrar quantidade distribuída</Button><Button variante="secundario" href="/gestao/distribuicao">Ir para a lista</Button></div>
+		<div class="mt-5 flex flex-wrap gap-3"><Button href="/gestao/distribuicao/{registrada}/quantidade">Registrar quantidade distribuída</Button><Button variante="contorno" href="/gestao/distribuicao">Ir para a lista</Button></div>
 	</Card>
 {:else}
 	<form onsubmit={continuar} novalidate class="flex max-w-2xl flex-col gap-6">
@@ -89,7 +89,7 @@
 			<Select id="ins" label="Insumo" bind:value={insId} erro={erros.ins} required opcoes={$insumos.map((i) => ({ valor: i.id, texto: i.nome }))} />
 			<Input id="dt" label="Data da distribuição" type="date" bind:value={dataDist} erro={erros.data} required />
 		</div>
-		{#if !verificacao}<div class="mt-5 flex justify-end gap-3"><Button variante="secundario" href="/gestao/distribuicao">Cancelar</Button><Button type="submit">Continuar</Button></div>{/if}</Card>
+		{#if !verificacao}<div class="mt-5 flex justify-end gap-3"><Button variante="contorno" href="/gestao/distribuicao">Cancelar</Button><Button type="submit">Continuar</Button></div>{/if}</Card>
 	</form>
 
 	{#if verificacao}
@@ -106,7 +106,7 @@
 				<p class="mt-4 flex items-start gap-2 rounded-lg bg-aviso-claro p-3 text-sm font-medium text-aviso-texto"><CircleAlert size={20} class="mt-0.5 shrink-0" aria-hidden="true" /><span>Nesta etapa <strong>não há baixa no estoque</strong>. A baixa só ocorre ao registrar a quantidade distribuída (UC10.2).</span></p>
 			{/if}
 			<div class="mt-5 flex flex-wrap justify-end gap-3">
-				<Button variante="secundario" onclick={() => (verificacao = null)}>Voltar e corrigir</Button>
+				<Button variante="contorno" onclick={() => (verificacao = null)}>Voltar e corrigir</Button>
 				{#if tudoOk}<Button onclick={confirmar}>Confirmar registro</Button>{/if}
 			</div>
 		</Card>

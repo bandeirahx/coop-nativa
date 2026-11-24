@@ -15,7 +15,7 @@
 
 {#if !d}<EmptyState titulo="Distribuição não encontrada" />{:else}
 	<PageHeader titulo="Distribuição #{d.id}" uc="RF10 · UC10.3">
-		{#snippet acoes()}<Button href="/gestao/distribuicao" variante="secundario"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>
+		{#snippet acoes()}<Button href="/gestao/distribuicao" variante="contorno"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>
 			{#if d.status === 'Registrada'}<Button href="/gestao/distribuicao/{d.id}/quantidade">Registrar quantidade distribuída</Button>{/if}{/snippet}
 	</PageHeader>
 	<Card class="mb-6 max-w-3xl"><dl class="grid gap-4 sm:grid-cols-2">

@@ -92,5 +92,5 @@
 			<p class="mt-4 text-right font-titulo text-xl font-bold text-marrom">Total: {moeda(total)}</p>
 		</Card>
 	{/if}
-	<div class="flex justify-end gap-3"><Button variante="secundario" href="/gestao/pedidos">Cancelar</Button><Button type="submit">{editando ? 'Salvar alterações' : 'Registrar pedido'}</Button></div>
+	<div class="flex justify-end gap-3"><Button variante="contorno" href="/gestao/pedidos">Cancelar</Button><Button type="submit">{editando ? 'Salvar alterações' : 'Registrar pedido'}</Button></div>
 </form>

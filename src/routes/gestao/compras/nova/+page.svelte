@@ -39,5 +39,5 @@
 			{#each grupos as g}<li class="flex justify-between py-2"><span>{nomeInsumo(g.insumoId)}</span><span>{g.total} × {moeda(g.precoUnit)} = <strong>{moeda(g.total * g.precoUnit)}</strong></span></li>{/each}
 		</ul><p class="mt-3 text-right font-titulo text-xl font-bold text-marrom">Total: {moeda(valorGrupos(grupos))}</p></Card>
 	{/if}
-	<div class="flex justify-end gap-3"><Button variante="secundario" href="/gestao/compras">Cancelar</Button><Button type="submit">Registrar compra</Button></div>
+	<div class="flex justify-end gap-3"><Button variante="contorno" href="/gestao/compras">Cancelar</Button><Button type="submit">Registrar compra</Button></div>
 </form>

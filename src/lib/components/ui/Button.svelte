@@ -3,7 +3,7 @@
 	import type { HTMLButtonAttributes } from 'svelte/elements';
 
 	type Props = HTMLButtonAttributes & {
-		variante?: 'primario' | 'secundario' | 'acento' | 'perigo';
+		variante?: 'primario' | 'secundario' | 'contorno' | 'perigo';
 		grande?: boolean;
 		href?: string;
 		children: Snippet;
@@ -11,14 +11,14 @@
 	let { variante = 'primario', grande = false, href, children, class: cls = '', ...resto }: Props = $props();
 
 	const base =
-		'btn-base inline-flex items-center justify-center gap-2 rounded-lg font-bold transition-colors disabled:opacity-50 disabled:cursor-not-allowed';
-	const tam = grande ? 'btn-grande' : 'px-4 py-2 text-base';
+		'inline-flex items-center justify-center gap-2 rounded-lg font-bold transition-colors disabled:opacity-50 disabled:cursor-not-allowed';
+	const tam = $derived(grande ? 'min-h-14 px-6 text-[1.25rem]' : 'min-h-11 px-4 text-[1.17rem]');
 	const cor = $derived(
 		{
-			primario: 'btn-primario',
-			secundario: 'btn-secundario',
-			acento: 'btn-acento',
-			perigo: 'btn-primario bg-erro hover:bg-erro-escuro'
+			primario: 'bg-verde text-branco hover:bg-verde-escuro focus-visible:bg-verde-escuro',
+			secundario: 'bg-marrom text-branco hover:bg-marrom-escuro',
+			contorno: 'border border-borda bg-branco text-marrom hover:bg-marrom-claro',
+			perigo: 'bg-erro text-branco hover:opacity-90'
 		}[variante]
 	);
 </script>

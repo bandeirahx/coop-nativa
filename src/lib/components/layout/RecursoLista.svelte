@@ -1,5 +1,5 @@
 <script lang="ts">
-	import PageHeader from './PageHeader.svelte';
+	import ModuloHero from './ModuloHero.svelte';
 	import Table from '#lib/components/ui/Table.svelte';
 	import Badge from '#lib/components/ui/Badge.svelte';
 	import Button from '#lib/components/ui/Button.svelte';
@@ -7,12 +7,20 @@
 	import Select from '#lib/components/ui/Select.svelte';
 	import { usuario } from '#lib/stores/auth.ts';
 	import { podeEscrever } from '#lib/nav.ts';
-	import { rotuloNovo, type Recurso } from '#lib/recursos.ts';
+	import { rotuloNovo, type Recurso, moduloDe, texturaModulo } from '#lib/recursos.ts';
 	import { untrack } from 'svelte';
 	import { Plus, Eye } from 'lucide-svelte';
 
 	let { r }: { r: Recurso } = $props();
+	const modulo = $derived(moduloDe(r.slug));
 	const itens = $derived(r.store);
+
+	const cabecalhoModulo = $derived({
+		cooperados: 'bg-terracota text-areia',
+		compras: 'bg-ouro text-marrom-profundo',
+		estoque: 'bg-vinho text-areia',
+		comercializacao: 'bg-azul text-areia'
+	}[modulo ?? ''] ?? '');
 	let busca = $state('');
 	let filtros = $state<Record<string, string>>(untrack(() => Object.fromEntries((r.filtros ?? []).map((f) => [f.chave, '']))));
 	let de = $state('');
@@ -31,11 +39,17 @@
 	const limpar = () => { busca = ''; filtros = Object.fromEntries((r.filtros ?? []).map((f) => [f.chave, ''])); de = ate = ''; };
 </script>
 
-<PageHeader titulo={r.titulo} uc="{r.rf} · {r.uc.consultar}">
+<ModuloHero
+	modulo={modulo}
+	titulo={r.titulo}
+	subtitulo={r.singular}
+	uc="{r.rf} · {r.uc.consultar}"
+	texturaForaDoModulo={texturaModulo(modulo ?? 'cooperados')}
+>
 	{#snippet acoes()}{#if escreve && r.uc.cadastrar}<Button href="/gestao/{r.slug}/nova"><Plus size={18} aria-hidden="true" />{rotuloNovo(r)}</Button>{/if}{/snippet}
-</PageHeader>
+</ModuloHero>
 
-<div class="mb-4 grid gap-3 rounded-[var(--radius-card)] border border-borda bg-branco p-4 sm:grid-cols-2 lg:grid-cols-4">
+<div class="mb-4 grid gap-3 rounded-[var(--radius-card)] border border-borda bg-areia p-4 sm:grid-cols-2 lg:grid-cols-4">
 	<Input id="busca" label="Buscar" placeholder="Digite para buscar" bind:value={busca} />
 	{#each r.filtros ?? [] as f}
 		<Select id="f-{f.chave}" label={f.rotulo} placeholder="Todos" opcoes={f.opcoes()} bind:value={filtros[f.chave]} />
@@ -47,7 +61,12 @@
 	<div class="flex items-end"><Button variante="contorno" onclick={limpar}>Limpar filtros</Button></div>
 </div>
 
-<Table colunas={[...r.colunas.map((c) => c.rotulo), 'Ações']} vazia={lista.length === 0} vazio="Nenhum registro encontrado.">
+<Table
+	colunas={[...r.colunas.map((c) => c.rotulo), 'Ações']}
+	vazia={lista.length === 0}
+	vazio="Nenhum registro encontrado."
+	cabecalhoClasses={cabecalhoModulo}
+>
 	{#each lista as x (x.id)}
 		<tr>
 			{#each r.colunas as c}

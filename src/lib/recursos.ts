@@ -237,3 +237,24 @@ export const valorLegivel = (c: Campo, x: any): string => {
 
 const feminino = new Set(['propriedades', 'capacidade', 'producao']);
 export const rotuloNovo = (r: Recurso) => `${feminino.has(r.slug) ? 'Nova' : 'Novo'} ${r.singular.toLowerCase()}`;
+
+export type Modulo = 'cooperados' | 'compras' | 'estoque' | 'comercializacao';
+
+const modulosPorRecurso: Record<string, Modulo> = {
+	cooperados: 'cooperados',
+	propriedades: 'cooperados',
+	capacidade: 'cooperados',
+	fornecedores: 'compras',
+	compradores: 'comercializacao',
+	catalogo: 'comercializacao',
+	producao: 'comercializacao'
+};
+
+export const moduloDe = (slug: string): Modulo | undefined => modulosPorRecurso[slug];
+
+export const texturaModulo = (m: Modulo): 'madeira' | 'graos' | 'couro' | 'folhas' | 'terra' => ({
+	cooperados: 'madeira',
+	compras: 'graos',
+	estoque: 'couro',
+	comercializacao: 'folhas'
+}[m]);

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import PageHeader from '#lib/components/layout/PageHeader.svelte';
+	import ModuloHero from '#lib/components/layout/ModuloHero.svelte';
 	import Table from '#lib/components/ui/Table.svelte';
 	import Badge from '#lib/components/ui/Badge.svelte';
 	import Button from '#lib/components/ui/Button.svelte';
@@ -10,10 +10,21 @@
 	const diverge = (r: any) => r.itens.some((i: any) => i.recebida !== i.prevista);
 </script>
 
-<PageHeader titulo="Recebimento de insumos" uc="RF08: Gerenciar Recebimento de Insumos · UC08.2">
+<ModuloHero
+	modulo="compras"
+	titulo="Recebimento de insumos"
+	subtitulo="Conferência item a item do que foi entregue pelo fornecedor (previsto × recebido)."
+	uc="RF08: Gerenciar Recebimento de Insumos · UC08.2"
+	texturaForaDoModulo="graos"
+>
 	{#snippet acoes()}<Button href="/gestao/recebimento/nova"><Plus size={18} aria-hidden="true" />Registrar recebimento</Button>{/snippet}
-</PageHeader>
-<Table colunas={['Nº', 'Compra', 'Fornecedor', 'Data', 'Conferência', 'Ações']} vazia={$recebimentos.length === 0} vazio="Nenhum recebimento registrado.">
+</ModuloHero>
+<Table
+	colunas={['Nº', 'Compra', 'Fornecedor', 'Data', 'Conferência', 'Ações']}
+	vazia={$recebimentos.length === 0}
+	vazio="Nenhum recebimento registrado."
+	cabecalhoClasses="bg-ouro text-marrom-profundo"
+>
 	{#each $recebimentos as r}
 		{@const c = $compras.find((x) => x.id === r.compraId)}
 		<tr><td data-label="Nº">#{r.id}</td><td data-label="Compra">#{r.compraId}</td><td data-label="Fornecedor">{c ? nomeFornecedor(c.fornecedorId) : '—'}</td><td data-label="Data">{data(r.data)}</td>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import PageHeader from '#lib/components/layout/PageHeader.svelte';
+	import ModuloHero from '#lib/components/layout/ModuloHero.svelte';
 	import Table from '#lib/components/ui/Table.svelte';
 	import Badge from '#lib/components/ui/Badge.svelte';
 	import Button from '#lib/components/ui/Button.svelte';
@@ -10,10 +10,20 @@
 	import { Plus } from 'lucide-svelte';
 </script>
 
-<PageHeader titulo="Consolidação de pedidos" uc="RF06: Gerenciar Compras Coletivas · UC06.2">
+<ModuloHero
+	modulo="compras"
+	titulo="Consolidação de pedidos"
+	subtitulo="Agrupa solicitações por insumo, define quantidades e gera a compra coletiva com o fornecedor."
+	uc="RF06: Gerenciar Compras Coletivas · UC06.2"
+	texturaForaDoModulo="graos"
+>
 	{#snippet acoes()}<Button href="/gestao/consolidacao/nova"><Plus size={18} aria-hidden="true" />Consolidar solicitações</Button>{/snippet}
-</PageHeader>
-<Table colunas={['Nº', 'Campanha', 'Data', 'Insumos', 'Valor estimado', 'Situação', 'Ações']} vazia={$consolidacoes.length === 0}>
+</ModuloHero>
+<Table
+	colunas={['Nº', 'Campanha', 'Data', 'Insumos', 'Valor estimado', 'Situação', 'Ações']}
+	vazia={$consolidacoes.length === 0}
+	cabecalhoClasses="bg-ouro text-marrom-profundo"
+>
 	{#each $consolidacoes as c}
 		{@const g = agrupar(c.campanhaId, c.excluidos)}
 		<tr><td data-label="Nº">#{c.id}</td><td data-label="Campanha">{nomeCampanha(c.campanhaId)}</td><td data-label="Data">{data(c.data)}</td><td data-label="Insumos">{g.length}</td>

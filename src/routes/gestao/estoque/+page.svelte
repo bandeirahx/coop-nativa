@@ -1,5 +1,5 @@
 <script lang="ts">
-	import PageHeader from '#lib/components/layout/PageHeader.svelte';
+	import ModuloHero from '#lib/components/layout/ModuloHero.svelte';
 	import Table from '#lib/components/ui/Table.svelte';
 	import Button from '#lib/components/ui/Button.svelte';
 	import Modal from '#lib/components/ui/Modal.svelte';
@@ -35,10 +35,18 @@
 	}
 </script>
 
-<PageHeader titulo="Estoque" uc="RF09: Gerenciar Estoque · UC09.2 · UC09.3" />
+<ModuloHero
+	modulo="estoque"
+	titulo="Estoque de insumos"
+	subtitulo="Saldos, mínimos, alertas de estoque baixo e histórico de movimentações (RN11)."
+	uc="RF09: Gerenciar Estoque · UC09.2 · UC09.3"
+	texturaForaDoModulo="couro"
+>
+	{#snippet acoes()}{/snippet}
+</ModuloHero>
 <div class="mb-4 flex gap-2" role="tablist" aria-label="Estoque">
-	<button role="tab" aria-selected={aba === 'saldos'} class="min-h-11 rounded-lg px-4 font-semibold {aba === 'saldos' ? 'bg-marrom text-branco' : 'bg-branco text-marrom border border-borda'}" onclick={() => (aba = 'saldos')}>Saldos</button>
-	<button role="tab" aria-selected={aba === 'mov'} class="min-h-11 rounded-lg px-4 font-semibold {aba === 'mov' ? 'bg-marrom text-branco' : 'bg-branco text-marrom border border-borda'}" onclick={() => (aba = 'mov')}>Movimentações (RN11)</button>
+	<button role="tab" aria-selected={aba === 'saldos'} class="min-h-11 rounded-lg px-4 font-semibold {aba === 'saldos' ? 'bg-vinho text-areia' : 'bg-areia text-vinho border border-borda'}" onclick={() => (aba = 'saldos')}>Saldos</button>
+	<button role="tab" aria-selected={aba === 'mov'} class="min-h-11 rounded-lg px-4 font-semibold {aba === 'mov' ? 'bg-vinho text-areia' : 'bg-areia text-vinho border border-borda'}" onclick={() => (aba = 'mov')}>Movimentações (RN11)</button>
 </div>
 
 {#if aba === 'saldos'}
@@ -52,11 +60,15 @@
 	</Table>
 	<p class="mt-3 text-xs text-marrom">Entradas ocorrem pelo recebimento de insumos (UC09.1) e saídas pela distribuição (UC10.2).</p>
 {:else}
-	<div class="mb-4 grid gap-3 rounded-[var(--radius-card)] border border-borda bg-branco p-4 sm:grid-cols-3">
+	<div class="mb-4 grid gap-3 rounded-[var(--radius-card)] border border-borda bg-areia p-4 sm:grid-cols-3">
 		<Select id="mt" label="Tipo" placeholder="Todos" bind:value={tipoF} opcoes={[{ valor: 'entrada', texto: 'Entrada' }, { valor: 'saida', texto: 'Saída' }]} />
 		<Select id="mi" label="Insumo" placeholder="Todos" bind:value={insF} opcoes={$insumos.map((i) => ({ valor: i.id, texto: i.nome }))} />
 	</div>
-	<Table colunas={['Identificador', 'Data', 'Tipo', 'Insumo', 'Quantidade', 'Descrição']} vazia={movs.length === 0}>
+	<Table
+		colunas={['Identificador', 'Data', 'Tipo', 'Insumo', 'Quantidade', 'Descrição']}
+		vazia={movs.length === 0}
+		cabecalhoClasses="bg-vinho text-areia"
+	>
 		{#each movs as m}
 			<tr><td data-label="Identificador" class="font-mono">{m.id}</td><td data-label="Data">{data(m.data)}</td>
 				<td data-label="Tipo"><span class="inline-flex items-center gap-1 font-semibold {m.tipo === 'entrada' ? 'text-verde-escuro' : 'text-aviso-texto'}">{#if m.tipo === 'entrada'}<ArrowDownToLine size={16} aria-hidden="true" />Entrada{:else}<ArrowUpFromLine size={16} aria-hidden="true" />Saída{/if}</span></td>

@@ -22,7 +22,7 @@
 		titulo="Compra coletiva #{c.id}"
 		subtitulo="Fornecedor, campanha, insumos consolidados e total da compra."
 		uc="RF06: Gerenciar Compras Coletivas"
-		texturaForaDoModulo="graos"
+		textura="graos"
 	>
 		{#snippet acoes()}<Button href="/gestao/compras" variante="contorno"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>
 			{#if c.status === 'Pendente'}<Button href="/gestao/recebimento/nova?compra={c.id}"><PackageCheck size={16} aria-hidden="true" />Registrar recebimento</Button>{/if}{/snippet}
@@ -37,3 +37,4 @@
 	</Table>
 	<p class="mt-3 text-right font-titulo text-xl font-bold text-marrom">Total: {moeda(c.valorTotal)}</p>
 {/if}
+

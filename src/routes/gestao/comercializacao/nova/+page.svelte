@@ -40,7 +40,7 @@
 	titulo="Registrar pedido do comprador"
 	subtitulo="Escolha o comprador e os produtos do catálogo dentro da produção disponível."
 	uc="RF13: Gerenciar Pedidos de Comercialização · UC13.1"
-	texturaForaDoModulo="folhas"
+	textura="folhas"
 >
 	{#snippet acoes()}{/snippet}
 </ModuloHero>
@@ -64,3 +64,4 @@
 	</Card>
 	<div class="flex justify-end gap-3"><Button variante="contorno" href="/gestao/comercializacao">Cancelar</Button><Button type="submit">Registrar pedido</Button></div>
 </form>
+

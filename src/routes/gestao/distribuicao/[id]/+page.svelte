@@ -19,7 +19,7 @@
 		titulo="Distribuição #{d.id}"
 		subtitulo="Itens entregues ao cooperado, previstos versus distribuídos."
 		uc="RF10 · UC10.3"
-		texturaForaDoModulo="couro"
+		textura="couro"
 	>
 		{#snippet acoes()}<Button href="/gestao/distribuicao" variante="contorno"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>
 			{#if d.status === 'Registrada'}<Button href="/gestao/distribuicao/{d.id}/quantidade">Registrar quantidade distribuída</Button>{/if}{/snippet}
@@ -30,7 +30,9 @@
 		<div><dt class="text-sm font-semibold text-marrom">Data</dt><dd>{data(d.data)}</dd></div>
 		<div><dt class="text-sm font-semibold text-marrom">Situação</dt><dd><Badge status={d.status} /></dd></div></dl>
 		{#if d.status === 'Registrada'}<p class="mt-4 rounded-lg bg-aviso-claro p-3 text-sm text-aviso-texto">Ainda não houve baixa no estoque.</p>{/if}</Card>
-	<Table colunas={['Insumo', 'Quantidade prevista', 'Quantidade distribuída']} cabecalhoClasses="bg-vinho text-areia">
+	<Table colunas={['Insumo', 'Quantidade prevista', 'Quantidade distribuída']} cabecalhoClasses="bg-marrom text-branco">
 		{#each d.itens as i}<tr><td data-label="Insumo">{nomeInsumo(i.insumoId)}</td><td data-label="Prevista">{i.prevista}</td><td data-label="Distribuída">{i.distribuida}</td></tr>{/each}
 	</Table>
 {/if}
+
+

@@ -2,9 +2,10 @@
 @import '@fontsource/inter/500.css';
 @import '@fontsource/inter/600.css';
 @import '@fontsource/inter/700.css';
-@import '@fontsource/merriweather/400.css';
-@import '@fontsource/merriweather/700.css';
-@import '@fontsource/merriweather/900.css';
+@import '@fontsource/plus-jakarta-sans/400.css';
+@import '@fontsource/plus-jakarta-sans/500.css';
+@import '@fontsource/plus-jakarta-sans/600.css';
+@import '@fontsource/plus-jakarta-sans/700.css';
 @import '../lib/design-tokens.css';
 @import 'tailwindcss';
 
@@ -17,7 +18,7 @@ html {
 	font-size: calc(16px * var(--escala-fonte, 1));
 }
 body {
-	background: var(--cor-base-areia);
+	background: var(--cor-fundo-principal);
 	color: var(--cor-texto-principal);
 	font-family: var(--fonte-corpo);
 	overflow-x: hidden;
@@ -29,11 +30,11 @@ h1, h2, h3, h4 {
 	font-weight: 700;
 }
 a {
-	color: var(--cor-base-oliva);
+	color: var(--cor-verde);
 	text-decoration: none;
 }
 a:hover {
-	color: var(--cor-acento-terracota);
+	color: var(--cor-verde-escuro);
 }
 
 /* Tipografia — escala definida nos tokens */
@@ -50,57 +51,40 @@ a:hover {
 .font-titulo { font-family: var(--fonte-titulo); }
 .font-corpo { font-family: var(--fonte-corpo); }
 
-/* Cores utilitárias */
-.text-oliva { color: var(--cor-base-oliva); }
-.text-cafe { color: var(--cor-base-cafe); }
-.text-areia { color: var(--cor-base-areia); }
-.text-marrom-profundo { color: var(--cor-base-marrom-profundo); }
-.text-terracota { color: var(--cor-acento-terracota); }
-.text-ouro { color: var(--cor-acento-ouro); }
-.text-vinho { color: var(--cor-acento-vinho); }
-.text-folha { color: var(--cor-acento-folha); }
-.text-azul { color: var(--cor-acento-azul); }
-
-.bg-oliva { background-color: var(--cor-base-oliva); }
-.bg-cafe { background-color: var(--cor-base-cafe); }
-.bg-marrom { background-color: var(--cor-base-cafe); }
-.text-marrom { color: var(--cor-base-cafe); }
-.bg-areia { background-color: var(--cor-base-areia); }
-.bg-marrom-profundo { background-color: var(--cor-base-marrom-profundo); }
-.bg-terracota { background-color: var(--cor-acento-terracota); }
-.bg-ouro { background-color: var(--cor-acento-ouro); }
-.bg-vinho { background-color: var(--cor-acento-vinho); }
-.bg-folha { background-color: var(--cor-acento-folha); }
-.bg-azul { background-color: var(--cor-acento-azul); }
-
-/* Cores utilitárias de estado (definidas em design-tokens.css; branco apenas para texto sobre fundo escuro) */
-.bg-branco { background-color: var(--cor-branco); }
-.text-branco { color: var(--cor-branco); }
-.text-marrom-escuro { color: var(--cor-marrom-escuro); }
-.bg-marrom-claro { background-color: var(--cor-marrom-claro); }
-.text-marrom-claro { color: var(--cor-marrom-claro); }
-.border-marrom { border-color: var(--cor-base-marrom-profundo); }
-
-.bg-verde-claro { background-color: var(--cor-verde-claro); }
+/* Cores utilitárias (paleta oficial) */
+.text-verde { color: var(--cor-verde); }
 .text-verde-escuro { color: var(--cor-verde-escuro); }
-.border-verde { border-color: var(--cor-base-oliva); }
+.text-marrom { color: var(--cor-marrom); }
+.text-marrom-escuro { color: var(--cor-marrom-escuro); }
+.text-suave { color: var(--cor-texto-suave); }
+.text-branco { color: var(--cor-branco); }
+.text-sobre-imagem { color: var(--cor-texto-sobre-imagem); }
 
-.bg-aviso-claro { background-color: var(--cor-aviso-claro); }
-.text-aviso-texto { color: var(--cor-aviso-texto); }
-.border-aviso { border-color: var(--cor-acento-terracota); }
+.bg-verde { background-color: var(--cor-verde); }
+.bg-verde-claro { background-color: var(--cor-verde-claro); }
+.bg-marrom { background-color: var(--cor-marrom); }
+.bg-marrom-claro { background-color: var(--cor-marrom-claro); }
+.bg-marrom-escuro { background-color: var(--cor-marrom-escuro); }
+.bg-branco { background-color: var(--cor-branco); }
 
-.bg-erro-claro { background-color: var(--cor-erro-claro); }
+/* Bordas */
+.border-verde { border-color: var(--cor-verde); }
+.border-marrom { border-color: var(--cor-marrom); }
+.border-borda { border-color: var(--cor-borda); }
+
+/* Estado (feedback) */
+.bg-erro { background-color: var(--cor-erro); }
 .text-erro { color: var(--cor-erro); }
 .border-erro { border-color: var(--cor-erro); }
-.bg-erro { background-color: var(--cor-erro); }
-.bg-verde-escuro { background-color: var(--cor-sucesso); }
+.bg-erro-claro { background-color: var(--cor-erro-claro); }
+.bg-aviso-claro { background-color: var(--cor-aviso-claro); }
+.text-aviso-texto { color: var(--cor-aviso-texto); }
+.border-aviso { border-color: var(--cor-aviso); }
 
 .bg-borda { background-color: var(--cor-borda); }
 
 .border-dashed { border-style: dashed; }
 .shadow-card-hover { box-shadow: var(--sombra-card-hover); }
-.border-cafe { border-color: var(--cor-base-cafe); }
-.border-borda { border-color: var(--cor-borda); }
 
 /* Espaçamentos */
 .p-1 { padding: var(--espaco-1); }
@@ -152,21 +136,21 @@ a:hover {
    ALTO CONTRASTE
    ========================================================================== */
 html.alto-contraste {
-	--cor-base-oliva: #006400;
-	--cor-base-cafe: #000000;
-	--cor-base-areia: #FFFFFF;
-	--cor-base-marrom-profundo: #000000;
-	--cor-acento-terracota: #8B0000;
-	--cor-acento-ouro: #FFD700;
-	--cor-acento-vinho: #800000;
-	--cor-acento-folha: #006400;
-	--cor-acento-azul: #000080;
-	--cor-texto-principal: #000000;
-	--cor-texto-claro: #FFFFFF;
+	--cor-verde: #006400;
+	--cor-verde-escuro: #004400;
+	--cor-marrom: #000000;
+	--cor-marrom-escuro: #000000;
+	--cor-branco: #FFFFFF;
+	--cor-verde-claro: #FFFFFF;
+	--cor-marrom-claro: #FFFFFF;
 	--cor-borda: #000000;
+	--cor-texto-principal: #000000;
+	--cor-texto-secundario: #000000;
+	--cor-erro: #8B0000;
+	--cor-aviso: #B26A00;
 }
 html.alto-contraste :focus-visible {
-	outline-color: var(--cor-acento-terracota);
+	outline-color: var(--cor-erro);
 }
 
 /* Alto contraste: desativa texturas de fundo que prejudiquem leitura */
@@ -179,7 +163,7 @@ html.alto-contraste .header-textura::after {
 html.alto-contraste .card-textura,
 html.alto-contraste .header-textura,
 html.alto-contraste .secao-textura {
-	background: var(--cor-base-marrom-profundo) !important;
+	background: var(--cor-marrom-escuro) !important;
 	color: #FFFFFF !important;
 }
 html.alto-contraste .card-conteudo,
@@ -208,7 +192,7 @@ html.alto-contraste .dialog-conteudo {
 		align-items: center;
 		justify-content: space-between;
 		border: none;
-		border-bottom: 1px solid var(--cor-base-areia);
+		border-bottom: 1px solid var(--cor-marrom-claro);
 		padding: 0.6rem 1rem !important;
 		width: 100%;
 		text-align: left;
@@ -234,7 +218,7 @@ html.alto-contraste .dialog-conteudo {
    TEXTURAS E OVERLAYS (classes utilitárias)
    ========================================================================== */
 
-/* Aplica uma textura como background com overlay de cor do módulo */
+/* Aplica uma textura como background com overlay marrom-escuro (40-60%) */
 .textura-fundo {
 	position: relative;
 	background-size: cover;
@@ -248,7 +232,7 @@ html.alto-contraste .dialog-conteudo {
 	background: var(--overlay-medio);
 }
 
-/* Variações de textura por módulo */
+/* Variações de textura (mantidas do redesign, usadas com moderação) */
 .textura-madeira { background-image: var(--tex-madeira); }
 .textura-graos { background-image: var(--tex-graos); }
 .textura-couro { background-image: var(--tex-couro); }
@@ -256,11 +240,8 @@ html.alto-contraste .dialog-conteudo {
 .textura-fruta { background-image: var(--tex-fruta); }
 .textura-terra { background-image: var(--tex-terra); }
 
-/* Overlays por módulo (usados em heroes e cards de destaque) */
-.overlay-cooperados { background: var(--overlay-cooperados); }
-.overlay-compras { background: var(--overlay-compras); }
-.overlay-estoque { background: var(--overlay-estoque); }
-.overlay-comercializacao { background: var(--overlay-comercializacao); }
+/* Overlay genérico (marrom-escuro) para heroes e cards */
+.overlay-escuro { background: var(--overlay-medio); }
 .overlay-login { background: var(--overlay-login); }
 
 /* Card com textura + overlay + conteúdo sólido sobreposto */
@@ -282,12 +263,12 @@ html.alto-contraste .dialog-conteudo {
 .card-conteudo {
 	position: relative;
 	z-index: 1;
-	background: rgba(245, 241, 232, 0.92);
+	background: rgba(255, 255, 255, 0.92);
 	border-radius: inherit;
 }
 
 /* ==========================================================================
-   LOGO — sem fundo branco visível (selo com fundo areia ou marrom)
+   LOGO — sem fundo branco visível (selo com fundo branco ou marrom-escuro)
    ========================================================================== */
 .logo-selo {
 	display: inline-flex;
@@ -296,11 +277,11 @@ html.alto-contraste .dialog-conteudo {
 	padding: 0.35rem;
 	border-radius: 8px;
 }
-.logo-selo.areia {
-	background: var(--cor-base-areia);
+.logo-selo.branco {
+	background: var(--cor-branco);
 }
 .logo-selo.marrom {
-	background: var(--cor-base-marrom-profundo);
+	background: var(--cor-marrom-escuro);
 }
 .mix-blend-multiply {
 	mix-blend-mode: multiply;
@@ -313,7 +294,7 @@ html.alto-contraste .dialog-conteudo {
    FOCUS VISÍVEL
    ========================================================================== */
 :focus-visible {
-	outline: 3px solid var(--cor-borda-foco);
+	outline: 3px solid var(--cor-verde);
 	outline-offset: 2px;
 	border-radius: 4px;
 }

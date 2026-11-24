@@ -41,11 +41,10 @@
 </script>
 
 <ModuloHero
-	modulo="compras"
 	titulo={editando ? 'Editar campanha' : 'Nova campanha'}
 	subtitulo="Nome, período, insumos ofertados e limite por cota (RN10)."
 	uc="RF04: Gerenciar Campanhas de Compras · {editando ? 'UC04.2' : 'UC04.1'}"
-	texturaForaDoModulo="graos"
+	textura="graos"
 >
 	{#snippet acoes()}{/snippet}
 </ModuloHero>

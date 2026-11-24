@@ -18,15 +18,17 @@
 		titulo="Recebimento #{r.id}"
 		subtitulo="Conferência item a item do recebido versus o previsto na compra coletiva."
 		uc="RF08 · UC08.2 · UC08.3"
-		texturaForaDoModulo="graos"
+		textura="graos"
 	>
 		{#snippet acoes()}<Button href="/gestao/recebimento" variante="contorno"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>{/snippet}
 	</ModuloHero>
 	<Card class="mb-6 max-w-3xl"><p>Compra coletiva <strong>#{r.compraId}</strong> · {data(r.data)}</p>{#if r.observacao}<p class="mt-2 text-marrom">Observação: {r.observacao}</p>{/if}</Card>
-	<Table colunas={['Insumo', 'Previsto', 'Recebido', 'Conferência']} cabecalhoClasses="bg-ouro text-marrom-profundo">
+	<Table colunas={['Insumo', 'Previsto', 'Recebido', 'Conferência']} cabecalhoClasses="bg-verde text-marrom-escuro">
 		{#each r.itens as i}
 			<tr><td data-label="Insumo">{nomeInsumo(i.insumoId)}</td><td data-label="Previsto">{i.prevista}</td><td data-label="Recebido">{i.recebida}</td>
 				<td data-label="Conferência">{#if i.prevista === i.recebida}<span class="inline-flex items-center gap-1 font-semibold text-verde-escuro"><CircleCheck size={16} aria-hidden="true" />Conferido</span>{:else}<span class="inline-flex items-center gap-1 font-semibold text-aviso-texto"><TriangleAlert size={16} aria-hidden="true" />Divergência ({i.recebida - i.prevista})</span>{/if}</td></tr>
 		{/each}
 	</Table>
 {/if}
+
+

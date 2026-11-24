@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { prefs, mudarFonte, alternarContraste } from '#lib/stores/acessibilidade.ts';
 	import { Contrast } from 'lucide-svelte';
-	const btn = 'min-h-9 min-w-9 rounded-btn border border-borda bg-areia px-2 text-sm font-bold text-marrom-profundo hover:bg-cafe/10';
+	const btn = 'min-h-9 min-w-9 rounded-btn border border-borda bg-branco px-2 text-sm font-bold text-marrom-escuro hover:bg-marrom-claro/10';
 </script>
 
 <div class="flex items-center gap-1" role="group" aria-label="Acessibilidade">
@@ -13,3 +13,4 @@
 		<Contrast size={16} aria-hidden="true" /><span class="hidden sm:inline">Contraste</span>
 	</button>
 </div>
+

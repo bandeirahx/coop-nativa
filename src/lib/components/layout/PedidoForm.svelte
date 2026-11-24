@@ -60,11 +60,10 @@
 </script>
 
 <ModuloHero
-	modulo="compras"
 	titulo={editando ? `Editar pedido #${original?.id}` : 'Registrar pedido de insumo'}
 	subtitulo="Escolha a campanha aberta, os insumos e as quantidades dentro do limite de suas cotas."
 	uc="RF05: Gerenciar Pedidos de Insumos · {editando ? 'UC05.3' : 'UC05.1'}"
-	texturaForaDoModulo="graos"
+	textura="graos"
 >
 	{#snippet acoes()}{/snippet}
 </ModuloHero>

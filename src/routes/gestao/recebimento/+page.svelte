@@ -15,7 +15,7 @@
 	titulo="Recebimento de insumos"
 	subtitulo="Conferência item a item do que foi entregue pelo fornecedor (previsto × recebido)."
 	uc="RF08: Gerenciar Recebimento de Insumos · UC08.2"
-	texturaForaDoModulo="graos"
+	textura="graos"
 >
 	{#snippet acoes()}<Button href="/gestao/recebimento/nova"><Plus size={18} aria-hidden="true" />Registrar recebimento</Button>{/snippet}
 </ModuloHero>
@@ -23,7 +23,7 @@
 	colunas={['Nº', 'Compra', 'Fornecedor', 'Data', 'Conferência', 'Ações']}
 	vazia={$recebimentos.length === 0}
 	vazio="Nenhum recebimento registrado."
-	cabecalhoClasses="bg-ouro text-marrom-profundo"
+	cabecalhoClasses="bg-verde text-marrom-escuro"
 >
 	{#each $recebimentos as r}
 		{@const c = $compras.find((x) => x.id === r.compraId)}
@@ -32,3 +32,5 @@
 			<td data-label="Ações"><a class="font-semibold text-verde-escuro underline" href="/gestao/recebimento/{r.id}">Ver</a></td></tr>
 	{/each}
 </Table>
+
+

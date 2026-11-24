@@ -3,102 +3,103 @@
    Única fonte de verdade para cores, tipografia, espaçamentos, raios,
    sombras e overlays. Nenhuma cor solta deve aparecer fora deste arquivo.
    ========================================================================== */
+:root {
+	/* ------------------------------------------------------------------------
+	   CORES OFICIAIS DA COOPERATIVA (PROMPT_NATIVA_COOP.md, seção 2)
+	   ------------------------------------------------------------------------ */
+	--cor-branco: #FFFFFF;        /* Fundo principal, cards */
+	--cor-verde: #4F9808;         /* Botões principais, destaques, itens ativos, badges sucesso */
+	--cor-verde-escuro: #3F7A06;  /* Texto e links em verde, hover dos botões (WCAG AA) */
+	--cor-marrom: #4E3A3F;        /* Títulos, textos secundários fortes, sidebar, botões secundários */
+	--cor-marrom-escuro: #281D1E; /* Texto principal do corpo, rodapé, cabeçalhos escuros */
 
-/* ------------------------------------------------------------------------
-   CORES OFICIAIS DA COOPERATIVA (PROMPT_NATIVA_COOP.md, seção 2)
-   ------------------------------------------------------------------------ */
---cor-branco: #FFFFFF;        /* Fundo principal, cards */
---cor-verde: #4F9808;         /* Botões principais, destaques, itens ativos, badges sucesso */
---cor-verde-escuro: #3F7A06;  /* Texto e links em verde, hover dos botões (WCAG AA) */
---cor-marrom: #4E3A3F;        /* Títulos, textos secundários fortes, sidebar, botões secundários */
---cor-marrom-escuro: #281D1E; /* Texto principal do corpo, rodapé, cabeçalhos escuros */
+	/* Derivados oficiais (tons claros para fundos de seção e bordas) */
+	--cor-verde-claro: #F3F8EC;   /* verde 5% */
+	--cor-marrom-claro: #F5F2F2;  /* marrom 5% */
+	--cor-borda: #E7E2E3;         /* bordas */
 
-/* Derivados oficiais (tons claros para fundos de seção e bordas) */
---cor-verde-claro: #F3F8EC;   /* verde 5% */
---cor-marrom-claro: #F5F2F2;  /* marrom 5% */
---cor-borda: #E7E2E3;         /* bordas */
+	/* Cores de estado (apenas feedback) */
+	--cor-erro: #C62828;
+	--cor-aviso: #B26A00;
+	--cor-aviso-texto: #8A5000;   /* texto de aviso com contraste AA */
+	--cor-erro-claro: #F7E9E9;
+	--cor-aviso-claro: #FBF3E4;
 
-/* Cores de estado (apenas feedback) */
---cor-erro: #C62828;
---cor-aviso: #B26A00;
---cor-aviso-texto: #8A5000;   /* texto de aviso com contraste AA */
---cor-erro-claro: #F7E9E9;
---cor-aviso-claro: #FBF3E4;
+	/* Texto */
+	--cor-texto-principal: var(--cor-marrom-escuro);
+	--cor-texto-secundario: var(--cor-marrom);
+	--cor-texto-suave: #6E6255;
+	--cor-texto-sobre-imagem: #FFFFFF;
 
-/* Texto */
---cor-texto-principal: var(--cor-marrom-escuro);
---cor-texto-secundario: var(--cor-marrom);
---cor-texto-suave: #6E6255;
---cor-texto-sobre-imagem: #FFFFFF;
+	/* Alias de fundo (branco = fundo principal e cards, conforme paleta oficial) */
+	--cor-fundo-principal: var(--cor-branco);
+	--cor-fundo-card: var(--cor-branco);
 
-/* Alias de fundo (branco = fundo principal e cards, conforme paleta oficial) */
---cor-fundo-principal: var(--cor-branco);
---cor-fundo-card: var(--cor-branco);
+	/* ------------------------------------------------------------------------
+	   TIPOGRAFIA (Plus Jakarta Sans títulos / Inter corpo, via @fontsource)
+	   ------------------------------------------------------------------------ */
+	--fonte-titulo: 'Plus Jakarta Sans', 'Merriweather', serif;
+	--fonte-corpo: 'Inter', 'Source Sans 3', 'DM Sans', system-ui, sans-serif;
 
-/* ------------------------------------------------------------------------
-   TIPOGRAFIA (Plus Jakarta Sans títulos / Inter corpo, via @fontsource)
-   ------------------------------------------------------------------------ */
---fonte-titulo: 'Plus Jakarta Sans', 'Merriweather', serif;
---fonte-corpo: 'Inter', 'Source Sans 3', 'DM Sans', system-ui, sans-serif;
+	/* Escala tipográfica (mínimo 6 tamanhos, corpo ≥ 16px) */
+	--tamanho-xs: 0.75rem;    /* 12px */
+	--tamanho-sm: 0.875rem;   /* 14px */
+	--tamanho-base: 1rem;     /* 16px (corpo mínimo) */
+	--tamanho-lg: 1.125rem;   /* 18px */
+	--tamanho-xl: 1.25rem;    /* 20px */
+	--tamanho-2xl: 1.5rem;    /* 24px */
+	--tamanho-3xl: 1.875rem;  /* 30px */
+	--tamanho-4xl: 2.25rem;   /* 36px */
+	--tamanho-5xl: 3rem;      /* 48px */
 
-/* Escala tipográfica (mínimo 6 tamanhos, corpo ≥ 16px) */
---tamanho-xs: 0.75rem;    /* 12px */
---tamanho-sm: 0.875rem;   /* 14px */
---tamanho-base: 1rem;     /* 16px (corpo mínimo) */
---tamanho-lg: 1.125rem;   /* 18px */
---tamanho-xl: 1.25rem;    /* 20px */
---tamanho-2xl: 1.5rem;    /* 24px */
---tamanho-3xl: 1.875rem;  /* 30px */
---tamanho-4xl: 2.25rem;   /* 36px */
---tamanho-5xl: 3rem;      /* 48px */
+	/* ------------------------------------------------------------------------
+	   ESPAÇAMENTOS (escala 4/8px)
+	   ------------------------------------------------------------------------ */
+	--espaco-1: 0.25rem;   /* 4px */
+	--espaco-2: 0.5rem;    /* 8px */
+	--espaco-3: 0.75rem;   /* 12px */
+	--espaco-4: 1rem;      /* 16px */
+	--espaco-5: 1.25rem;   /* 20px */
+	--espaco-6: 1.5rem;    /* 24px */
+	--espaco-8: 2rem;      /* 32px */
+	--espaco-10: 2.5rem;   /* 40px */
+	--espaco-12: 3rem;     /* 48px */
+	--espaco-16: 4rem;     /* 64px */
 
-/* ------------------------------------------------------------------------
-   ESPAÇAMENTOS (escala 4/8px)
-   ------------------------------------------------------------------------ */
---espaco-1: 0.25rem;   /* 4px */
---espaco-2: 0.5rem;    /* 8px */
---espaco-3: 0.75rem;   /* 12px */
---espaco-4: 1rem;      /* 16px */
---espaco-5: 1.25rem;   /* 20px */
---espaco-6: 1.5rem;    /* 24px */
---espaco-8: 2rem;      /* 32px */
---espaco-10: 2.5rem;   /* 40px */
---espaco-12: 3rem;     /* 48px */
---espaco-16: 4rem;     /* 64px */
+	/* ------------------------------------------------------------------------
+	   RAIOS / BORDER-RADIUS (8–12px conforme paleta oficial)
+	   ------------------------------------------------------------------------ */
+	--raio-card: 10px;
+	--raio-badge: 9999px;
+	--raio-input: 8px;
+	--raio-btn: 8px;
+	--raio-modal: 12px;
+	--radius-card: var(--raio-card);
 
-/* ------------------------------------------------------------------------
-   RAIOS / BORDER-RADIUS (8–12px conforme paleta oficial)
-   ------------------------------------------------------------------------ */
---raio-card: 10px;
---raio-badge: 9999px;
---raio-input: 8px;
---raio-btn: 8px;
---raio-modal: 12px;
---radius-card: var(--raio-card);
+	/* ------------------------------------------------------------------------
+	   SOMBRAS
+	   ------------------------------------------------------------------------ */
+	--sombra-suave: 0 1px 3px rgb(40 29 30 / 0.08), 0 2px 8px rgb(40 29 30 / 0.06);
+	--sombra-media: 0 4px 16px rgb(40 29 30 / 0.10);
+	--sombra-card-hover: 0 8px 24px rgb(40 29 30 / 0.12);
 
-/* ------------------------------------------------------------------------
-   SOMBRAS
-   ------------------------------------------------------------------------ */
---sombra-suave: 0 1px 3px rgb(40 29 30 / 0.08), 0 2px 8px rgb(40 29 30 / 0.06);
---sombra-media: 0 4px 16px rgb(40 29 30 / 0.10);
---sombra-card-hover: 0 8px 24px rgb(40 29 30 / 0.12);
+	/* ------------------------------------------------------------------------
+	   OVERLAY DE IMAGEM (sobreposição em marrom-escuro 40–60% quando houver
+	   texto por cima, conforme paleta oficial)
+	   ------------------------------------------------------------------------ */
+	--overlay-leve: linear-gradient(rgba(40, 29, 30, 0.40), rgba(40, 29, 30, 0.40));
+	--overlay-medio: linear-gradient(rgba(40, 29, 30, 0.55), rgba(40, 29, 30, 0.55));
+	--overlay-forte: linear-gradient(rgba(40, 29, 30, 0.70), rgba(40, 29, 30, 0.70));
+	--overlay-login: linear-gradient(rgba(40, 29, 30, 0.60), rgba(40, 29, 30, 0.60));
 
-/* ------------------------------------------------------------------------
-   OVERLAY DE IMAGEM (sobreposição em marrom-escuro 40–60% quando houver
-   texto por cima, conforme paleta oficial)
-   ------------------------------------------------------------------------ */
---overlay-leve: linear-gradient(rgba(40, 29, 30, 0.40), rgba(40, 29, 30, 0.40));
---overlay-medio: linear-gradient(rgba(40, 29, 30, 0.55), rgba(40, 29, 30, 0.55));
---overlay-forte: linear-gradient(rgba(40, 29, 30, 0.70), rgba(40, 29, 30, 0.70));
---overlay-login: linear-gradient(rgba(40, 29, 30, 0.60), rgba(40, 29, 30, 0.60));
-
-/* ------------------------------------------------------------------------
-   TEXTURAS (background-image real — fotografias de agro, mantidas do redesign)
-   ------------------------------------------------------------------------ */
---tex-madeira: url('/images/textures/madeira.webp');
---tex-graos: url('/images/textures/graos.webp');
---tex-couro: url('/images/textures/couro.webp');
---tex-folhas: url('/images/textures/folhas.webp');
---tex-fruta: url('/images/textures/fruta.webp');
---tex-terra: url('/images/textures/terra.webp');
---tex-hero: url('/images/webp/hero.webp');
+	/* ------------------------------------------------------------------------
+	   TEXTURAS (background-image real — fotografias de agro, mantidas do redesign)
+	   ------------------------------------------------------------------------ */
+	--tex-madeira: url('/images/textures/madeira.webp');
+	--tex-graos: url('/images/textures/graos.webp');
+	--tex-couro: url('/images/textures/couro.webp');
+	--tex-folhas: url('/images/textures/folhas.webp');
+	--tex-fruta: url('/images/textures/fruta.webp');
+	--tex-terra: url('/images/textures/terra.webp');
+	--tex-hero: url('/images/webp/hero.webp');
+}

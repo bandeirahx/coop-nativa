@@ -13,9 +13,9 @@
 	<h1 class="text-3xl">Índice de telas</h1>
 	<p class="mt-1 text-marrom">Para tirar os prints do documento. Escolha o perfil e abra cada tela.</p>
 	<div class="my-4 flex flex-wrap gap-2">
-		<Button variante="contorno" onclick={() => usar('gestor')}>Entrar como Gestor</Button>
-		<Button variante="contorno" onclick={() => usar('operacional')}>Entrar como Operacional</Button>
-		<Button variante="contorno" onclick={() => usar('agricultor')}>Entrar como Agricultor</Button>
+		<Button variante="secundario" onclick={() => usar('gestor')}>Entrar como Gestor</Button>
+		<Button variante="secundario" onclick={() => usar('operacional')}>Entrar como Operacional</Button>
+		<Button variante="secundario" onclick={() => usar('agricultor')}>Entrar como Agricultor</Button>
 	</div>
 	{#each grupos as [titulo, itens]}
 		<section class="mt-8"><h2 class="mb-2 text-xl">{titulo}</h2>

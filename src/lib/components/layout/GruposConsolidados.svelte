@@ -19,7 +19,7 @@
 					<li class="flex items-center justify-between gap-3 py-2 {p.excluido ? 'text-marrom line-through opacity-70' : ''}">
 						<span>Pedido #{p.pedidoId} · {nomeCoop(p.cooperadoId)}</span>
 						<span class="flex items-center gap-3"><strong>{p.quantidade}</strong>
-							{#if editavel}<Button variante="contorno" class="!min-h-9" onclick={() => aoAlternar?.(p.pedidoId)}>{p.excluido ? 'Incluir' : 'Remover'}</Button>{/if}</span>
+							{#if editavel}<Button variante="secundario" class="!min-h-9" onclick={() => aoAlternar?.(p.pedidoId)}>{p.excluido ? 'Incluir' : 'Remover'}</Button>{/if}</span>
 					</li>
 				{/each}
 			</ul>

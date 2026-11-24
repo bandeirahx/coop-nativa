@@ -58,11 +58,11 @@
 					<Select id="ins{n}" label="Insumo" bind:value={item.insumoId} opcoes={opcoesInsumo} erro={erros[`i${n}`]} />
 					<Input id="pre{n}" label="Preço unitário (R$)" type="number" step="0.01" bind:value={item.precoUnit} erro={erros[`p${n}`]} />
 					<Input id="lim{n}" label="Limite por cota" type="number" bind:value={item.limitePorCota} erro={erros[`l${n}`]} dica="RN10" />
-					<div class="sm:pt-7"><Button variante="contorno" onclick={() => v.itens.splice(n, 1)} aria-label="Remover insumo {n + 1}"><Trash2 size={18} aria-hidden="true" /></Button></div>
+					<div class="sm:pt-7"><Button variante="secundario" onclick={() => v.itens.splice(n, 1)} aria-label="Remover insumo {n + 1}"><Trash2 size={18} aria-hidden="true" /></Button></div>
 				</div>
 			{/each}
 		</div>
-		<div class="mt-4"><Button variante="contorno" onclick={() => v.itens.push({ insumoId: '' as any, precoUnit: '' as any, limitePorCota: '' as any })}><Plus size={16} aria-hidden="true" />Adicionar insumo</Button></div>
+		<div class="mt-4"><Button variante="secundario" onclick={() => v.itens.push({ insumoId: '' as any, precoUnit: '' as any, limitePorCota: '' as any })}><Plus size={16} aria-hidden="true" />Adicionar insumo</Button></div>
 	</Card>
-	<div class="flex justify-end gap-3"><Button variante="contorno" href="/gestao/campanhas">Cancelar</Button><Button type="submit">Salvar campanha</Button></div>
+	<div class="flex justify-end gap-3"><Button variante="secundario" href="/gestao/campanhas">Cancelar</Button><Button type="submit">Salvar campanha</Button></div>
 </form>

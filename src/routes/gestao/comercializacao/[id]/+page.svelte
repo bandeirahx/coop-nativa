@@ -19,7 +19,7 @@
 
 {#if !p}<EmptyState titulo="Pedido não encontrado" />{:else}
 	<PageHeader titulo="Pedido de comercialização #{p.id}" uc="RF13 · UC13.2 · UC13.3">
-		{#snippet acoes()}<Button href="/gestao/comercializacao" variante="contorno"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>
+		{#snippet acoes()}<Button href="/gestao/comercializacao" variante="secundario"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>
 			{#if p.status === 'Pendente'}<Button variante="perigo" onclick={() => (canc = true)}><Ban size={16} aria-hidden="true" />Cancelar</Button><Button onclick={() => (aprov = true)}><BadgeCheck size={16} aria-hidden="true" />Aprovar pagamento</Button>{/if}{/snippet}
 	</PageHeader>
 	<Card class="mb-6 max-w-3xl"><dl class="grid gap-4 sm:grid-cols-3">

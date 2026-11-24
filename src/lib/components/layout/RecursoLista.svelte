@@ -44,7 +44,7 @@
 		<Input id="de" label="Período – de" type="date" bind:value={de} />
 		<Input id="ate" label="Período – até" type="date" bind:value={ate} />
 	{/if}
-	<div class="flex items-end"><Button variante="contorno" onclick={limpar}>Limpar filtros</Button></div>
+	<div class="flex items-end"><Button variante="secundario" onclick={limpar}>Limpar filtros</Button></div>
 </div>
 
 <Table colunas={[...r.colunas.map((c) => c.rotulo), 'Ações']} vazia={lista.length === 0} vazio="Nenhum registro encontrado.">

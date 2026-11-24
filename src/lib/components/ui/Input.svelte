@@ -8,6 +8,6 @@
 <FormField {label} {id} {erro} {dica} obrigatorio={!!required}>
 	{#snippet children(aria)}
 		<input {id} bind:value {required} {...aria} {...resto}
-			class="min-h-11 w-full rounded-lg border bg-branco px-3 text-base text-marrom-escuro placeholder:text-marrom/60 {erro ? 'border-erro' : 'border-borda'}" />
+			class="campo-input min-h-[2.75rem] w-full rounded-lg border bg-branco px-3 text-base text-marrom-escuro placeholder:text-marrom/60 {erro ? 'erro' : 'border-borda'}" />
 	{/snippet}
 </FormField>

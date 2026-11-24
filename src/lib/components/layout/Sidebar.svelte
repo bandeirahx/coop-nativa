@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { grupos, itemDashboard } from '#lib/nav.ts';
+	import Logo from '#lib/components/ui/Logo.svelte';
 	let { aoNavegar = () => {} }: { aoNavegar?: () => void } = $props();
 	const ativo = (href: string) => (href === '/gestao' ? page.url.pathname === href : page.url.pathname.startsWith(href));
 	const link = (href: string) =>
@@ -9,7 +10,7 @@
 
 <nav aria-label="Menu principal" class="flex flex-col gap-3 p-4 textura-fundo textura-madeira overlay-cooperados text-areia">
 	<div class="logo-container mb-6">
-		<img src="/logo.png" alt="Nativa Coop" class="h-10 w-auto" />
+		<Logo tamanho="h-10" fundo="areia" />
 	</div>
 	<a href={itemDashboard.href} class={link(itemDashboard.href)} onclick={aoNavegar} aria-current={ativo(itemDashboard.href) ? 'page' : undefined}><itemDashboard.icone size={20} aria-hidden="true" /><span class="font-titulo">{itemDashboard.rotulo}</span></a>
 	{#each grupos as g}

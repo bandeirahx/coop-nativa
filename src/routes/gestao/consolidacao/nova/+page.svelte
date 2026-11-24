@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import PageHeader from '#lib/components/layout/PageHeader.svelte';
+	import ModuloHero from '#lib/components/layout/ModuloHero.svelte';
 	import GruposConsolidados from '#lib/components/layout/GruposConsolidados.svelte';
 	import Card from '#lib/components/ui/Card.svelte';
 	import Select from '#lib/components/ui/Select.svelte';
@@ -26,7 +26,15 @@
 	}
 </script>
 
-<PageHeader titulo="Consolidar solicitações" uc="RF06 · UC06.1 · UC06.1.1 · UC06.1.2 · UC06.1.3" />
+<ModuloHero
+	modulo="compras"
+	titulo="Consolidar solicitações"
+	subtitulo="Selecione a campanha e quais pedidos entrarem na compra coletiva."
+	uc="RF06 · UC06.1 · UC06.1.1 · UC06.1.2 · UC06.1.3"
+	texturaForaDoModulo="graos"
+>
+	{#snippet acoes()}{/snippet}
+</ModuloHero>
 <Card class="mb-6 max-w-xl"><Select id="camp" label="Campanha" bind:value={campId} opcoes={$campanhas.map((c) => ({ valor: c.id, texto: c.nome }))} erro={erro} required /></Card>
 {#if campId && grupos.length}
 	<GruposConsolidados {grupos} editavel aoAlternar={alternar} />

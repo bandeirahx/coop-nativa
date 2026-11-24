@@ -1,5 +1,5 @@
 <script lang="ts">
-	import PageHeader from '#lib/components/layout/PageHeader.svelte';
+	import ModuloHero from '#lib/components/layout/ModuloHero.svelte';
 	import Card from '#lib/components/ui/Card.svelte';
 	import Select from '#lib/components/ui/Select.svelte';
 	import Input from '#lib/components/ui/Input.svelte';
@@ -75,7 +75,15 @@
 	const tudoOk = $derived(!!verificacao && verificacao.every((x) => x.ok));
 </script>
 
-<PageHeader titulo="Registrar distribuição" uc="RF10: Gerenciar Distribuição de Insumos · UC10.1" />
+<ModuloHero
+	modulo="estoque"
+	titulo="Registrar distribuição"
+	subtitulo="Verifica cooperado, pedido autorizado e estoque antes de registrar (sem baixa de estoque)."
+	uc="RF10: Gerenciar Distribuição de Insumos · UC10.1"
+	texturaForaDoModulo="couro"
+>
+	{#snippet acoes()}{/snippet}
+</ModuloHero>
 {#if registrada}
 	<Card class="max-w-2xl">
 		<p class="flex items-start gap-2 rounded-lg bg-aviso-claro p-4 font-medium text-aviso-texto"><CircleAlert size={22} class="mt-0.5 shrink-0" aria-hidden="true" />

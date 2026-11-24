@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
-	import PageHeader from '#lib/components/layout/PageHeader.svelte';
+	import ModuloHero from '#lib/components/layout/ModuloHero.svelte';
 	import Card from '#lib/components/ui/Card.svelte';
 	import Select from '#lib/components/ui/Select.svelte';
 	import Button from '#lib/components/ui/Button.svelte';
@@ -28,7 +28,15 @@
 	}
 </script>
 
-<PageHeader titulo="Nova compra coletiva" uc="RF06: Gerenciar Compras Coletivas" />
+<ModuloHero
+	modulo="compras"
+	titulo="Nova compra coletiva"
+	subtitulo="Escolha a consolidação fechada e o fornecedor para registrar a compra."
+	uc="RF06: Gerenciar Compras Coletivas"
+	texturaForaDoModulo="graos"
+>
+	{#snippet acoes()}{/snippet}
+</ModuloHero>
 <form onsubmit={salvar} novalidate class="flex max-w-3xl flex-col gap-6">
 	<Card><div class="grid gap-4 sm:grid-cols-2">
 		<Select id="cons" label="Consolidação" bind:value={cons} erro={erros.cons} required opcoes={$consolidacoes.filter((x) => x.status === 'Aberta').map((x) => ({ valor: x.id, texto: `#${x.id} · ${nomeCampanha(x.campanhaId)}` }))} />

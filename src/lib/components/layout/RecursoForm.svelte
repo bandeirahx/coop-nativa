@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import PageHeader from './PageHeader.svelte';
+	import ModuloHero from './ModuloHero.svelte';
 	import Card from '#lib/components/ui/Card.svelte';
+	import { moduloDe, texturaModulo } from '#lib/recursos.ts';
 	import Input from '#lib/components/ui/Input.svelte';
 	import Select from '#lib/components/ui/Select.svelte';
 	import Button from '#lib/components/ui/Button.svelte';
@@ -16,6 +17,7 @@
 
 	let { r, original }: { r: Recurso; original?: any } = $props();
 	const editando = untrack(() => !!original);
+	const modulo = $derived(moduloDe(r.slug));
 	let v = $state<Record<string, any>>(untrack(() => ({ ...r.padrao(), ...(original ?? {}), justificativa: '' })));
 	let erros = $state<Record<string, string>>({});
 	let resumo = $state<{ rotulo: string; de: string; para: string }[]>([]);
@@ -72,7 +74,15 @@
 	}
 </script>
 
-<PageHeader titulo={editando ? `Editar ${r.singular.toLowerCase()}` : rotuloNovo(r)} uc="{r.rf} · {uc}" />
+<ModuloHero
+	modulo={modulo}
+	titulo={editando ? `Editar ${r.singular.toLowerCase()}` : rotuloNovo(r)}
+	subtitulo={r.singular}
+	uc="{r.rf} · {uc}"
+	texturaForaDoModulo={texturaModulo(modulo ?? 'cooperados')}
+>
+	{#snippet acoes()}{/snippet}
+</ModuloHero>
 
 <form onsubmit={enviar} novalidate>
 	<Card class="max-w-3xl">

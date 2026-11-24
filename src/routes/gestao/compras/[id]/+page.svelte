@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import PageHeader from '#lib/components/layout/PageHeader.svelte';
+	import ModuloHero from '#lib/components/layout/ModuloHero.svelte';
 	import Card from '#lib/components/ui/Card.svelte';
 	import Badge from '#lib/components/ui/Badge.svelte';
 	import Button from '#lib/components/ui/Button.svelte';
@@ -17,10 +17,16 @@
 </script>
 
 {#if !c}<EmptyState titulo="Compra não encontrada" />{:else}
-	<PageHeader titulo="Compra coletiva #{c.id}" uc="RF06: Gerenciar Compras Coletivas">
+	<ModuloHero
+		modulo="compras"
+		titulo="Compra coletiva #{c.id}"
+		subtitulo="Fornecedor, campanha, insumos consolidados e total da compra."
+		uc="RF06: Gerenciar Compras Coletivas"
+		texturaForaDoModulo="graos"
+	>
 		{#snippet acoes()}<Button href="/gestao/compras" variante="contorno"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>
 			{#if c.status === 'Pendente'}<Button href="/gestao/recebimento/nova?compra={c.id}"><PackageCheck size={16} aria-hidden="true" />Registrar recebimento</Button>{/if}{/snippet}
-	</PageHeader>
+	</ModuloHero>
 	<Card class="mb-6 max-w-3xl"><dl class="grid gap-4 sm:grid-cols-2">
 		<div><dt class="text-sm font-semibold text-marrom">Fornecedor</dt><dd>{nomeFornecedor(c.fornecedorId)}</dd></div>
 		<div><dt class="text-sm font-semibold text-marrom">Campanha</dt><dd>{cons ? nomeCampanha(cons.campanhaId) : '—'}</dd></div>

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import PageHeader from '#lib/components/layout/PageHeader.svelte';
+	import ModuloHero from '#lib/components/layout/ModuloHero.svelte';
 	import Card from '#lib/components/ui/Card.svelte';
 	import Select from '#lib/components/ui/Select.svelte';
 	import Button from '#lib/components/ui/Button.svelte';
@@ -35,7 +35,15 @@
 	}
 </script>
 
-<PageHeader titulo="Registrar pedido do comprador" uc="RF13: Gerenciar Pedidos de Comercialização · UC13.1" />
+<ModuloHero
+	modulo="comercializacao"
+	titulo="Registrar pedido do comprador"
+	subtitulo="Escolha o comprador e os produtos do catálogo dentro da produção disponível."
+	uc="RF13: Gerenciar Pedidos de Comercialização · UC13.1"
+	texturaForaDoModulo="folhas"
+>
+	{#snippet acoes()}{/snippet}
+</ModuloHero>
 <form onsubmit={salvar} novalidate class="flex max-w-4xl flex-col gap-6">
 	<Card><Select id="comp" label="Comprador" bind:value={compId} erro={erros.comp} required opcoes={$compradores.map((c) => ({ valor: c.id, texto: c.nome }))} /></Card>
 	<Card titulo="Produtos do catálogo">

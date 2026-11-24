@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import PageHeader from '#lib/components/layout/PageHeader.svelte';
+	import ModuloHero from '#lib/components/layout/ModuloHero.svelte';
 	import Card from '#lib/components/ui/Card.svelte';
 	import Table from '#lib/components/ui/Table.svelte';
 	import Badge from '#lib/components/ui/Badge.svelte';
@@ -20,14 +20,20 @@
 </script>
 
 {#if !p}<EmptyState titulo="Pedido não encontrado" />{:else}
-	<PageHeader titulo="Pedido #{p.id}" uc="RF05: Gerenciar Pedidos de Insumos · UC05.2">
+	<ModuloHero
+		modulo="compras"
+		titulo="Pedido #{p.id}"
+		subtitulo="Cooperado, campanha, itens, valores e situação do pagamento (RN09/RN10)."
+		uc="RF05: Gerenciar Pedidos de Insumos · UC05.2"
+		texturaForaDoModulo="graos"
+	>
 		{#snippet acoes()}<Button href="/gestao/pedidos" variante="contorno"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>
 			{#if gestor && (p.status === 'Registrado' || p.status === 'Pendente')}
 				<Button href="/gestao/pedidos/{p.id}/editar" variante="contorno"><Pencil size={16} aria-hidden="true" />Editar</Button>
 				<Button variante="perigo" onclick={() => (confCan = true)}><Ban size={16} aria-hidden="true" />Cancelar pedido</Button>
 				<Button onclick={() => (confPag = true)}><BadgeCheck size={16} aria-hidden="true" />Confirmar pagamento</Button>
 			{/if}{/snippet}
-	</PageHeader>
+	</ModuloHero>
 	<Card titulo="Dados" class="mb-6 max-w-3xl">
 		<dl class="grid gap-4 sm:grid-cols-2">
 			<div><dt class="text-sm font-semibold text-marrom">Cooperado</dt><dd>{nomeCoop(p.cooperadoId)}</dd></div>
@@ -37,7 +43,7 @@
 		</dl>
 		{#if p.status === 'Registrado' || p.status === 'Pendente'}<p class="mt-4 rounded-lg bg-aviso-claro p-3 text-sm text-aviso-texto">O pagamento é confirmado externamente; o sistema não processa pagamentos. A distribuição só é liberada com status "Aprovado/Pago" (RN09).</p>{/if}
 	</Card>
-	<Table colunas={['Insumo', 'Quantidade', 'Valor unitário', 'Subtotal']}>
+	<Table colunas={['Insumo', 'Quantidade', 'Valor unitário', 'Subtotal']} cabecalhoClasses="bg-ouro text-marrom-profundo">
 		{#each p.itens as i}<tr><td data-label="Insumo">{nomeInsumo(i.insumoId)}</td><td data-label="Quantidade">{i.quantidade}</td><td data-label="Valor unitário">{moeda(i.valorUnit)}</td><td data-label="Subtotal">{moeda(i.quantidade * i.valorUnit)}</td></tr>{/each}
 	</Table>
 	<p class="mt-3 text-right font-titulo text-xl font-bold text-marrom">Total: {moeda(totalPedido(p))}</p>

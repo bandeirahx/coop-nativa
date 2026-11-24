@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
-	import PageHeader from '#lib/components/layout/PageHeader.svelte';
+	import ModuloHero from '#lib/components/layout/ModuloHero.svelte';
 	import Card from '#lib/components/ui/Card.svelte';
 	import Input from '#lib/components/ui/Input.svelte';
 	import Button from '#lib/components/ui/Button.svelte';
@@ -54,9 +54,15 @@
 </script>
 
 {#if !d || !item}<EmptyState titulo="Distribuição não encontrada" />{:else}
-	<PageHeader titulo="Registrar quantidade distribuída" uc="RF10: Gerenciar Distribuição de Insumos · UC10.2">
+	<ModuloHero
+		modulo="estoque"
+		titulo="Registrar quantidade distribuída"
+		subtitulo="Confere estoque disponível e limite restante pelas cotas antes da baixa (RN09/RN10)."
+		uc="RF10: Gerenciar Distribuição de Insumos · UC10.2"
+		texturaForaDoModulo="couro"
+	>
 		{#snippet acoes()}<Button href="/gestao/distribuicao" variante="contorno"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>{/snippet}
-	</PageHeader>
+	</ModuloHero>
 	{#if d.status === 'Distribuído'}
 		<EmptyState titulo="Distribuição já concluída" texto="A baixa de estoque desta distribuição já foi feita e não pode ser repetida." />
 	{:else}

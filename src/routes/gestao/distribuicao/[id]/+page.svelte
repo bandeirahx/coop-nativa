@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import PageHeader from '#lib/components/layout/PageHeader.svelte';
+	import ModuloHero from '#lib/components/layout/ModuloHero.svelte';
 	import Card from '#lib/components/ui/Card.svelte';
 	import Table from '#lib/components/ui/Table.svelte';
 	import Badge from '#lib/components/ui/Badge.svelte';
@@ -14,17 +14,23 @@
 </script>
 
 {#if !d}<EmptyState titulo="Distribuição não encontrada" />{:else}
-	<PageHeader titulo="Distribuição #{d.id}" uc="RF10 · UC10.3">
+	<ModuloHero
+		modulo="estoque"
+		titulo="Distribuição #{d.id}"
+		subtitulo="Itens entregues ao cooperado, previstos versus distribuídos."
+		uc="RF10 · UC10.3"
+		texturaForaDoModulo="couro"
+	>
 		{#snippet acoes()}<Button href="/gestao/distribuicao" variante="contorno"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>
 			{#if d.status === 'Registrada'}<Button href="/gestao/distribuicao/{d.id}/quantidade">Registrar quantidade distribuída</Button>{/if}{/snippet}
-	</PageHeader>
+	</ModuloHero>
 	<Card class="mb-6 max-w-3xl"><dl class="grid gap-4 sm:grid-cols-2">
 		<div><dt class="text-sm font-semibold text-marrom">Cooperado</dt><dd>{nomeCoop(d.cooperadoId)}</dd></div>
 		<div><dt class="text-sm font-semibold text-marrom">Pedido</dt><dd><a class="text-verde-escuro underline" href="/gestao/pedidos/{d.pedidoId}">#{d.pedidoId}</a></dd></div>
 		<div><dt class="text-sm font-semibold text-marrom">Data</dt><dd>{data(d.data)}</dd></div>
 		<div><dt class="text-sm font-semibold text-marrom">Situação</dt><dd><Badge status={d.status} /></dd></div></dl>
 		{#if d.status === 'Registrada'}<p class="mt-4 rounded-lg bg-aviso-claro p-3 text-sm text-aviso-texto">Ainda não houve baixa no estoque.</p>{/if}</Card>
-	<Table colunas={['Insumo', 'Quantidade prevista', 'Quantidade distribuída']}>
+	<Table colunas={['Insumo', 'Quantidade prevista', 'Quantidade distribuída']} cabecalhoClasses="bg-vinho text-areia">
 		{#each d.itens as i}<tr><td data-label="Insumo">{nomeInsumo(i.insumoId)}</td><td data-label="Prevista">{i.prevista}</td><td data-label="Distribuída">{i.distribuida}</td></tr>{/each}
 	</Table>
 {/if}

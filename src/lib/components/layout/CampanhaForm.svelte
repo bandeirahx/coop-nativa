@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { untrack } from 'svelte';
-	import PageHeader from './PageHeader.svelte';
+	import ModuloHero from './ModuloHero.svelte';
 	import Card from '#lib/components/ui/Card.svelte';
 	import Input from '#lib/components/ui/Input.svelte';
 	import Select from '#lib/components/ui/Select.svelte';
@@ -40,7 +40,15 @@
 	}
 </script>
 
-<PageHeader titulo={editando ? 'Editar campanha' : 'Nova campanha'} uc="RF04: Gerenciar Campanhas de Compras · {editando ? 'UC04.2' : 'UC04.1'}" />
+<ModuloHero
+	modulo="compras"
+	titulo={editando ? 'Editar campanha' : 'Nova campanha'}
+	subtitulo="Nome, período, insumos ofertados e limite por cota (RN10)."
+	uc="RF04: Gerenciar Campanhas de Compras · {editando ? 'UC04.2' : 'UC04.1'}"
+	texturaForaDoModulo="graos"
+>
+	{#snippet acoes()}{/snippet}
+</ModuloHero>
 <form onsubmit={enviar} novalidate class="flex max-w-4xl flex-col gap-6">
 	<Card titulo="Dados da campanha">
 		<div class="grid gap-4 sm:grid-cols-2">

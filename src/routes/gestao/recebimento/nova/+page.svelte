@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
-	import PageHeader from '#lib/components/layout/PageHeader.svelte';
+	import ModuloHero from '#lib/components/layout/ModuloHero.svelte';
 	import Card from '#lib/components/ui/Card.svelte';
 	import Select from '#lib/components/ui/Select.svelte';
 	import Input from '#lib/components/ui/Input.svelte';
@@ -38,7 +38,15 @@
 	}
 </script>
 
-<PageHeader titulo="Registrar recebimento" uc="RF08 · UC08.1 · UC08.3 (conferência) · RF09 · UC09.1" />
+<ModuloHero
+	modulo="compras"
+	titulo="Registrar recebimento"
+	subtitulo="Confira cada item entregue pelo fornecedor contra o previsto na compra."
+	uc="RF08 · UC08.1 · UC08.3 (conferência) · RF09 · UC09.1"
+	texturaForaDoModulo="graos"
+>
+	{#snippet acoes()}{/snippet}
+</ModuloHero>
 <form onsubmit={salvar} novalidate class="flex max-w-4xl flex-col gap-6">
 	<Card><Select id="compra" label="Compra coletiva pendente" bind:value={compraId} erro={erro} required
 		opcoes={$compras.filter((c) => c.status === 'Pendente').map((c) => ({ valor: c.id, texto: `#${c.id} · ${nomeFornecedor(c.fornecedorId)}` }))} /></Card>

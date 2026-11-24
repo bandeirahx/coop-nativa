@@ -142,6 +142,18 @@
 --tex-fruta: url('/images/textures/webp/fruta.webp');
 --tex-terra: url('/images/textures/webp/terra.webp');
 --tex-hero: url('/images/webp/hero.webp');
+
+/* Novas fotografias/texturas orgânicas (galeria da landing) */
+--tex-penas: url('/images/novas/webp/penas.webp');
+--tex-aneis-arvore: url('/images/novas/webp/aneis-arvore.webp');
+--tex-colmeia: url('/images/novas/webp/colmeia.webp');
+--tex-veias-folha: url('/images/novas/webp/veias-folha.webp');
+--tex-madeira-verde: url('/images/novas/webp/madeira-verde.webp');
+--tex-areia: url('/images/novas/webp/areia.webp');
+--tex-folha-verde: url('/images/novas/webp/folha-verde.webp');
+--tex-pelagem: url('/images/novas/webp/pelagem.webp');
+--tex-folhagem: url('/images/novas/webp/folhagem.webp');
+--tex-argila: url('/images/novas/webp/argila.webp');
 }
 
 /* ------------------------------------------------------------------------

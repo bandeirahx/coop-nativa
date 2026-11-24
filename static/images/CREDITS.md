@@ -21,6 +21,23 @@ Todas as imagens utilizadas na aplicação são de fontes com licença livre par
 | Lavoura | `static/images/webp/lavoura.webp` | Projeto (arquivo existente) | — | Projeto Nativa Coop |
 | Semente | `static/images/webp/semente.webp` | Projeto (arquivo existente) | — | Projeto Nativa Coop |
 
+## Imagens novas (fornecidas pelo usuário)
+
+Fotografias/texturas orgânicas usadas na galeria da landing page e como texturas adicionais. Todas foram fornecidas pelo usuário para uso neste projeto.
+
+| Conteúdo | Arquivo WebP | Origem JPG | Uso |
+|---------|-------------|-----------|-----|
+| Penas de ave (azul/turquesa/ferrugem) | `static/images/novas/webp/penas.webp` | `static/images/novas/raw/penas.jpg` | Galeria / textura `--tex-penas` |
+| Anéis de crescimento de árvore | `static/images/novas/webp/aneis-arvore.webp` | `static/images/novas/raw/aneis-arvore.jpg` | Galeria / textura `--tex-aneis-arvore` |
+| Colmeia de mel em close-up | `static/images/novas/webp/colmeia.webp` | `static/images/novas/raw/colmeia.jpg` | Galeria / textura `--tex-colmeia` |
+| Veias de folha em tons ocre | `static/images/novas/webp/veias-folha.webp` | `static/images/novas/raw/veias-folha.jpg` | Galeria / textura `--tex-veias-folha` |
+| Madeira verde (veios e rachaduras) | `static/images/novas/webp/madeira-verde.webp` | `static/images/novas/raw/madeira-verde.jpg` | Galeria / textura `--tex-madeira-verde` |
+| Areia com sulcos (preto e branco) | `static/images/novas/webp/areia.webp` | `static/images/novas/raw/areia.jpg` | Galeria / textura `--tex-areia` |
+| Folha verde com veias definidas | `static/images/novas/webp/folha-verde.webp` | `static/images/novas/raw/folha-verde.jpg` | Galeria / textura `--tex-folha-verde` |
+| Pelagem de felino com rosetas | `static/images/novas/webp/pelagem.webp` | `static/images/novas/raw/pelagem.jpg` | Galeria / textura `--tex-pelagem` |
+| Folhagem verde em close-up | `static/images/novas/webp/folhagem.webp` | `static/images/novas/raw/folhagem.jpg` | Galeria / textura `--tex-folhagem` |
+| Solo/argila avermelhada | `static/images/novas/webp/argila.webp` | `static/images/novas/raw/argila.jpg` | Galeria / textura `--tex-argila` |
+
 ## Logo
 
 | Uso | Arquivo | Fonte | Licença |
@@ -33,4 +50,4 @@ Todas as imagens de textura e hero foram convertidas para WebP com qualidade ~75
 - Heroes: largura máxima 1920px
 - Cards/texturas: largura máxima 1600px
 
-O comando utilizado foi `convert <origem> -quality 75 <destino>.webp` (ImageMagick).
+O comando utilizado foi `convert <origem> -quality 75 <destino>.webp` (ImageMagick). As 10 imagens novas foram convertidas com Chromium via canvas (`toDataURL('image/webp', 0.68)`), preservando as dimensões originais.

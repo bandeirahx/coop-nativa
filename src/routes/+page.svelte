@@ -12,6 +12,18 @@
 	];
 	const numeros = [['248', 'cooperados'], ['14', 'municípios atendidos'], ['3.600 t', 'produzidas na safra']];
 	const passos = ['Procure a sede da cooperativa ou fale com a equipe.', 'Apresente seus documentos e os dados da propriedade.', 'Escolha a quantidade de cotas de participação.', 'Receba seu acesso e participe das campanhas.'];
+	const texturas = [
+		{ arquivo: '/images/novas/webp/argila.webp', titulo: 'Argila vermelha', alt: 'Textura de solo de argila avermelhada' },
+		{ arquivo: '/images/novas/webp/colmeia.webp', titulo: 'Colmeia', alt: 'Colmeia de mel em close-up, com células hexagonais' },
+		{ arquivo: '/images/novas/webp/aneis-arvore.webp', titulo: 'Anéis da árvore', alt: 'Anéis de crescimento de um tronco de árvore' },
+		{ arquivo: '/images/novas/webp/folhagem.webp', titulo: 'Folhagem', alt: 'Folhagem verde em close-up' },
+		{ arquivo: '/images/novas/webp/folha-verde.webp', titulo: 'Veias da folha', alt: 'Veias de uma folha verde vistas de perto' },
+		{ arquivo: '/images/novas/webp/veias-folha.webp', titulo: 'Folha seca', alt: 'Veias de folha em tons de ocre e marrom' },
+		{ arquivo: '/images/novas/webp/madeira-verde.webp', titulo: 'Madeira viva', alt: 'Veios e rachaduras de madeira com musgo verde' },
+		{ arquivo: '/images/novas/webp/penas.webp', titulo: 'Penas', alt: 'Textura de penas de ave em azul e ferrugem' },
+		{ arquivo: '/images/novas/webp/pelagem.webp', titulo: 'Pelagem', alt: 'Pelagem de felino com manchas em roseta' },
+		{ arquivo: '/images/novas/webp/areia.webp', titulo: 'Areia', alt: 'Areia com sulcos formados pelo vento' }
+	];
 </script>
 
 <svelte:head><title>Nativa Coop · Cooperativa agrícola do Tocantins</title></svelte:head>
@@ -56,6 +68,19 @@
 				<div><dt class="sr-only">{t}</dt><dd class="font-titulo text-5xl font-extrabold text-oliva">{n}</dd><dd class="mt-1 font-medium text-marrom">{t}</dd></div>
 			{/each}
 		</dl>
+	</section>
+
+	<section id="texturas" class="mx-auto max-w-6xl px-4 py-16" aria-labelledby="texturas-titulo">
+		<h2 id="texturas-titulo" class="text-3xl">Texturas da nossa terra</h2>
+		<p class="mt-2 max-w-2xl text-marrom">Olhares próximos da natureza que inspiram a identidade da cooperativa: solo, folhas, madeira, colmeia e os detalhes do campo.</p>
+		<div class="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+			{#each texturas as t}
+				<figure class="relative isolate aspect-[4/3] overflow-hidden rounded-[var(--radius-card)] border border-borda shadow-suave">
+					<img src={t.arquivo} alt={t.alt} class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+					<figcaption class="absolute inset-x-0 bottom-0 z-10 bg-marrom-profundo/85 px-3 py-2 text-sm font-semibold text-areia">{t.titulo}</figcaption>
+				</figure>
+			{/each}
+		</div>
 	</section>
 
 	<section id="como-participar" class="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 md:grid-cols-2" aria-labelledby="como">

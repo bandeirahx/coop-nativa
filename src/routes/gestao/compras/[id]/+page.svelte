@@ -18,7 +18,7 @@
 
 {#if !c}<EmptyState titulo="Compra não encontrada" />{:else}
 	<PageHeader titulo="Compra coletiva #{c.id}" uc="RF06: Gerenciar Compras Coletivas">
-		{#snippet acoes()}<Button href="/gestao/compras" variante="contorno"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>
+		{#snippet acoes()}<Button href="/gestao/compras" variante="secundario"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>
 			{#if c.status === 'Pendente'}<Button href="/gestao/recebimento/nova?compra={c.id}"><PackageCheck size={16} aria-hidden="true" />Registrar recebimento</Button>{/if}{/snippet}
 	</PageHeader>
 	<Card class="mb-6 max-w-3xl"><dl class="grid gap-4 sm:grid-cols-2">

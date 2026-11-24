@@ -1,64 +1,109 @@
 @import '@fontsource/inter/400.css';
 @import '@fontsource/inter/500.css';
 @import '@fontsource/inter/600.css';
-@import '@fontsource/plus-jakarta-sans/600.css';
-@import '@fontsource/plus-jakarta-sans/700.css';
-@import '@fontsource/plus-jakarta-sans/800.css';
+@import '@fontsource/inter/700.css';
+@import '@fontsource/merriweather/700.css';
+@import '@fontsource/merriweather/400.css';
 @import 'tailwindcss';
 
+/* ============================================================
+   PALETA COLORIDA — Nativa Coop (estilização de interface)
+   ============================================================ */
 @theme {
 	--color-branco: #ffffff;
-	--color-verde: #4f9808;
-	--color-verde-escuro: #3f7a06;
-	--color-verde-claro: #f3f8ec;
-	--color-marrom: #4e3a3f;
-	--color-marrom-escuro: #281d1e;
-	--color-marrom-claro: #f5f2f2;
-	--color-borda: #e7e2e3;
+	--color-areia: #f5f1e8;
+	--color-areia-clara: #faf8f1;
+	--color-marrom-profundo: #2e241b;
+	--color-marrom-cafe: #3e2c1c;
+	--color-verde-oliva: #4a5d23;
+	--color-verde-folha: #6b8e23;
+	--color-terracota: #c4552a;
+	--color-ouro: #d9a020;
+	--color-vinho: #7a2e2e;
+	--color-azul-profundo: #2e4a6b;
+
+	/* aliases mantidos para compatibilidade com componentes existentes */
+	--color-verde: var(--color-verde-oliva);
+	--color-verde-escuro: #3a4a1c;
+	--color-verde-claro: rgba(107, 142, 35, 0.10);
+	--color-marrom: var(--color-marrom-cafe);
+	--color-marrom-escuro: var(--color-marrom-profundo);
+	--color-marrom-claro: var(--color-areia);
+	--color-borda: #d8cfb8;
 	--color-erro: #c62828;
-	--color-erro-claro: #fdeeee;
-	--color-aviso: #b26a00;
-	--color-aviso-claro: #fff6e5;
-	--color-aviso-texto: #8a5000;
+	--color-erro-claro: rgba(198, 40, 40, 0.10);
+	--color-aviso: var(--color-terracota);
+	--color-aviso-claro: rgba(196, 85, 42, 0.10);
+	--color-aviso-texto: #8a4a1a;
 	--font-sans: 'Inter', system-ui, sans-serif;
-	--font-titulo: 'Plus Jakarta Sans', 'Inter', sans-serif;
+	--font-titulo: 'Merriweather', 'Georgia', serif;
 	--radius-card: 12px;
-	--shadow-suave: 0 1px 2px rgb(40 29 30 / 0.06), 0 2px 8px rgb(40 29 30 / 0.05);
+	--shadow-suave: 0 1px 2px rgb(46 36 27 / 0.08), 0 2px 8px rgb(46 36 27 / 0.06);
+	--shadow-medio: 0 4px 12px rgb(46 36 27 / 0.10);
 }
 
+/* ============================================================
+   TEXTURAS REAIS DE AGRO (background-image)
+   ============================================================ */
+:root {
+	--tex-madeira: url('/textures/wood-coop.webp');
+	--tex-graos: url('/textures/grains-purchase.jpg');
+	--tex-couro: url('/textures/leather-stock.jpg');
+	--tex-frutos: url('/textures/fruits-sales.jpg');
+	--tex-folhas: url('/textures/leaves-sales.jpg');
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
 html {
 	font-size: calc(16px * var(--escala-fonte, 1));
 }
 body {
-	background: var(--color-branco);
-	color: var(--color-marrom-escuro);
+	background: var(--color-areia);
+	color: var(--color-marrom-profundo);
 	font-family: var(--font-sans);
 	overflow-x: hidden;
+	margin: 0;
 }
 h1, h2, h3, h4 {
 	font-family: var(--font-titulo);
-	color: var(--color-marrom);
+	color: var(--color-marrom-profundo);
 	font-weight: 700;
 }
+p, label, span, td, th, input, select, button {
+	font-family: var(--font-sans);
+}
+a {
+	color: var(--color-verde-oliva);
+	text-decoration: none;
+}
+a:hover {
+	color: var(--color-terracota);
+}
 :focus-visible {
-	outline: 3px solid var(--color-marrom-escuro);
+	outline: 3px solid var(--color-azul-profundo);
 	outline-offset: 2px;
 	border-radius: 4px;
 }
 
-/* Evita que qualquer elemento force rolagem horizontal em telas estreitas */
+/* Evita rolagem horizontal em telas estreitas */
 @media (max-width: 639px) {
 	* { box-sizing: border-box; }
 	.min-w-0 { min-width: 0; }
 }
 
-/* Alto contraste: preto/branco com verde escuro */
+/* ============================================================
+   ALTO CONTRASTE
+   ============================================================ */
 html.alto-contraste {
-	--color-verde: #2d5704;
-	--color-verde-escuro: #1f3d03;
+	--color-verde: #1b5e20;
+	--color-verde-escuro: #003300;
 	--color-marrom: #000000;
 	--color-marrom-escuro: #000000;
 	--color-borda: #000000;
+	--color-areia: #ffffff;
+	--color-marrom-claro: #ffffff;
 	--color-verde-claro: #ffffff;
 	--color-marrom-claro: #ffffff;
 }
@@ -66,7 +111,180 @@ html.alto-contraste :focus-visible {
 	outline-color: #b26a00;
 }
 
-/* Tabelas viram cards empilhados no celular, cada linha em um bloco com borda */
+/* ============================================================
+   TEXTURAS APLICADAS POR MÓDULO (background-image real)
+   ============================================================ */
+
+/* Fundo global com textura sutil de areia/madeira */
+body::before {
+	content: '';
+	position: fixed;
+	inset: 0;
+	background-image: var(--tex-madeira);
+	background-size: cover;
+	background-position: center;
+	opacity: 0.06;
+	z-index: -1;
+	pointer-events: none;
+}
+
+/* Header / Topbar com textura de madeira */
+.header-textura {
+	background-image: var(--tex-madeira);
+	background-size: cover;
+	background-position: center;
+	position: relative;
+}
+.header-textura::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(180deg, rgba(46,36,27,0.55) 0%, rgba(46,36,27,0.35) 100%);
+	z-index: 0;
+}
+
+/* Cards com textura por módulo */
+.card-textura {
+	position: relative;
+	background-size: cover;
+	background-position: center;
+	border-radius: var(--radius-card);
+	overflow: hidden;
+}
+.card-textura::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+}
+.card-madeira::after { background: linear-gradient(180deg, rgba(74,93,35,0.45) 0%, rgba(74,93,35,0.20) 100%); }
+.card-graos::after { background: linear-gradient(180deg, rgba(217,160,32,0.40) 0%, rgba(217,160,32,0.18) 100%); }
+.card-couro::after { background: linear-gradient(180deg, rgba(62,44,28,0.50) 0%, rgba(62,44,28,0.25) 100%); }
+.card-frutos::after { background: linear-gradient(180deg, rgba(122,46,46,0.45) 0%, rgba(122,46,46,0.20) 100%); }
+.card-folhas::after { background: linear-gradient(180deg, rgba(107,142,35,0.45) 0%, rgba(107,142,35,0.20) 100%); }
+
+/* Conteúdo dos cards sempre sobre camada sólida para legibilidade AA */
+.card-conteudo {
+	position: relative;
+	z-index: 1;
+	background: rgba(245, 241, 232, 0.92);
+}
+
+/* ============================================================
+   COMPONENTES — BOTÕES
+   ============================================================ */
+.btn-base {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	border-radius: var(--radius-card);
+	font-weight: 700;
+	font-family: var(--font-sans);
+	cursor: pointer;
+	border: none;
+	transition: transform 0.12s, filter 0.12s, box-shadow 0.12s;
+}
+.btn-base:active { transform: translateY(1px); }
+.btn-base[disabled] { opacity: 0.55; cursor: not-allowed; }
+
+.btn-primario {
+	background: var(--color-verde-oliva);
+	color: #ffffff;
+	box-shadow: var(--shadow-suave);
+}
+.btn-primario:hover { background: #3d4d1d; box-shadow: var(--shadow-medio); }
+.btn-primario:focus-visible { outline-color: var(--color-ouro); }
+
+.btn-secundario {
+	background: transparent;
+	color: var(--color-marrom-profundo);
+	border: 2px solid var(--color-marrom-cafe);
+}
+.btn-secundario:hover { background: rgba(62,44,28,0.08); }
+.btn-secundario:focus-visible { outline-color: var(--color-marrom-cafe); }
+
+.btn-acento {
+	background: var(--color-terracota);
+	color: #ffffff;
+}
+.btn-acento:hover { background: #b24a22; }
+
+.btn-grande {
+	padding: 0.75rem 1.5rem;
+	font-size: 1.125rem;
+	min-height: 3.5rem;
+}
+
+/* ============================================================
+   COMPONENTES — CAMPOS (FormField / Input / Select)
+   ============================================================ */
+.campo {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+}
+.campo label {
+	font-size: 0.9rem;
+	font-weight: 700;
+	color: var(--color-marrom-profundo);
+}
+.campo input, .campo select {
+	min-height: 2.75rem;
+	padding: 0 0.9rem;
+	border: 2px solid var(--color-borda);
+	border-radius: var(--radius-card);
+	background: #ffffff;
+	color: var(--color-marrom-profundo);
+	font-size: 1rem;
+	transition: border-color 0.15s, box-shadow 0.15s;
+}
+.campo input:focus, .campo select:focus {
+	border-color: var(--color-verde-oliva);
+	box-shadow: 0 0 0 4px rgba(74, 93, 35, 0.15);
+	outline: none;
+}
+.campo input.erro, .campo select.erro {
+	border-color: var(--color-erro);
+	background: var(--color-erro-claro);
+}
+.campo .erro-texto {
+	font-size: 0.8rem;
+	color: var(--color-erro);
+	font-weight: 600;
+}
+
+/* ============================================================
+   TABELAS RESPONSIVAS
+   ============================================================ */
+.tabela-wrap {
+	overflow-x: auto;
+	border-radius: var(--radius-card);
+	border: 1px solid var(--color-borda);
+	background: #ffffff;
+}
+table.resp {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: left;
+	font-size: 0.9rem;
+}
+table.resp th {
+	background: var(--color-marrom-profundo);
+	color: #ffffff;
+	font-weight: 700;
+	padding: 0.75rem 1rem;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	font-size: 0.8rem;
+}
+table.resp td {
+	padding: 0.75rem 1rem;
+	border-bottom: 1px solid var(--color-marrom-claro);
+	color: var(--color-marrom-profundo);
+}
+table.resp tr:nth-child(even) { background: rgba(245,241,232,0.4); }
+
 @media (max-width: 639px) {
 	table.resp thead { display: none; }
 	table.resp, table.resp tbody, table.resp tr { display: block; width: 100%; }
@@ -75,7 +293,6 @@ html.alto-contraste :focus-visible {
 		border: 1px solid var(--color-borda);
 		border-radius: var(--radius-card);
 		margin: 0 0 0.75rem 0;
-		padding: 0;
 		overflow: hidden;
 	}
 	table.resp td {
@@ -89,13 +306,175 @@ html.alto-contraste :focus-visible {
 		text-align: left;
 	}
 	table.resp td:last-child { border-bottom: none; }
-	/* quando há data-label, mostra o rótulo à esquerda e o valor à direita */
 	table.resp td::before {
 		content: attr(data-label);
 		font-weight: 700;
 		font-size: 0.75rem;
-		color: var(--color-marrom);
+		color: var(--color-marrom-profundo);
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
 	}
+}
+
+/* ============================================================
+   MODAIS / CONFIRMAÇÕES
+   ============================================================ */
+.dialog-base {
+	position: relative;
+	background: #ffffff;
+	border-radius: var(--radius-card);
+	border: 1px solid var(--color-borda);
+	box-shadow: var(--shadow-medio);
+}
+.dialog-conteudo {
+	position: relative;
+	z-index: 1;
+	background: rgba(245, 241, 232, 0.95);
+	border-radius: inherit;
+}
+
+/* ============================================================
+   BADGES / STATUS
+   ============================================================ */
+.badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	padding: 0.25rem 0.7rem;
+	border-radius: 999px;
+	font-size: 0.78rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+}
+.badge-verde { background: rgba(74,93,35,0.12); color: var(--color-verde-oliva); border: 1px solid var(--color-verde-oliva); }
+.badge-vinho { background: rgba(122,46,46,0.12); color: var(--color-vinho); border: 1px solid var(--color-vinho); }
+.badge-terracota { background: rgba(196,85,42,0.12); color: var(--color-terracota); border: 1px solid var(--color-terracota); }
+.badge-ouro { background: rgba(217,160,32,0.12); color: #8a6400; border: 1px solid var(--color-ouro); }
+.badge-azul { background: rgba(46,74,107,0.12); color: var(--color-azul-profundo); border: 1px solid var(--color-azul-profundo); }
+.badge-areia { background: var(--color-marrom-profundo); color: var(--color-areia); }
+
+/* ============================================================
+   TOAST / FEEDBACK
+   ============================================================ */
+.toast-sucesso { background: var(--color-verde-oliva); color: #ffffff; }
+.toast-erro { background: var(--color-erro); color: #ffffff; }
+.toast-aviso { background: var(--color-terracota); color: #ffffff; }
+
+/* ============================================================
+   RESPONSIVIDADE MOBILE — BARRA INFERIOR DO PRODUTOR
+   ============================================================ */
+@media (max-width: 639px) {
+	.nav-produtor {
+		position: fixed;
+		inset-x: 0;
+		bottom: 0;
+		z-index: 40;
+		border-top: 1px solid var(--color-borda);
+		background: rgba(245, 241, 232, 0.95);
+	}
+	.nav-produtor a {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 0.3rem;
+		padding: 0.5rem 0.25rem;
+		font-size: 0.72rem;
+		font-weight: 700;
+		color: var(--color-marrom-profundo);
+	}
+	.nav-produtor a.ativo { color: var(--color-verde-oliva); }
+}
+
+/* ============================================================
+   LOGOS — fundo nunca branco puro
+   ============================================================ */
+.logo-container {
+	background: var(--color-areia-clara);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0.4rem;
+	border-radius: 8px;
+}
+.logo-container img {
+	mix-blend-mode: multiply;
+	display: block;
+}
+.logo-escuro {
+	background: var(--color-marrom-profundo);
+}
+.logo-escuro img {
+	mix-blend-mode: screen;
+	display: block;
+}
+
+/* ============================================================
+   SEÇÕES COM TEXTURA (hero, login, gestão)
+   ============================================================ */
+.secao-textura {
+	position: relative;
+	background-size: cover;
+	background-position: center;
+}
+.secao-textura::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+}
+.secao-madeira::after { background: linear-gradient(180deg, rgba(46,36,27,0.50) 0%, rgba(46,36,27,0.25) 100%); }
+.secao-graos::after { background: linear-gradient(180deg, rgba(217,160,32,0.35) 0%, rgba(217,160,32,0.12) 100%); }
+.secao-couro::after { background: linear-gradient(180deg, rgba(62,44,28,0.55) 0%, rgba(62,44,28,0.30) 100%); }
+.secao-frutos::after { background: linear-gradient(180deg, rgba(122,46,46,0.50) 0%, rgba(122,46,46,0.25) 100%); }
+.secao-folhas::after { background: linear-gradient(180deg, rgba(107,142,35,0.50) 0%, rgba(107,142,35,0.25) 100%); }
+
+.conteudo-sobre-textura {
+	position: relative;
+	z-index: 1;
+}
+
+/* ============================================================
+   DIVISORES / BARRAS LATERAIS COM TEXTURA
+   ============================================================ */
+.divisor-textura {
+	height: 1px;
+	width: 100%;
+	background-image: var(--tex-graos);
+	background-size: 200px auto;
+	background-repeat: repeat-x;
+	background-position: center;
+	opacity: 0.5;
+	margin: 1.5rem 0;
+}
+.sidebar-textura {
+	background-image: var(--tex-madeira);
+	background-size: cover;
+	background-position: center;
+	position: relative;
+}
+.sidebar-textura::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: rgba(62,44,28,0.70);
+}
+
+/* Alto contraste: desativa texturas de fundo que prejudiquem leitura */
+html.alto-contraste body::before,
+html.alto-contraste .secao-textura::after,
+html.alto-contraste .card-textura::after,
+html.alto-contraste .header-textura::after {
+	display: none !important;
+}
+html.alto-contraste .card-textura,
+html.alto-contraste .header-textura,
+html.alto-contraste .secao-textura {
+	background: var(--color-marrom-profundo) !important;
+	color: #ffffff !important;
+}
+html.alto-contraste .card-conteudo,
+html.alto-contraste .dialog-conteudo {
+	background: #ffffff !important;
+	color: #000000 !important;
 }

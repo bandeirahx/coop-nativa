@@ -25,7 +25,7 @@
 
 {#if !c}<EmptyState titulo="Consolidação não encontrada" />{:else}
 	<PageHeader titulo="Consolidação #{c.id} · {nomeCampanha(c.campanhaId)}" uc="RF06 · UC06.2 · UC06.3">
-		{#snippet acoes()}<Button href="/gestao/consolidacao" variante="contorno"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>
+		{#snippet acoes()}<Button href="/gestao/consolidacao" variante="secundario"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>
 			{#if c.status === 'Aberta'}<Button href="/gestao/compras/nova?consolidacao={c.id}"><ShoppingCart size={16} aria-hidden="true" />Gerar compra coletiva</Button>{/if}{/snippet}
 	</PageHeader>
 	<p class="mb-4 flex items-center gap-3 text-sm">Data: {data(c.data)} <Badge status={c.status} /></p>

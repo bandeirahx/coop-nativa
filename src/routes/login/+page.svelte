@@ -38,30 +38,30 @@
 
 <svelte:head><title>Entrar · Nativa Coop</title></svelte:head>
 
-<div class="grid min-h-screen md:grid-cols-2">
-	<aside class="relative hidden md:block">
+<div class="grid min-h-screen secao-textura secao-madeira">
+	<aside class="relative hidden lg:block">
 		<img src="/images/hero.jpg" alt="" class="absolute inset-0 h-full w-full object-cover" />
-		<div class="absolute inset-0 bg-marrom-escuro/50"></div>
+		<div class="absolute inset-0 bg-marrom-profundo/55"></div>
 		<p class="absolute bottom-10 left-10 max-w-sm font-titulo text-3xl font-bold text-branco">Juntos, plantamos mais e compramos melhor.</p>
 	</aside>
 
-	<main class="flex min-w-0 flex-col justify-center gap-6 px-6 py-10 sm:px-16">
-		<div class="flex flex-wrap items-center justify-between gap-3"><a href="/"><img src="/logo.png" alt="Nativa Coop – página inicial" class="h-14 w-auto" /></a><AccessibilityBar /></div>
-		<h1 class="text-3xl">Entrar</h1>
+	<main class="flex min-w-0 flex-col justify-center gap-6 px-6 py-10 sm:px-16 lg:px-24 bg-areia/95">
+		<div class="flex flex-wrap items-center justify-between gap-3"><div class="logo-container logo-escuro"><img src="/logo.png" alt="Nativa Coop – página inicial" class="h-14 w-auto" /></div><AccessibilityBar /></div>
+		<h1 class="text-3xl font-titulo">Entrar</h1>
 
 		<form onsubmit={enviar} class="flex flex-col gap-4" novalidate>
 			{#if erroGeral}<p role="alert" class="rounded-lg bg-erro-claro p-3 text-sm font-medium text-erro">{erroGeral}</p>{/if}
 			<Input id="login" label="CPF, CNPJ ou e-mail" bind:value={login} erro={erroLogin} autocomplete="username" required />
 			<Input id="senha" label="Senha" type="password" bind:value={senha} erro={erroSenha} autocomplete="current-password" required />
-			<a href="#esqueci" onclick={(e) => { e.preventDefault(); erroGeral = 'Recuperação de senha indisponível no protótipo.'; }} class="text-sm font-semibold text-verde-escuro underline">Esqueci minha senha</a>
+			<a href="#esqueci" onclick={(e) => { e.preventDefault(); erroGeral = 'Recuperação de senha indisponível no protótipo.'; }} class="text-sm font-semibold text-verde-oliva underline">Esqueci minha senha</a>
 			<Button type="submit" grande>Entrar</Button>
 		</form>
 
-		<section aria-labelledby="demo" class="rounded-[var(--radius-card)] bg-verde-claro p-5">
-			<h2 id="demo" class="mb-3 text-base">Entrar como demonstração</h2>
+		<section aria-labelledby="demo" class="rounded-[var(--radius-card)] border border-borda bg-areia p-5">
+			<h2 id="demo" class="mb-3 text-base font-titulo">Entrar como demonstração</h2>
 			<div class="flex flex-col gap-2">
 				{#each demos as d}
-					<Button variante="contorno" class="justify-start" onclick={() => demo(d.p)}><d.icone size={20} aria-hidden="true" />{nomesPerfil[d.p]} <span class="font-normal text-marrom">· {usuariosDemo[d.p].nome}</span></Button>
+					<Button variante="secundario" class="justify-start" onclick={() => demo(d.p)}><d.icone size={20} aria-hidden="true" />{nomesPerfil[d.p]} <span class="font-normal text-marrom-profundo">· {usuariosDemo[d.p].nome}</span></Button>
 				{/each}
 			</div>
 		</section>

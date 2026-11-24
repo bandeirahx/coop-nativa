@@ -1,4 +1,5 @@
 <script lang="ts">
+	import '../lib/design-tokens.css';
 	import './layout.css';
 	import Toast from '#lib/components/ui/Toast.svelte';
 	import '#lib/stores/acessibilidade.ts';

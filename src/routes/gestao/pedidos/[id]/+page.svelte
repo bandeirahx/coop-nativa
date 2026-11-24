@@ -25,7 +25,7 @@
 		titulo="Pedido #{p.id}"
 		subtitulo="Cooperado, campanha, itens, valores e situação do pagamento (RN09/RN10)."
 		uc="RF05: Gerenciar Pedidos de Insumos · UC05.2"
-		textura="graos"
+		texturaForaDoModulo="graos"
 	>
 		{#snippet acoes()}<Button href="/gestao/pedidos" variante="contorno"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>
 			{#if gestor && (p.status === 'Registrado' || p.status === 'Pendente')}
@@ -43,12 +43,10 @@
 		</dl>
 		{#if p.status === 'Registrado' || p.status === 'Pendente'}<p class="mt-4 rounded-lg bg-aviso-claro p-3 text-sm text-aviso-texto">O pagamento é confirmado externamente; o sistema não processa pagamentos. A distribuição só é liberada com status "Aprovado/Pago" (RN09).</p>{/if}
 	</Card>
-	<Table colunas={['Insumo', 'Quantidade', 'Valor unitário', 'Subtotal']} cabecalhoClasses="bg-verde text-marrom-escuro">
+	<Table colunas={['Insumo', 'Quantidade', 'Valor unitário', 'Subtotal']} cabecalhoClasses="bg-ouro text-marrom-profundo">
 		{#each p.itens as i}<tr><td data-label="Insumo">{nomeInsumo(i.insumoId)}</td><td data-label="Quantidade">{i.quantidade}</td><td data-label="Valor unitário">{moeda(i.valorUnit)}</td><td data-label="Subtotal">{moeda(i.quantidade * i.valorUnit)}</td></tr>{/each}
 	</Table>
 	<p class="mt-3 text-right font-titulo text-xl font-bold text-marrom">Total: {moeda(totalPedido(p))}</p>
 	<ConfirmDialog bind:aberto={confPag} titulo="Confirmar pagamento?" mensagem="O pedido passará para Aprovado/Pago e poderá ser distribuído." confirmar="Confirmar pagamento" onconfirmar={() => { pedidos.alterar(p.id, { status: 'Aprovado/Pago' }); toast('Pagamento confirmado. Pedido aprovado.'); }} />
 	<ConfirmDialog bind:aberto={confCan} titulo="Cancelar pedido?" mensagem="Essa ação não pode ser desfeita." confirmar="Cancelar pedido" onconfirmar={() => { pedidos.alterar(p.id, { status: 'Cancelado' }); toast('Pedido cancelado.'); }} />
 {/if}
-
-

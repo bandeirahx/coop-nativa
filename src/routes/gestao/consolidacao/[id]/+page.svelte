@@ -29,7 +29,7 @@
 		titulo="Consolidação #{c.id}"
 		subtitulo="Agrupa pedidos por insumo e define a lista de compra para o fornecedor."
 		uc="RF06 · UC06.2 · UC06.3"
-		textura="graos"
+		texturaForaDoModulo="graos"
 	>
 		{#snippet acoes()}<Button href="/gestao/consolidacao" variante="contorno"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>
 			{#if c.status === 'Aberta'}<Button href="/gestao/compras/nova?consolidacao={c.id}"><ShoppingCart size={16} aria-hidden="true" />Gerar compra coletiva</Button>{/if}{/snippet}
@@ -38,4 +38,3 @@
 	<GruposConsolidados {grupos} editavel={c.status === 'Aberta'} aoAlternar={alternar} />
 	<p class="mt-4 text-right font-titulo text-xl font-bold text-marrom">Valor estimado: {moeda(valorGrupos(grupos))}</p>
 {/if}
-

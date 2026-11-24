@@ -1,6 +1,7 @@
 <script lang="ts">
 	import ModuloHero from './ModuloHero.svelte';
 	import Card from '#lib/components/ui/Card.svelte';
+	import { moduloDe, texturaModulo } from '#lib/recursos.ts';
 	import Badge from '#lib/components/ui/Badge.svelte';
 	import Button from '#lib/components/ui/Button.svelte';
 	import EmptyState from '#lib/components/ui/EmptyState.svelte';
@@ -12,6 +13,7 @@
 	import { Pencil, ArrowLeft } from 'lucide-svelte';
 
 	let { r, id }: { r: Recurso; id: number } = $props();
+	const modulo = $derived(moduloDe(r.slug));
 	const todos = $derived(r.store);
 	const x = $derived(($todos as any[]).find((i) => i.id === id));
 	const historico = $derived($logCotas.filter((l) => l.cooperadoId === id).reverse());
@@ -24,10 +26,11 @@
 	<div class="mt-4"><Button href="/gestao/{r.slug}" variante="contorno"><ArrowLeft size={16} aria-hidden="true" />Voltar para a lista</Button></div>
 {:else}
 	<ModuloHero
+		modulo={modulo}
 		titulo={r.nome(x)}
 		subtitulo={r.singular}
 		uc="{r.rf} · {r.uc.consultar}"
-		textura="madeira"
+		texturaForaDoModulo={texturaModulo(modulo ?? 'cooperados')}
 	>
 		{#snippet acoes()}
 			<Button href="/gestao/{r.slug}" variante="contorno"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>

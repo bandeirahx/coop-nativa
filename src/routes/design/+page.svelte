@@ -11,11 +11,11 @@
 	import { CircleCheck, TriangleAlert, CircleX } from 'lucide-svelte';
 
 	const cores = [
-		['branco', '#FFFFFF', 'Fundo, cards'], ['verde', '#4F9808', 'Marca, botões'],
-		['verde-escuro', '#3F7A06', 'Texto verde, hover'], ['marrom', '#4E3A3F', 'Títulos, sidebar'],
-		['marrom-escuro', '#281D1E', 'Texto do corpo'], ['verde-claro', '#F3F8EC', 'Fundo de seção'],
-		['marrom-claro', '#F5F2F2', 'Linhas alternadas'], ['borda', '#E7E2E3', 'Bordas'],
-		['erro', '#C62828', 'Erro'], ['aviso', '#B26A00', 'Aviso']
+		['oliva', '#4A5D23', 'Marca, botões, links'], ['café', '#3E2C1C', 'Textos fortes, botões secundários'],
+		['areia', '#F5F1E8', 'Fundo das páginas'], ['marrom profundo', '#2E241B', 'Texto principal, rodapé'],
+		['terracota', '#C4552A', 'Acento · cooperados'], ['ouro', '#D9A020', 'Acento · compras'],
+		['vinho', '#7A2E2E', 'Acento · estoque'], ['azul', '#2E4A6B', 'Acento · comercialização'],
+		['erro', '#C62828', 'Erro'], ['aviso', '#8A5A00', 'Aviso']
 	];
 	const status = ['Aberta', 'Encerrada', 'Pendente', 'Aprovado/Pago', 'Distribuído', 'Cancelado'];
 	let aberto = $state(false);
@@ -36,14 +36,14 @@
 			{#each cores as [nome, hex, uso]}
 				<div class="text-sm">
 					<div class="h-14 rounded-lg border border-borda" style="background:{hex}"></div>
-					<p class="mt-1 font-semibold">{nome}</p><p>{hex}</p><p class="text-marrom">{uso}</p>
+					<p class="mt-1 font-semibold">{nome}</p><p>{hex}</p><p class="text-cafe">{uso}</p>
 				</div>
 			{/each}
 		</div>
 	</Card>
 
 	<Card titulo="Tipografia">
-		<p class="font-titulo text-4xl font-extrabold text-marrom">Plus Jakarta Sans — títulos</p>
+		<p class="font-titulo text-4xl font-extrabold text-cafe">Merriweather — títulos</p>
 		<p class="mt-2 text-base">Inter — corpo e interface. Gestão de cooperativa agrícola.</p>
 		<p class="mt-2 text-lg leading-relaxed">Área do produtor: corpo de 18px, linha 1.6.</p>
 	</Card>
@@ -78,7 +78,7 @@
 
 	<Card titulo="Alertas e feedback">
 		<div class="flex flex-col gap-3">
-			<p class="flex items-center gap-2 rounded-lg bg-verde-claro p-3 font-medium text-verde-escuro"><CircleCheck size={20} aria-hidden="true" /> Cadastro salvo com sucesso.</p>
+			<p class="flex items-center gap-2 rounded-lg bg-oliva/10 p-3 font-medium text-oliva"><CircleCheck size={20} aria-hidden="true" /> Cadastro salvo com sucesso.</p>
 			<p class="flex items-center gap-2 rounded-lg bg-aviso-claro p-3 font-medium text-aviso-texto"><TriangleAlert size={20} aria-hidden="true" /> Estoque abaixo do mínimo.</p>
 			<p class="flex items-center gap-2 rounded-lg bg-erro-claro p-3 font-medium text-erro"><CircleX size={20} aria-hidden="true" /> Quantidade acima do limite por cotas.</p>
 		</div>

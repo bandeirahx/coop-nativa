@@ -257,4 +257,4 @@ export const texturaModulo = (m: Modulo): 'madeira' | 'graos' | 'couro' | 'folha
 	compras: 'graos',
 	estoque: 'couro',
 	comercializacao: 'folhas'
-}[m]);
+} as const)[m];

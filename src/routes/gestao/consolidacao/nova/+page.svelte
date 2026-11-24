@@ -31,7 +31,7 @@
 	titulo="Consolidar solicitações"
 	subtitulo="Selecione a campanha e quais pedidos entrarem na compra coletiva."
 	uc="RF06 · UC06.1 · UC06.1.1 · UC06.1.2 · UC06.1.3"
-	textura="graos"
+	texturaForaDoModulo="graos"
 >
 	{#snippet acoes()}{/snippet}
 </ModuloHero>
@@ -43,4 +43,3 @@
 {:else if campId}
 	<p role="alert" class="rounded-lg bg-aviso-claro p-4 font-medium text-aviso-texto">Não há pedidos para consolidar nesta campanha.</p>
 {/if}
-

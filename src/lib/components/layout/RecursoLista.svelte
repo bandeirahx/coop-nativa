@@ -7,14 +7,20 @@
 	import Select from '#lib/components/ui/Select.svelte';
 	import { usuario } from '#lib/stores/auth.ts';
 	import { podeEscrever } from '#lib/nav.ts';
-	import { rotuloNovo, type Recurso } from '#lib/recursos.ts';
+	import { rotuloNovo, type Recurso, moduloDe, texturaModulo } from '#lib/recursos.ts';
 	import { untrack } from 'svelte';
 	import { Plus, Eye } from 'lucide-svelte';
 
 	let { r }: { r: Recurso } = $props();
+	const modulo = $derived(moduloDe(r.slug));
 	const itens = $derived(r.store);
 
-	const cabecalhoModulo = $derived('bg-verde text-branco');
+	const cabecalhoModulo = $derived(modulo ? ({
+		cooperados: 'bg-terracota text-areia',
+		compras: 'bg-ouro text-marrom-profundo',
+		estoque: 'bg-vinho text-areia',
+		comercializacao: 'bg-azul text-areia'
+	}[modulo]) : '');
 	let busca = $state('');
 	let filtros = $state<Record<string, string>>(untrack(() => Object.fromEntries((r.filtros ?? []).map((f) => [f.chave, '']))));
 	let de = $state('');
@@ -34,15 +40,16 @@
 </script>
 
 <ModuloHero
+	modulo={modulo}
 	titulo={r.titulo}
 	subtitulo={r.singular}
 	uc="{r.rf} · {r.uc.consultar}"
-	textura="graos"
+	texturaForaDoModulo={texturaModulo(modulo ?? 'cooperados')}
 >
 	{#snippet acoes()}{#if escreve && r.uc.cadastrar}<Button href="/gestao/{r.slug}/nova"><Plus size={18} aria-hidden="true" />{rotuloNovo(r)}</Button>{/if}{/snippet}
 </ModuloHero>
 
-<div class="mb-4 grid gap-3 rounded-[var(--radius-card)] border border-borda bg-branco p-4 sm:grid-cols-2 lg:grid-cols-4">
+<div class="mb-4 grid gap-3 rounded-[var(--radius-card)] border border-borda bg-areia p-4 sm:grid-cols-2 lg:grid-cols-4">
 	<Input id="busca" label="Buscar" placeholder="Digite para buscar" bind:value={busca} />
 	{#each r.filtros ?? [] as f}
 		<Select id="f-{f.chave}" label={f.rotulo} placeholder="Todos" opcoes={f.opcoes()} bind:value={filtros[f.chave]} />
@@ -70,4 +77,3 @@
 	{/each}
 </Table>
 <p class="mt-3 text-xs text-marrom">{lista.length} registro(s)</p>
-

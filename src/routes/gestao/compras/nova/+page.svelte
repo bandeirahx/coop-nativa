@@ -33,7 +33,7 @@
 	titulo="Nova compra coletiva"
 	subtitulo="Escolha a consolidação fechada e o fornecedor para registrar a compra."
 	uc="RF06: Gerenciar Compras Coletivas"
-	textura="graos"
+	texturaForaDoModulo="graos"
 >
 	{#snippet acoes()}{/snippet}
 </ModuloHero>
@@ -49,4 +49,3 @@
 	{/if}
 	<div class="flex justify-end gap-3"><Button variante="contorno" href="/gestao/compras">Cancelar</Button><Button type="submit">Registrar compra</Button></div>
 </form>
-

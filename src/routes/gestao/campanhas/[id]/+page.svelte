@@ -20,7 +20,7 @@
 		titulo={c.nome}
 		subtitulo="Detalhe da campanha: insumos ofertados, preço e limite por cota (RN10)."
 		uc="RF04: Gerenciar Campanhas de Compras · UC04.3"
-		textura="graos"
+		texturaForaDoModulo="graos"
 	>
 		{#snippet acoes()}<Button href="/gestao/campanhas" variante="contorno"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>
 			{#if $usuario?.perfil === 'gestor'}<Button href="/gestao/campanhas/{c.id}/editar"><Pencil size={16} aria-hidden="true" />Editar</Button>{/if}{/snippet}
@@ -33,9 +33,7 @@
 		</dl>
 	</Card>
 	<h2 class="mb-3 text-lg">Insumos ofertados</h2>
-	<Table colunas={['Insumo', 'Unidade', 'Preço unitário', 'Limite por cota (RN10)']} cabecalhoClasses="bg-verde text-marrom-escuro">
+	<Table colunas={['Insumo', 'Unidade', 'Preço unitário', 'Limite por cota (RN10)']} cabecalhoClasses="bg-ouro text-marrom-profundo">
 		{#each c.itens as i}<tr><td data-label="Insumo">{nomeInsumo(i.insumoId)}</td><td data-label="Unidade">{unidadeInsumo(i.insumoId)}</td><td data-label="Preço">{moeda(i.precoUnit)}</td><td data-label="Limite por cota">{i.limitePorCota}</td></tr>{/each}
 	</Table>
 {/if}
-
-

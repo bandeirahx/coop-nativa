@@ -1,10 +1,10 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	let { tamanho = 'h-10', fundo = 'branco', classe = '' } = $props<{ tamanho?: string; fundo?: 'branco' | 'marrom' | 'transparente'; classe?: string }>();
+	let { tamanho = 'h-10', fundo = 'areia', classe = '' }: { tamanho?: string; fundo?: 'areia' | 'marrom' | 'transparente'; classe?: string } = $props();
 </script>
 
-{#if fundo === 'branco'}
-	<div class="logo-selo branco {classe}">
+{#if fundo === 'areia'}
+	<div class="logo-selo areia {classe}">
 		<img src="/logo.png" alt="Nativa Coop" class="{tamanho} w-auto mix-blend-multiply" />
 	</div>
 {:else if fundo === 'marrom'}

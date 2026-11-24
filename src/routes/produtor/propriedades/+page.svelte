@@ -13,4 +13,4 @@
 			<p class="text-marrom">{p.municipio} · {p.areaTotal} hectares</p><p class="mt-1">Produção: <strong>{p.tipoProducao}</strong></p><p class="text-marrom">{p.endereco}</p></li>
 	{/each}
 </ul>
-<a href="/produtor/capacidade" class="mt-5 inline-flex min-h-14 w-full items-center justify-center rounded-lg bg-verde px-6 text-xl font-bold text-branco">Ver o que posso produzir</a>
+<a href="/produtor/capacidade" class="mt-5 inline-flex min-h-14 w-full items-center justify-center rounded-lg bg-oliva px-6 text-xl font-bold text-branco">Ver o que posso produzir</a>

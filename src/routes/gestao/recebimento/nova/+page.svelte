@@ -43,7 +43,7 @@
 	titulo="Registrar recebimento"
 	subtitulo="Confira cada item entregue pelo fornecedor contra o previsto na compra."
 	uc="RF08 · UC08.1 · UC08.3 (conferência) · RF09 · UC09.1"
-	textura="graos"
+	texturaForaDoModulo="graos"
 >
 	{#snippet acoes()}{/snippet}
 </ModuloHero>
@@ -69,4 +69,3 @@
 	{/if}
 	<div class="flex justify-end gap-3"><Button variante="contorno" href="/gestao/recebimento">Cancelar</Button><Button type="submit" disabled={salvando}>Confirmar recebimento</Button></div>
 </form>
-

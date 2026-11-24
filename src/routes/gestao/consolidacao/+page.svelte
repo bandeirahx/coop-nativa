@@ -15,14 +15,14 @@
 	titulo="Consolidação de pedidos"
 	subtitulo="Agrupa solicitações por insumo, define quantidades e gera a compra coletiva com o fornecedor."
 	uc="RF06: Gerenciar Compras Coletivas · UC06.2"
-	textura="graos"
+	texturaForaDoModulo="graos"
 >
 	{#snippet acoes()}<Button href="/gestao/consolidacao/nova"><Plus size={18} aria-hidden="true" />Consolidar solicitações</Button>{/snippet}
 </ModuloHero>
 <Table
 	colunas={['Nº', 'Campanha', 'Data', 'Insumos', 'Valor estimado', 'Situação', 'Ações']}
 	vazia={$consolidacoes.length === 0}
-	cabecalhoClasses="bg-verde text-marrom-escuro"
+	cabecalhoClasses="bg-ouro text-marrom-profundo"
 >
 	{#each $consolidacoes as c}
 		{@const g = agrupar(c.campanhaId, c.excluidos)}
@@ -31,5 +31,3 @@
 			<td data-label="Ações"><a class="font-semibold text-verde-escuro underline" href="/gestao/consolidacao/{c.id}">Ver</a></td></tr>
 	{/each}
 </Table>
-
-

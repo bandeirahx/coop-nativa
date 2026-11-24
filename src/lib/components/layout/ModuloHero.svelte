@@ -1,22 +1,42 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 
+	type Modulo = 'cooperados' | 'compras' | 'estoque' | 'comercializacao';
+
 	let {
+		modulo,
 		titulo,
 		subtitulo,
 		uc,
-		textura, // 'madeira' | 'graos' | 'couro' | 'folhas' | 'fruta' | 'terra'
-		children
+		texturaForaDoModulo, // textura alternativa quando o modulo nao define uma (ex.: header/login usam terra)
+		acoes
 	}: {
+		modulo?: Modulo;
 		titulo: string;
 		subtitulo?: string;
 		uc?: string;
-		textura?: 'madeira' | 'graos' | 'couro' | 'folhas' | 'fruta' | 'terra';
-		children?: Snippet;
+		texturaForaDoModulo?: 'madeira' | 'graos' | 'couro' | 'folhas' | 'fruta' | 'terra';
+		acoes?: Snippet;
 	} = $props();
 
-	const imagem = $derived(textura ? `var(--tex-${textura})` : 'var(--tex-terra)');
-	const overlay = $derived('var(--overlay-medio)');
+	const texturaPorModulo: Record<Modulo, string> = {
+		cooperados: 'var(--tex-madeira)',
+		compras: 'var(--tex-graos)',
+		estoque: 'var(--tex-couro)',
+		comercializacao: 'var(--tex-folhas)'
+	};
+
+	const overlayPorModulo: Record<Modulo, string> = {
+		cooperados: 'var(--overlay-cooperados)',
+		compras: 'var(--overlay-compras)',
+		estoque: 'var(--overlay-estoque)',
+		comercializacao: 'var(--overlay-comercializacao)'
+	};
+
+	const textura = $derived(texturaForaDoModulo
+		? `var(--tex-${texturaForaDoModulo})`
+		: modulo ? texturaPorModulo[modulo] : 'var(--tex-terra)');
+	const overlay = $derived(modulo ? overlayPorModulo[modulo] : 'var(--overlay-login)');
 
 	// Ruído fotográfico sutil (sem arquivo binário extra): SVG de fractal noise embutido.
 	const ruido =
@@ -24,19 +44,19 @@
 </script>
 
 <div class="relative isolate overflow-hidden">
-	<div class="absolute inset-0 -z-10" style="background-image: {imagem}; background-size: cover; background-position: center; background-repeat: no-repeat;" aria-hidden="true"></div>
+	<div class="absolute inset-0 -z-10" style="background-image: {textura}; background-size: cover; background-position: center; background-repeat: no-repeat;" aria-hidden="true"></div>
 	<div class="absolute inset-0 -z-10" style="background: {overlay}, {ruido}; background-blend-mode: multiply;" aria-hidden="true"></div>
 
 	<div class="mx-auto max-w-6xl px-4 py-16 lg:py-24 relative z-10">
 		{#if uc}
-			<p class="mb-3 text-sm font-semibold tracking-wider uppercase text-sobre-imagem">{uc}</p>
+			<p class="mb-3 text-sm font-semibold tracking-wider uppercase text-areia">{uc}</p>
 		{/if}
 		<h1 class="text-4xl font-titulo font-bold text-branco lg:text-5xl">{titulo}</h1>
 		{#if subtitulo}
-			<p class="mt-4 text-lg text-sobre-imagem/90 max-w-2xl">{subtitulo}</p>
+			<p class="mt-4 text-lg text-areia/90 max-w-2xl">{subtitulo}</p>
 		{/if}
-		{#if children}
-			<div class="mt-8">{@render children()}</div>
+		{#if acoes}
+			<div class="mt-8">{@render acoes()}</div>
 		{/if}
 	</div>
 </div>

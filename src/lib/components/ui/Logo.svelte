@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	let { tamanho = 'h-10', fundo = 'areia', classe = '' }: { tamanho?: string; fundo?: 'areia' | 'marrom' | 'transparente'; classe?: string };
+	let { tamanho = 'h-10', fundo = 'areia', classe = '' } = $props<{ tamanho?: string; fundo?: 'areia' | 'marrom' | 'transparente'; classe?: string }>();
 </script>
 
 {#if fundo === 'areia'}

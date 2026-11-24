@@ -31,11 +31,26 @@
 --cor-modulo-comercializacao: var(--cor-acento-azul);
 
 /* ------------------------------------------------------------------------
-   CORES FUNCIONAIS (estado, feedback, semântico)
+   CORES FUNCIONAIS (estado, feedback, semântico — derivados da paleta)
    ------------------------------------------------------------------------ */
 --cor-sucesso: var(--cor-base-oliva);
 --cor-erro: #C62828;
 --cor-aviso: var(--cor-acento-terracota);
+
+/* --cor-branco: apenas texto / ícones sobre fundo escuro. Nunca fundo de página (proibido). */
+--cor-branco: #FFFFFF;
+
+/* Alias para compatibilidade com componentes existentes */
+--cor-marrom-escuro: var(--cor-base-marrom-profundo);
+
+/* Tons claros derivados da paleta (fundos de seção alternada e badges) */
+--cor-marrom-claro: #F3EFE9;
+--cor-verde-claro: #F0F4E8;
+--cor-verde-escuro: #3F6212;
+--cor-aviso-claro: #FBF3E4;
+--cor-aviso-texto: #8A5A00;
+--cor-erro-claro: #F7E9E9;
+--cor-erro-texto: var(--cor-acento-vinho);
 
 /* ------------------------------------------------------------------------
    TEXTO
@@ -91,6 +106,9 @@
 --raio-input: 10px;
 --raio-btn: 10px;
 --raio-modal: 16px;
+
+/* Alias usado por componentes existentes */
+--radius-card: var(--raio-card);
 
 /* ------------------------------------------------------------------------
    SOMBRAS

@@ -63,6 +63,8 @@ a:hover {
 
 .bg-oliva { background-color: var(--cor-base-oliva); }
 .bg-cafe { background-color: var(--cor-base-cafe); }
+.bg-marrom { background-color: var(--cor-base-cafe); }
+.text-marrom { color: var(--cor-base-cafe); }
 .bg-areia { background-color: var(--cor-base-areia); }
 .bg-marrom-profundo { background-color: var(--cor-base-marrom-profundo); }
 .bg-terracota { background-color: var(--cor-acento-terracota); }
@@ -71,7 +73,32 @@ a:hover {
 .bg-folha { background-color: var(--cor-acento-folha); }
 .bg-azul { background-color: var(--cor-acento-azul); }
 
-.border-oliva { border-color: var(--cor-borda-foco); }
+/* Cores utilitárias de estado (definidas em design-tokens.css; branco apenas para texto sobre fundo escuro) */
+.bg-branco { background-color: var(--cor-branco); }
+.text-branco { color: var(--cor-branco); }
+.text-marrom-escuro { color: var(--cor-marrom-escuro); }
+.bg-marrom-claro { background-color: var(--cor-marrom-claro); }
+.text-marrom-claro { color: var(--cor-marrom-claro); }
+.border-marrom { border-color: var(--cor-base-marrom-profundo); }
+
+.bg-verde-claro { background-color: var(--cor-verde-claro); }
+.text-verde-escuro { color: var(--cor-verde-escuro); }
+.border-verde { border-color: var(--cor-base-oliva); }
+
+.bg-aviso-claro { background-color: var(--cor-aviso-claro); }
+.text-aviso-texto { color: var(--cor-aviso-texto); }
+.border-aviso { border-color: var(--cor-acento-terracota); }
+
+.bg-erro-claro { background-color: var(--cor-erro-claro); }
+.text-erro { color: var(--cor-erro); }
+.border-erro { border-color: var(--cor-erro); }
+.bg-erro { background-color: var(--cor-erro); }
+.bg-verde-escuro { background-color: var(--cor-sucesso); }
+
+.bg-borda { background-color: var(--cor-borda); }
+
+.border-dashed { border-style: dashed; }
+.shadow-card-hover { box-shadow: var(--sombra-card-hover); }
 .border-cafe { border-color: var(--cor-base-cafe); }
 .border-borda { border-color: var(--cor-borda); }
 

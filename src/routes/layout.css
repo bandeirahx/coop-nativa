@@ -1,101 +1,292 @@
 @import '@fontsource/inter/400.css';
 @import '@fontsource/inter/500.css';
 @import '@fontsource/inter/600.css';
-@import '@fontsource/plus-jakarta-sans/600.css';
-@import '@fontsource/plus-jakarta-sans/700.css';
-@import '@fontsource/plus-jakarta-sans/800.css';
+@import '@fontsource/inter/700.css';
+@import '@fontsource/merriweather/400.css';
+@import '@fontsource/merriweather/700.css';
+@import '@fontsource/merriweather/900.css';
+@import './design-tokens.css';
 @import 'tailwindcss';
 
-@theme {
-	--color-branco: #ffffff;
-	--color-verde: #4f9808;
-	--color-verde-escuro: #3f7a06;
-	--color-verde-claro: #f3f8ec;
-	--color-marrom: #4e3a3f;
-	--color-marrom-escuro: #281d1e;
-	--color-marrom-claro: #f5f2f2;
-	--color-borda: #e7e2e3;
-	--color-erro: #c62828;
-	--color-erro-claro: #fdeeee;
-	--color-aviso: #b26a00;
-	--color-aviso-claro: #fff6e5;
-	--color-aviso-texto: #8a5000;
-	--font-sans: 'Inter', system-ui, sans-serif;
-	--font-titulo: 'Plus Jakarta Sans', 'Inter', sans-serif;
-	--radius-card: 12px;
-	--shadow-suave: 0 1px 2px rgb(40 29 30 / 0.06), 0 2px 8px rgb(40 29 30 / 0.05);
-}
+/* ==========================================================================
+   Design tokens já estão definidos em design-tokens.css via @theme.
+   Este arquivo mantém as regras globais, alto contraste e tabelas.
+   ========================================================================== */
 
 html {
 	font-size: calc(16px * var(--escala-fonte, 1));
 }
 body {
-	background: var(--color-branco);
-	color: var(--color-marrom-escuro);
-	font-family: var(--font-sans);
+	background: var(--cor-base-areia);
+	color: var(--cor-texto-principal);
+	font-family: var(--fonte-corpo);
 	overflow-x: hidden;
+	margin: 0;
 }
 h1, h2, h3, h4 {
-	font-family: var(--font-titulo);
-	color: var(--color-marrom);
+	font-family: var(--fonte-titulo);
+	color: var(--cor-texto-principal);
 	font-weight: 700;
 }
-:focus-visible {
-	outline: 3px solid var(--color-marrom-escuro);
-	outline-offset: 2px;
-	border-radius: 4px;
+a {
+	color: var(--cor-base-oliva);
+	text-decoration: none;
+}
+a:hover {
+	color: var(--cor-acento-terracota);
 }
 
-/* Evita que qualquer elemento force rolagem horizontal em telas estreitas */
-@media (max-width: 639px) {
-	* { box-sizing: border-box; }
-	.min-w-0 { min-width: 0; }
-}
+/* Tipografia — escala definida nos tokens */
+.text-xs { font-size: var(--tamanho-xs); }
+.text-sm { font-size: var(--tamanho-sm); }
+.text-base { font-size: var(--tamanho-base); }
+.text-lg { font-size: var(--tamanho-lg); }
+.text-xl { font-size: var(--tamanho-xl); }
+.text-2xl { font-size: var(--tamanho-2xl); }
+.text-3xl { font-size: var(--tamanho-3xl); }
+.text-4xl { font-size: var(--tamanho-4xl); }
+.text-5xl { font-size: var(--tamanho-5xl); }
 
-/* Alto contraste: preto/branco com verde escuro */
+.font-titulo { font-family: var(--fonte-titulo); }
+.font-corpo { font-family: var(--fonte-corpo); }
+
+/* Cores utilitárias */
+.text-oliva { color: var(--cor-base-oliva); }
+.text-cafe { color: var(--cor-base-cafe); }
+.text-areia { color: var(--cor-base-areia); }
+.text-marrom-profundo { color: var(--cor-base-marrom-profundo); }
+.text-terracota { color: var(--cor-acento-terracota); }
+.text-ouro { color: var(--cor-acento-ouro); }
+.text-vinho { color: var(--cor-acento-vinho); }
+.text-folha { color: var(--cor-acento-folha); }
+.text-azul { color: var(--cor-acento-azul); }
+
+.bg-oliva { background-color: var(--cor-base-oliva); }
+.bg-cafe { background-color: var(--cor-base-cafe); }
+.bg-areia { background-color: var(--cor-base-areia); }
+.bg-marrom-profundo { background-color: var(--cor-base-marrom-profundo); }
+.bg-terracota { background-color: var(--cor-acento-terracota); }
+.bg-ouro { background-color: var(--cor-acento-ouro); }
+.bg-vinho { background-color: var(--cor-acento-vinho); }
+.bg-folha { background-color: var(--cor-acento-folha); }
+.bg-azul { background-color: var(--cor-acento-azul); }
+
+.border-oliva { border-color: var(--cor-borda-foco); }
+.border-cafe { border-color: var(--cor-base-cafe); }
+.border-borda { border-color: var(--cor-borda); }
+
+/* Espaçamentos */
+.p-1 { padding: var(--espaco-1); }
+.p-2 { padding: var(--espaco-2); }
+.p-3 { padding: var(--espaco-3); }
+.p-4 { padding: var(--espaco-4); }
+.p-5 { padding: var(--espaco-5); }
+.p-6 { padding: var(--espaco-6); }
+.p-8 { padding: var(--espaco-8); }
+.p-10 { padding: var(--espaco-10); }
+.p-12 { padding: var(--espaco-12); }
+
+.gap-1 { gap: var(--espaco-1); }
+.gap-2 { gap: var(--espaco-2); }
+.gap-3 { gap: var(--espaco-3); }
+.gap-4 { gap: var(--espaco-4); }
+.gap-5 { gap: var(--espaco-5); }
+.gap-6 { gap: var(--espaco-6); }
+.gap-8 { gap: var(--espaco-8); }
+
+.mb-1 { margin-bottom: var(--espaco-1); }
+.mb-2 { margin-bottom: var(--espaco-2); }
+.mb-3 { margin-bottom: var(--espaco-3); }
+.mb-4 { margin-bottom: var(--espaco-4); }
+.mb-5 { margin-bottom: var(--espaco-5); }
+.mb-6 { margin-bottom: var(--espaco-6); }
+.mb-8 { margin-bottom: var(--espaco-8); }
+
+.mt-1 { margin-top: var(--espaco-1); }
+.mt-2 { margin-top: var(--espaco-2); }
+.mt-3 { margin-top: var(--espaco-3); }
+.mt-4 { margin-top: var(--espaco-4); }
+.mt-5 { margin-top: var(--espaco-5); }
+.mt-6 { margin-top: var(--espaco-6); }
+.mt-8 { margin-top: var(--espaco-8); }
+
+/* Raios */
+.rounded-card { border-radius: var(--raio-card); }
+.rounded-badge { border-radius: var(--raio-badge); }
+.rounded-input { border-radius: var(--raio-input); }
+.rounded-btn { border-radius: var(--raio-btn); }
+.rounded-modal { border-radius: var(--raio-modal); }
+
+/* Sombras */
+.shadow-suave { box-shadow: var(--sombra-suave); }
+.shadow-media { box-shadow: var(--sombra-media); }
+
+/* ==========================================================================
+   ALTO CONTRASTE
+   ========================================================================== */
 html.alto-contraste {
-	--color-verde: #2d5704;
-	--color-verde-escuro: #1f3d03;
-	--color-marrom: #000000;
-	--color-marrom-escuro: #000000;
-	--color-borda: #000000;
-	--color-verde-claro: #ffffff;
-	--color-marrom-claro: #ffffff;
+	--cor-base-oliva: #006400;
+	--cor-base-cafe: #000000;
+	--cor-base-areia: #FFFFFF;
+	--cor-base-marrom-profundo: #000000;
+	--cor-acento-terracota: #8B0000;
+	--cor-acento-ouro: #FFD700;
+	--cor-acento-vinho: #800000;
+	--cor-acento-folha: #006400;
+	--cor-acento-azul: #000080;
+	--cor-texto-principal: #000000;
+	--cor-texto-claro: #FFFFFF;
+	--cor-borda: #000000;
 }
 html.alto-contraste :focus-visible {
-	outline-color: #b26a00;
+	outline-color: var(--cor-acento-terracota);
 }
 
-/* Tabelas viram cards empilhados no celular, cada linha em um bloco com borda */
+/* Alto contraste: desativa texturas de fundo que prejudiquem leitura */
+html.alto-contraste .textura-fundo,
+html.alto-contraste .secao-textura::after,
+html.alto-contraste .card-textura::after,
+html.alto-contraste .header-textura::after {
+	display: none !important;
+}
+html.alto-contraste .card-textura,
+html.alto-contraste .header-textura,
+html.alto-contraste .secao-textura {
+	background: var(--cor-base-marrom-profundo) !important;
+	color: #FFFFFF !important;
+}
+html.alto-contraste .card-conteudo,
+html.alto-contraste .dialog-conteudo {
+	background: #FFFFFF !important;
+	color: #000000 !important;
+}
+
+/* ==========================================================================
+   TABELAS RESPONSIVAS (cards empilhados no mobile)
+   ========================================================================== */
 @media (max-width: 639px) {
 	table.resp thead { display: none; }
 	table.resp, table.resp tbody, table.resp tr { display: block; width: 100%; }
 	table.resp tr {
 		display: block;
-		border: 1px solid var(--color-borda);
-		border-radius: var(--radius-card);
-		margin: 0 0 0.75rem 0;
+		border: 1px solid var(--cor-borda);
+		border-radius: var(--raio-card);
+		margin: 0 0 var(--espaco-3) 0;
 		padding: 0;
 		overflow: hidden;
+		background: #FFFFFF;
 	}
 	table.resp td {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		border: none;
-		border-bottom: 1px solid var(--color-marrom-claro);
+		border-bottom: 1px solid var(--cor-base-areia);
 		padding: 0.6rem 1rem !important;
 		width: 100%;
 		text-align: left;
 	}
 	table.resp td:last-child { border-bottom: none; }
-	/* quando há data-label, mostra o rótulo à esquerda e o valor à direita */
 	table.resp td::before {
 		content: attr(data-label);
 		font-weight: 700;
 		font-size: 0.75rem;
-		color: var(--color-marrom);
+		color: var(--cor-texto-suave);
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
 	}
+}
+
+/* Evita rolagem horizontal em telas estreitas */
+@media (max-width: 639px) {
+	* { box-sizing: border-box; }
+	.min-w-0 { min-width: 0; }
+}
+
+/* ==========================================================================
+   TEXTURAS E OVERLAYS (classes utilitárias)
+   ========================================================================== */
+
+/* Aplica uma textura como background com overlay de cor do módulo */
+.textura-fundo {
+	position: relative;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.textura-fundo::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: var(--overlay-medio);
+}
+
+/* Variações de textura por módulo */
+.textura-madeira { background-image: var(--tex-madeira); }
+.textura-graos { background-image: var(--tex-graos); }
+.textura-couro { background-image: var(--tex-couro); }
+.textura-folhas { background-image: var(--tex-folhas); }
+.textura-fruta { background-image: var(--tex-fruta); }
+.textura-terra { background-image: var(--tex-terra); }
+
+/* Overlays por módulo (usados em heroes e cards de destaque) */
+.overlay-cooperados { background: var(--overlay-cooperados); }
+.overlay-compras { background: var(--overlay-compras); }
+.overlay-estoque { background: var(--overlay-estoque); }
+.overlay-comercializacao { background: var(--overlay-comercializacao); }
+.overlay-login { background: var(--overlay-login); }
+
+/* Card com textura + overlay + conteúdo sólido sobreposto */
+.card-textura {
+	position: relative;
+	background-size: cover;
+	background-position: center;
+	border-radius: var(--raio-card);
+	overflow: hidden;
+	border: 1px solid var(--cor-borda);
+}
+.card-textura::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: var(--overlay-medio);
+	border-radius: inherit;
+}
+.card-conteudo {
+	position: relative;
+	z-index: 1;
+	background: rgba(245, 241, 232, 0.92);
+	border-radius: inherit;
+}
+
+/* ==========================================================================
+   LOGO — sem fundo branco visível (selo com fundo areia ou marrom)
+   ========================================================================== */
+.logo-selo {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0.35rem;
+	border-radius: 8px;
+}
+.logo-selo.areia {
+	background: var(--cor-base-areia);
+}
+.logo-selo.marrom {
+	background: var(--cor-base-marrom-profundo);
+}
+.mix-blend-multiply {
+	mix-blend-mode: multiply;
+}
+.mix-blend-screen {
+	mix-blend-mode: screen;
+}
+
+/* ==========================================================================
+   FOCUS VISÍVEL
+   ========================================================================== */
+:focus-visible {
+	outline: 3px solid var(--cor-borda-foco);
+	outline-offset: 2px;
+	border-radius: 4px;
 }

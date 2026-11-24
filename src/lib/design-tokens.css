@@ -1,0 +1,125 @@
+/* ==========================================================================
+   DESIGN TOKENS — Nativa Coop (identidade visual agro)
+   ==========================================================================
+   Única fonte de verdade para cores, tipografia, espaçamentos, raios,
+   sombras e overlays. Nenhuma cor solta deve aparecer fora deste arquivo.
+   ========================================================================== */
+
+/* ------------------------------------------------------------------------
+   CORES BASE (paleta principal)
+   ------------------------------------------------------------------------ */
+--cor-base-oliva: #4A5D23;
+--cor-base-cafe: #3E2C1C;
+--cor-base-areia: #F5F1E8;
+--cor-base-marrom-profundo: #2E241B;
+
+/* ------------------------------------------------------------------------
+   ACCENT CORES (acentos vivos por módulo e estado)
+   ------------------------------------------------------------------------ */
+--cor-acento-terracota: #C4552A;
+--cor-acento-ouro: #D9A020;
+--cor-acento-vinho: #7A2E2E;
+--cor-acento-folha: #6B8E23;
+--cor-acento-azul: #2E4A6B;
+
+/* ------------------------------------------------------------------------
+   CORES POR MÓDULO (acento dominante de cada módulo)
+   ------------------------------------------------------------------------ */
+--cor-modulo-cooperados: var(--cor-acento-terracota);
+--cor-modulo-compras: var(--cor-acento-ouro);
+--cor-modulo-estoque: var(--cor-acento-vinho);
+--cor-modulo-comercializacao: var(--cor-acento-azul);
+
+/* ------------------------------------------------------------------------
+   CORES FUNCIONAIS (estado, feedback, semântico)
+   ------------------------------------------------------------------------ */
+--cor-sucesso: var(--cor-base-oliva);
+--cor-erro: #C62828;
+--cor-aviso: var(--cor-acento-terracota);
+
+/* ------------------------------------------------------------------------
+   TEXTO
+   ------------------------------------------------------------------------ */
+--cor-texto-principal: #2E241B;
+--cor-texto-claro: #F5F1E8;
+--cor-texto-suave: #6E6255;
+--cor-texto-sobre-imagem: #FFFFFF;
+
+/* ------------------------------------------------------------------------
+   BORDAS
+   ------------------------------------------------------------------------ */
+--cor-borda: #D8CBB5;
+--cor-borda-fraca: #E8E3D8;
+--cor-borda-foco: var(--cor-base-oliva);
+
+/* ------------------------------------------------------------------------
+   TIPOGRAFIA
+   ------------------------------------------------------------------------ */
+--fonte-titulo: 'Fraunces', 'Playfair Display', 'Merriweather', serif;
+--fonte-corpo: 'Inter', 'Source Sans 3', 'DM Sans', system-ui, sans-serif;
+
+/* Escala tipográfica (mínimo 6 tamanhos, corpo ≥ 16px) */
+--tamanho-xs: 0.75rem;    /* 12px */
+--tamanho-sm: 0.875rem;   /* 14px */
+--tamanho-base: 1rem;     /* 16px (corpo mínimo) */
+--tamanho-lg: 1.125rem;   /* 18px */
+--tamanho-xl: 1.25rem;    /* 20px */
+--tamanho-2xl: 1.5rem;    /* 24px */
+--tamanho-3xl: 1.875rem;  /* 30px */
+--tamanho-4xl: 2.25rem;   /* 36px */
+--tamanho-5xl: 3rem;      /* 48px */
+
+/* ------------------------------------------------------------------------
+   ESPAÇAMENTOS (escala 4/8px)
+   ------------------------------------------------------------------------ */
+--espaco-1: 0.25rem;   /* 4px */
+--espaco-2: 0.5rem;    /* 8px */
+--espaco-3: 0.75rem;   /* 12px */
+--espaco-4: 1rem;      /* 16px */
+--espaco-5: 1.25rem;   /* 20px */
+--espaco-6: 1.5rem;    /* 24px */
+--espaco-8: 2rem;      /* 32px */
+--espaco-10: 2.5rem;   /* 40px */
+--espaco-12: 3rem;     /* 48px */
+--espaco-16: 4rem;     /* 64px */
+
+/* ------------------------------------------------------------------------
+   RAIOS / BORDER-RADIUS
+   ------------------------------------------------------------------------ */
+--raio-card: 14px;
+--raio-badge: 9999px;
+--raio-input: 10px;
+--raio-btn: 10px;
+--raio-modal: 16px;
+
+/* ------------------------------------------------------------------------
+   SOMBRAS
+   ------------------------------------------------------------------------ */
+--sombra-suave: 0 1px 3px rgb(46 36 27 / 0.08), 0 2px 8px rgb(46 36 27 / 0.06);
+--sombra-media: 0 4px 16px rgb(46 36 27 / 0.10);
+--sombra-card-hover: 0 8px 24px rgb(46 36 27 / 0.12);
+
+/* ------------------------------------------------------------------------
+   OVERLAYS DE IMAGEM (gradiente com cor do módulo, 55–80% opacidade)
+   ------------------------------------------------------------------------ */
+--overlay-leve: linear-gradient(rgba(46, 36, 27, 0.55), rgba(46, 36, 27, 0.55));
+--overlay-medio: linear-gradient(rgba(46, 36, 27, 0.70), rgba(46, 36, 27, 0.70));
+--overlay-forte: linear-gradient(rgba(46, 36, 27, 0.85), rgba(46, 36, 27, 0.85));
+
+/* Overlays por acento de módulo (para heroes e cards) */
+--overlay-cooperados: linear-gradient(rgba(196, 85, 42, 0.70), rgba(196, 85, 42, 0.70));
+--overlay-compras: linear-gradient(rgba(217, 160, 32, 0.65), rgba(217, 160, 32, 0.65));
+--overlay-estoque: linear-gradient(rgba(122, 46, 46, 0.70), rgba(122, 46, 46, 0.70));
+--overlay-comercializacao: linear-gradient(rgba(46, 74, 107, 0.70), rgba(46, 74, 107, 0.70));
+--overlay-login: linear-gradient(rgba(46, 36, 27, 0.75), rgba(46, 36, 27, 0.75));
+
+/* ------------------------------------------------------------------------
+   TEXTURAS (background-image real — fotografias de agro)
+   ------------------------------------------------------------------------ */
+--tex-madeira: url('/images/textures/madeira.webp');
+--tex-graos: url('/images/textures/graos.webp');
+--tex-couro: url('/images/textures/couro.webp');
+--tex-folhas: url('/images/textures/folhas.webp');
+--tex-fruta: url('/images/textures/fruta.webp');
+--tex-terra: url('/images/textures/terra.webp');
+--tex-hero: url('/images/webp/hero.webp');

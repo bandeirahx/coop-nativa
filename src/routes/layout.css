@@ -170,7 +170,40 @@ a:hover { color: var(--mod-accent, var(--cor-acento-terracota)); }
 	height: 6px;
 	background: var(--mod-accent, var(--cor-base-oliva));
 }
-.painel > * { position: relative; }
+.painel-conteudo { padding: var(--espaco-4); }
+@media (min-width: 640px) { .painel-conteudo { padding: var(--espaco-6); } }
+
+/* Sidebar: madeira escura texturizada com selo areia e barra de módulo */
+.sidebar {
+	background-color: var(--cor-base-marrom-profundo);
+	background-image: var(--overlay-fundo), var(--img-fundo);
+	background-size: cover;
+	background-position: center;
+	background-blend-mode: multiply, normal;
+	position: relative;
+	isolation: isolate;
+	color: var(--cor-base-areia);
+}
+.sidebar::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	background-image: var(--grao);
+	opacity: var(--grao-opacidade);
+	z-index: -1;
+}
+.link-ativo { position: relative; background: color-mix(in srgb, var(--mod-accent, var(--cor-base-oliva)) 22%, transparent); color: var(--cor-base-areia) !important; }
+.link-ativo::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 10%;
+	bottom: 10%;
+	width: 6px;
+	border-radius: 0 6px 6px 0;
+	background: var(--mod-accent, var(--cor-base-oliva));
+}
 
 /* Grão sutil sobre fotos e heroes */
 .textura-fundo, .card-textura, .header-textura, .hero-modulo, .card-foto { position: relative; isolation: isolate; }
@@ -273,11 +306,24 @@ a:hover { color: var(--mod-accent, var(--cor-acento-terracota)); }
 /* Botões e campos */
 .btn-base {
 	border-radius: var(--raio-btn);
-	transition: background-color var(--transicao), color var(--transicao), transform var(--transicao), box-shadow var(--transicao), border-color var(--transicao);
+	border: 1.5px solid transparent;
+	background: var(--btn-bg, var(--cor-base-oliva));
+	color: var(--btn-fg, var(--cor-base-areia));
+	box-shadow: var(--sombra-suave);
+	transition: background-color var(--transicao), color var(--transicao), transform var(--transicao), box-shadow var(--transicao), border-color var(--transicao), filter var(--transicao);
 }
-.btn-base:hover:not(:disabled) { transform: translateY(-1px); }
+.btn-base:hover:not(:disabled) { transform: translateY(-2px); box-shadow: var(--sombra-media); filter: brightness(1.06); }
 .btn-base:active:not(:disabled) { transform: translateY(0); }
 .btn-base:disabled { opacity: 0.45; cursor: not-allowed; filter: grayscale(0.4); }
+.btn-contorno {
+	background: transparent;
+	color: var(--cor-base-cafe);
+	border-color: var(--cor-base-cafe);
+	box-shadow: none;
+}
+.btn-contorno:hover:not(:disabled) { background: color-mix(in srgb, var(--cor-base-cafe) 8%, transparent); }
+.btn-secundario { background: var(--cor-base-cafe); color: var(--cor-base-areia); }
+.btn-perigo { background: var(--cor-acento-vinho); color: var(--cor-base-areia); }
 .campo {
 	min-height: 44px;
 	width: 100%;

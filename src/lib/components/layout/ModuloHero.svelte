@@ -2,61 +2,40 @@
 	import type { Snippet } from 'svelte';
 
 	type Modulo = 'cooperados' | 'compras' | 'estoque' | 'comercializacao';
+	type Textura = 'madeira' | 'graos' | 'couro' | 'folhas' | 'fruta' | 'terra';
 
 	let {
 		modulo,
 		titulo,
 		subtitulo,
 		uc,
-		texturaForaDoModulo, // textura alternativa quando o modulo nao define uma (ex.: header/login usam terra)
-		acoes
+		texturaForaDoModulo,
+		acoes,
+		metricas
 	}: {
 		modulo?: Modulo;
 		titulo: string;
 		subtitulo?: string;
 		uc?: string;
-		texturaForaDoModulo?: 'madeira' | 'graos' | 'couro' | 'folhas' | 'fruta' | 'terra';
+		texturaForaDoModulo?: Textura;
 		acoes?: Snippet;
+		metricas?: Snippet;
 	} = $props();
 
-	const texturaPorModulo: Record<Modulo, string> = {
-		cooperados: 'var(--tex-madeira)',
-		compras: 'var(--tex-graos)',
-		estoque: 'var(--tex-couro)',
-		comercializacao: 'var(--tex-folhas)'
-	};
-
-	const overlayPorModulo: Record<Modulo, string> = {
-		cooperados: 'var(--overlay-cooperados)',
-		compras: 'var(--overlay-compras)',
-		estoque: 'var(--overlay-estoque)',
-		comercializacao: 'var(--overlay-comercializacao)'
-	};
-
-	const textura = $derived(texturaForaDoModulo
-		? `var(--tex-${texturaForaDoModulo})`
-		: modulo ? texturaPorModulo[modulo] : 'var(--tex-terra)');
-	const overlay = $derived(modulo ? overlayPorModulo[modulo] : 'var(--overlay-login)');
-
-	// Ruído fotográfico sutil (sem arquivo binário extra): SVG de fractal noise embutido.
-	const ruido =
-		"url('data:image/svg+xml,%3Csvg xmlns=http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%3E%3Cfilter id=n%3E%3CfeTurbulence type=fractalNoise baseFrequency=0.6 numOctaves=3 stitchTiles=stitch/%3E%3CfeColorMatrix type=matrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width=100%25 height=100%25 filter=url(%23n)/%3E%3C/svg%3E')";
+	const classes = $derived(
+		`hero-modulo ${modulo ? `mod-${modulo}` : ''} ${texturaForaDoModulo ? 'textura' : ''} rounded-[var(--raio-painel)]`
+	);
+	const estilo = $derived(texturaForaDoModulo ? `--mod-image: var(--tex-${texturaForaDoModulo});` : undefined);
 </script>
 
-<div class="relative isolate overflow-hidden">
-	<div class="absolute inset-0 -z-10" style="background-image: {textura}; background-size: cover; background-position: center; background-repeat: no-repeat;" aria-hidden="true"></div>
-	<div class="absolute inset-0 -z-10" style="background: {overlay}, {ruido}; background-blend-mode: multiply;" aria-hidden="true"></div>
-
-	<div class="mx-auto max-w-6xl px-4 py-16 lg:py-24 relative z-10">
-		{#if uc}
-			<p class="mb-3 text-sm font-semibold tracking-wider uppercase text-areia">{uc}</p>
-		{/if}
-		<h1 class="text-4xl font-titulo font-bold text-branco lg:text-5xl">{titulo}</h1>
-		{#if subtitulo}
-			<p class="mt-4 text-lg text-areia/90 max-w-2xl">{subtitulo}</p>
-		{/if}
-		{#if acoes}
-			<div class="mt-8">{@render acoes()}</div>
-		{/if}
+<section class={classes} style={estilo}>
+	<div class="relative z-10 mx-auto flex max-w-6xl flex-col gap-5 px-6 py-8 sm:px-8">
+		<div>
+			{#if uc}<p class="mb-2 text-xs font-bold tracking-[0.18em] text-areia/85 uppercase">{uc}</p>{/if}
+			<h1>{titulo}</h1>
+			{#if subtitulo}<p class="mt-3 max-w-2xl text-lg text-areia/90">{subtitulo}</p>{/if}
+			{#if acoes}<div class="mt-6 flex flex-wrap gap-3">{@render acoes()}</div>{/if}
+		</div>
+		{#if metricas}<div class="mt-auto flex flex-wrap gap-x-8 gap-y-4 border-t border-areia/25 pt-4">{@render metricas()}</div>{/if}
 	</div>
-</div>
+</section>

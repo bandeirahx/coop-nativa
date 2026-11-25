@@ -5,13 +5,12 @@
 		label: string; id: string; erro?: string; dica?: string; value?: string | number;
 		opcoes: { valor: string | number; texto: string }[]; placeholder?: string;
 	};
-	let { label, id, erro = '', dica = '', value = $bindable(''), opcoes, placeholder = 'Selecione', required, ...resto }: Props = $props();
+	let { label, id, erro = '', dica = '', value = $bindable(''), opcoes, placeholder = 'Selecione', required, class: cls = '', ...resto }: Props = $props();
 </script>
 
 <FormField {label} {id} {erro} {dica} obrigatorio={!!required}>
 	{#snippet children(aria)}
-		<select {id} bind:value {required} {...aria} {...resto}
-			class="min-h-11 w-full rounded-lg border bg-branco px-3 text-base text-marrom-escuro {erro ? 'border-erro' : 'border-borda'}">
+		<select {id} bind:value {required} {...aria} {...resto} class="campo {cls}">
 			<option value="">{placeholder}</option>
 			{#each opcoes as o}<option value={o.valor}>{o.texto}</option>{/each}
 		</select>

@@ -16,23 +16,28 @@
 </script>
 
 <Guard perfis={['agricultor']}>
-	<div class="min-h-screen bg-areia pb-24 text-[1.125rem] leading-[1.6] md:pb-8">
-		<header class="border-b border-borda bg-areia/90">
-			<div class="mx-auto flex max-w-2xl flex-wrap items-center justify-between gap-2 px-4 py-3 relative z-10">
+	<div class="fundo-app min-h-screen pb-24 text-[1.125rem] leading-[1.6] md:pb-8">
+		<header class="header-textura border-b border-areia/15 bg-marrom-profundo/85 backdrop-blur-sm"
+			style="background-image: var(--overlay-fundo), var(--img-fundo); background-size: cover; background-position: center;">
+			<div class="relative z-10 mx-auto flex max-w-2xl flex-wrap items-center justify-between gap-2 px-4 py-3">
 				<a href="/produtor"><Logo tamanho="h-10" fundo="areia" /></a>
 				<div class="flex items-center gap-2">
 					<AccessibilityBar />
-					<button class="inline-flex min-h-11 items-center gap-1 rounded-btn border border-borda px-3 font-bold text-marrom-profundo" onclick={() => { sair(); goto('/login'); }} aria-label="Sair do sistema"><LogOut size={18} aria-hidden="true" /><span class="hidden sm:inline">Sair</span></button>
+					<button class="inline-flex min-h-11 items-center gap-1 rounded-btn border border-areia/25 px-3 font-bold text-areia transition-colors hover:bg-areia/10" onclick={() => { sair(); goto('/login'); }} aria-label="Sair do sistema">
+						<LogOut size={18} aria-hidden="true" /><span class="hidden sm:inline">Sair</span>
+					</button>
 				</div>
 			</div>
 			<p class="sr-only">Olá, {$usuario?.nome}</p>
 		</header>
-		<main class="mx-auto max-w-2xl px-4 py-6">{#key page.url.pathname}<Carregar ms={250}>{@render children()}</Carregar>{/key}</main>
-		<nav aria-label="Menu do produtor" class="fixed inset-x-0 bottom-0 z-30 border-t border-borda bg-areia/95 md:static md:mx-auto md:max-w-2xl md:border-0 md:bg-transparent">
-			<ul class="grid grid-cols-4 md:gap-2 md:px-4">
+		<main class="painel painel-conteudo mx-auto max-w-2xl my-4">
+			{#key page.url.pathname}<Carregar ms={250}>{@render children()}</Carregar>{/key}
+		</main>
+		<nav aria-label="Menu do produtor" class="fixed inset-x-0 bottom-0 z-30 border-t border-borda bg-areia/95 md:static md:mx-auto md:my-4 md:max-w-2xl md:rounded-card md:border">
+			<ul class="grid grid-cols-4 md:gap-2 md:p-2">
 				{#each itens as n}
 					<li><a href={n.h} aria-current={ativo(n.h) ? 'page' : undefined}
-						class="flex min-h-16 flex-col items-center justify-center gap-0.5 text-sm font-bold md:rounded-card md:border md:border-borda md:bg-branco {ativo(n.h) ? 'text-oliva bg-oliva/10' : 'text-marrom-profundo'}">
+						class="flex min-h-16 flex-col items-center justify-center gap-0.5 rounded-btn text-sm font-bold transition-colors {ativo(n.h) ? 'bg-oliva text-areia' : 'text-marrom-profundo hover:bg-cafe/10'}">
 						<n.i size={26} aria-hidden="true" />{n.t}</a></li>
 				{/each}
 			</ul>

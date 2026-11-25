@@ -2,14 +2,14 @@
 	import { Clock, BadgeCheck, PackageCheck, Ban, DoorOpen, DoorClosed } from 'lucide-svelte';
 	let { status }: { status: string } = $props();
 	const mapa: Record<string, { i: any; t: string; c: string }> = {
-		Pendente: { i: Clock, t: 'Aguardando pagamento', c: 'bg-aviso-claro text-aviso-texto border-aviso' },
-		'Aprovado/Pago': { i: BadgeCheck, t: 'Aprovado e pago', c: 'bg-verde-claro text-verde-escuro border-verde' },
-		Distribuído: { i: PackageCheck, t: 'Entregue', c: 'bg-marrom text-branco border-marrom' },
-		Cancelado: { i: Ban, t: 'Cancelado', c: 'bg-erro-claro text-erro border-erro' },
-		Aberta: { i: DoorOpen, t: 'Aberta', c: 'bg-verde-claro text-verde-escuro border-verde' },
-		Encerrada: { i: DoorClosed, t: 'Encerrada', c: 'bg-marrom-claro text-marrom border-borda' }
+		Pendente: { i: Clock, t: 'Aguardando pagamento', c: 'badge badge-ouro' },
+		'Aprovado/Pago': { i: BadgeCheck, t: 'Aprovado e pago', c: 'badge badge-folha' },
+		Distribuído: { i: PackageCheck, t: 'Entregue', c: 'badge badge-azul' },
+		Cancelado: { i: Ban, t: 'Cancelado', c: 'badge badge-vinho' },
+		Aberta: { i: DoorOpen, t: 'Aberta', c: 'badge badge-folha' },
+		Encerrada: { i: DoorClosed, t: 'Encerrada', c: 'badge badge-neutro' }
 	};
 	const m = $derived(mapa[status] ?? mapa.Pendente);
 </script>
 
-<span class="inline-flex items-center gap-2 rounded-full border-2 px-3 py-1 font-bold {m.c}"><m.i size={20} aria-hidden="true" />{m.t}</span>
+<span class="{m.c} gap-2 px-3 py-1.5 text-sm"><m.i size={18} aria-hidden="true" />{m.t}</span>

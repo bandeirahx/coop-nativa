@@ -1,38 +1,40 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import type { HTMLButtonAttributes } from 'svelte/elements';
 
-	type Props = HTMLButtonAttributes & {
+	type Props = {
 		variante?: 'primario' | 'secundario' | 'acento' | 'perigo' | 'contorno';
 		modulo?: 'cooperados' | 'compras' | 'estoque' | 'comercializacao';
 		grande?: boolean;
 		href?: string;
 		children: Snippet;
+		class?: string;
+		onclick?: (event: MouseEvent) => void;
+		disabled?: boolean;
+		type?: 'button' | 'submit' | 'reset';
+		title?: string;
+		'aria-label'?: string;
+		id?: string;
+		name?: string;
+		value?: string;
 	};
-	let { variante = 'primario', modulo, grande = false, href, children, class: cls = '', ...resto }: Props = $props();
+	let {
+		variante = 'primario', modulo, grande = false, href, children,
+		class: cls = '', onclick, disabled, type = 'button', title, 'aria-label': ariaLabel, id, name, value
+	}: Props = $props();
 
-	/* Cor do acento por módulo */
-	const corModulo = $derived(modulo ? ({
-		cooperados: 'var(--cor-modulo-cooperados)',
-		compras: 'var(--cor-modulo-compras)',
-		estoque: 'var(--cor-modulo-estoque)',
-		comercializacao: 'var(--cor-modulo-comercializacao)'
-	}[modulo]) : 'var(--cor-base-oliva)');
-
-	const base =
-		'btn-base inline-flex items-center justify-center gap-2 rounded-btn font-bold transition-all disabled:opacity-50 disabled:cursor-not-allowed';
-	const tam = $derived(grande ? 'min-h-12 px-6 text-lg' : 'min-h-10 px-4 text-base');
-	const cor = $derived({
-		primario: `bg-oliva text-areia hover:bg-terracota focus-visible:bg-terracota shadow-suave`,
-		secundario: 'bg-cafe text-areia hover:bg-marrom-profundo shadow-suave',
-		acento: `bg-${modulo ? 'terracota' : 'oliva'} text-areia hover:opacity-90 shadow-suave`,
-		perigo: 'bg-erro text-areia hover:bg-erro/90 shadow-suave',
-		contorno: 'border border-borda bg-areia text-marrom-profundo hover:bg-areia/50'
-	}[variante]);
+	const corModulo = $derived(
+		modulo
+			? ({ cooperados: 'var(--cor-acento-terracota)', compras: 'var(--cor-acento-ouro)', estoque: 'var(--cor-acento-vinho)', comercializacao: 'var(--cor-acento-azul)' }[modulo])
+			: 'var(--mod-accent, var(--cor-base-oliva))'
+	);
+	const corFundo = $derived(variante === 'secundario' ? 'var(--cor-base-cafe)' : variante === 'perigo' ? 'var(--cor-acento-vinho)' : corModulo);
+	const corTexto = $derived(corFundo === 'var(--cor-acento-ouro)' ? 'var(--cor-base-marrom-profundo)' : 'var(--cor-base-areia)');
+	const classes = $derived(`btn-base btn-${variante} inline-flex items-center justify-center gap-2 font-semibold ${grande ? 'min-h-12 px-7 text-lg' : 'min-h-11 px-5 text-base'} ${cls}`);
+	const estilo = $derived(`--btn-bg: ${corFundo}; --btn-fg: ${corTexto};`);
 </script>
 
 {#if href}
-	<a {href} class="{base} {tam} {cor} {cls}" style="--cor-btn: {corModulo}">{@render children()}</a>
+	<a {href} {id} {title} aria-label={ariaLabel} {onclick} class={classes} style={estilo}>{@render children()}</a>
 {:else}
-	<button class="{base} {tam} {cor} {cls}" style="--cor-btn: {corModulo}" {...resto}>{@render children()}</button>
+	<button {type} {disabled} {id} {name} {value} {title} aria-label={ariaLabel} {onclick} class={classes} style={estilo}>{@render children()}</button>
 {/if}

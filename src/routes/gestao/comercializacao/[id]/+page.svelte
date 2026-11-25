@@ -23,7 +23,6 @@
 		titulo="Pedido de comercialização #{p.id}"
 		subtitulo="Comprador, produtos do catálogo, quantidade e total de venda."
 		uc="RF13 · UC13.2 · UC13.3"
-		texturaForaDoModulo="folhas"
 	>
 		{#snippet acoes()}<Button href="/gestao/comercializacao" variante="contorno"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>
 			{#if p.status === 'Pendente'}<Button variante="perigo" onclick={() => (canc = true)}><Ban size={16} aria-hidden="true" />Cancelar</Button><Button onclick={() => (aprov = true)}><BadgeCheck size={16} aria-hidden="true" />Aprovar pagamento</Button>{/if}{/snippet}

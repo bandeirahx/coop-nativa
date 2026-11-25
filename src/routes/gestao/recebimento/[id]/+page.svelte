@@ -18,7 +18,6 @@
 		titulo="Recebimento #{r.id}"
 		subtitulo="Conferência item a item do recebido versus o previsto na compra coletiva."
 		uc="RF08 · UC08.2 · UC08.3"
-		texturaForaDoModulo="graos"
 	>
 		{#snippet acoes()}<Button href="/gestao/recebimento" variante="contorno"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>{/snippet}
 	</ModuloHero>

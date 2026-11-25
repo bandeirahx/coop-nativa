@@ -64,7 +64,6 @@
 	titulo={editando ? `Editar pedido #${original?.id}` : 'Registrar pedido de insumo'}
 	subtitulo="Escolha a campanha aberta, os insumos e as quantidades dentro do limite de suas cotas."
 	uc="RF05: Gerenciar Pedidos de Insumos · {editando ? 'UC05.3' : 'UC05.1'}"
-	texturaForaDoModulo="graos"
 >
 	{#snippet acoes()}{/snippet}
 </ModuloHero>
@@ -90,7 +89,7 @@
 						<div class="flex flex-col gap-1">
 							<label for="q{l.insumoId}" class="text-sm font-semibold text-marrom">Quantidade</label>
 							<input id="q{l.insumoId}" type="number" min="0" bind:value={qtds[l.insumoId]} aria-invalid={!!erros[`q${l.insumoId}`]} aria-describedby={erros[`q${l.insumoId}`] ? `e${l.insumoId}` : undefined}
-								class="min-h-11 rounded-lg border bg-branco px-3 {erros[`q${l.insumoId}`] ? 'border-erro' : 'border-borda'}" />
+								class="campo {erros[`q${l.insumoId}`] ? 'border-erro' : ''}" />
 							{#if erros[`q${l.insumoId}`]}<p id="e{l.insumoId}" role="alert" class="text-sm font-medium text-erro">{erros[`q${l.insumoId}`]}</p>{/if}
 						</div>
 						<div class="text-sm"><p class="font-semibold text-marrom">Subtotal</p><p class="text-lg font-bold">{moeda(l.subtotal)}</p></div>

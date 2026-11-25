@@ -18,7 +18,6 @@
 	titulo="Campanhas de compras"
 	subtitulo="Campanhas de compra coletiva de insumos, prazos e insumos ofertados."
 	uc="RF04: Gerenciar Campanhas de Compras · UC04.3"
-	texturaForaDoModulo="graos"
 >
 	{#snippet acoes()}{#if podeEscrever($usuario?.perfil, 'campanhas')}<Button href="/gestao/campanhas/nova"><Plus size={18} aria-hidden="true" />Nova campanha</Button>{/if}{/snippet}
 </ModuloHero>

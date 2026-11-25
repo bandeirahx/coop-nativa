@@ -33,7 +33,6 @@
 	titulo="Nova compra coletiva"
 	subtitulo="Escolha a consolidação fechada e o fornecedor para registrar a compra."
 	uc="RF06: Gerenciar Compras Coletivas"
-	texturaForaDoModulo="graos"
 >
 	{#snippet acoes()}{/snippet}
 </ModuloHero>

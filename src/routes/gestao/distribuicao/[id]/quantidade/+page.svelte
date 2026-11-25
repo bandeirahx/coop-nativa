@@ -59,7 +59,6 @@
 		titulo="Registrar quantidade distribuída"
 		subtitulo="Confere estoque disponível e limite restante pelas cotas antes da baixa (RN09/RN10)."
 		uc="RF10: Gerenciar Distribuição de Insumos · UC10.2"
-		texturaForaDoModulo="couro"
 	>
 		{#snippet acoes()}<Button href="/gestao/distribuicao" variante="contorno"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>{/snippet}
 	</ModuloHero>

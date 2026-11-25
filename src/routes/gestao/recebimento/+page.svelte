@@ -15,7 +15,6 @@
 	titulo="Recebimento de insumos"
 	subtitulo="Conferência item a item do que foi entregue pelo fornecedor (previsto × recebido)."
 	uc="RF08: Gerenciar Recebimento de Insumos · UC08.2"
-	texturaForaDoModulo="graos"
 >
 	{#snippet acoes()}<Button href="/gestao/recebimento/nova"><Plus size={18} aria-hidden="true" />Registrar recebimento</Button>{/snippet}
 </ModuloHero>

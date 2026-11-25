@@ -31,7 +31,6 @@
 	titulo="Consolidar solicitações"
 	subtitulo="Selecione a campanha e quais pedidos entrarem na compra coletiva."
 	uc="RF06 · UC06.1 · UC06.1.1 · UC06.1.2 · UC06.1.3"
-	texturaForaDoModulo="graos"
 >
 	{#snippet acoes()}{/snippet}
 </ModuloHero>

@@ -25,7 +25,6 @@
 		titulo="Pedido #{p.id}"
 		subtitulo="Cooperado, campanha, itens, valores e situação do pagamento (RN09/RN10)."
 		uc="RF05: Gerenciar Pedidos de Insumos · UC05.2"
-		texturaForaDoModulo="graos"
 	>
 		{#snippet acoes()}<Button href="/gestao/pedidos" variante="contorno"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>
 			{#if gestor && (p.status === 'Registrado' || p.status === 'Pendente')}

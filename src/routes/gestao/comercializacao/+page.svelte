@@ -18,7 +18,6 @@
 	titulo="Pedidos de comercialização"
 	subtitulo="Catálogo de produtos, compradores e pedidos de venda da produção dos cooperados."
 	uc="RF13: Gerenciar Pedidos de Comercialização · UC13.2"
-	texturaForaDoModulo="folhas"
 >
 	{#snippet acoes()}<Button href="/gestao/comercializacao/nova"><Plus size={18} aria-hidden="true" />Registrar pedido</Button>{/snippet}
 </ModuloHero>

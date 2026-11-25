@@ -19,7 +19,6 @@
 		titulo="Distribuição #{d.id}"
 		subtitulo="Itens entregues ao cooperado, previstos versus distribuídos."
 		uc="RF10 · UC10.3"
-		texturaForaDoModulo="couro"
 	>
 		{#snippet acoes()}<Button href="/gestao/distribuicao" variante="contorno"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>
 			{#if d.status === 'Registrada'}<Button href="/gestao/distribuicao/{d.id}/quantidade">Registrar quantidade distribuída</Button>{/if}{/snippet}

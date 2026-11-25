@@ -43,7 +43,6 @@
 	titulo="Registrar recebimento"
 	subtitulo="Confira cada item entregue pelo fornecedor contra o previsto na compra."
 	uc="RF08 · UC08.1 · UC08.3 (conferência) · RF09 · UC09.1"
-	texturaForaDoModulo="graos"
 >
 	{#snippet acoes()}{/snippet}
 </ModuloHero>

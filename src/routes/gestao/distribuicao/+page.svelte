@@ -18,7 +18,6 @@
 	titulo="Distribuição de insumos"
 	subtitulo="Entrega de insumos aos cooperados conforme pedido autorizado e estoque disponível."
 	uc="RF10: Gerenciar Distribuição de Insumos · UC10.3"
-	texturaForaDoModulo="couro"
 >
 	{#snippet acoes()}<Button href="/gestao/distribuicao/nova"><Plus size={18} aria-hidden="true" />Registrar distribuição</Button>{/snippet}
 </ModuloHero>

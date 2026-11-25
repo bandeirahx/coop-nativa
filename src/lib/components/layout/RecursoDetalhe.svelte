@@ -1,7 +1,7 @@
 <script lang="ts">
 	import ModuloHero from './ModuloHero.svelte';
 	import Card from '#lib/components/ui/Card.svelte';
-	import { moduloDe, texturaModulo } from '#lib/recursos.ts';
+	import { moduloDe } from '#lib/recursos.ts';
 	import Badge from '#lib/components/ui/Badge.svelte';
 	import Button from '#lib/components/ui/Button.svelte';
 	import EmptyState from '#lib/components/ui/EmptyState.svelte';
@@ -30,8 +30,7 @@
 		titulo={r.nome(x)}
 		subtitulo={r.singular}
 		uc="{r.rf} · {r.uc.consultar}"
-		texturaForaDoModulo={texturaModulo(modulo ?? 'cooperados')}
-	>
+		>
 		{#snippet acoes()}
 			<Button href="/gestao/{r.slug}" variante="contorno"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>
 			{#if escreve && r.uc.editar}<Button href="/gestao/{r.slug}/{x.id}/editar"><Pencil size={16} aria-hidden="true" />Editar</Button>{/if}

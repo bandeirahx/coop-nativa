@@ -19,7 +19,6 @@
 	titulo="Pedidos de insumos"
 	subtitulo="Pedidos dos cooperados por campanha, valores e situação de pagamento."
 	uc="RF05: Gerenciar Pedidos de Insumos · UC05.2"
-	texturaForaDoModulo="graos"
 >
 	{#snippet acoes()}{#if $usuario?.perfil === 'gestor'}<Button href="/gestao/pedidos/nova"><Plus size={18} aria-hidden="true" />Registrar pedido</Button>{/if}{/snippet}
 </ModuloHero>

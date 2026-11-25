@@ -20,7 +20,6 @@
 		titulo={c.nome}
 		subtitulo="Detalhe da campanha: insumos ofertados, preço e limite por cota (RN10)."
 		uc="RF04: Gerenciar Campanhas de Compras · UC04.3"
-		texturaForaDoModulo="graos"
 	>
 		{#snippet acoes()}<Button href="/gestao/campanhas" variante="contorno"><ArrowLeft size={16} aria-hidden="true" />Voltar</Button>
 			{#if $usuario?.perfil === 'gestor'}<Button href="/gestao/campanhas/{c.id}/editar"><Pencil size={16} aria-hidden="true" />Editar</Button>{/if}{/snippet}

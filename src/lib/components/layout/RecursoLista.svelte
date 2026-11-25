@@ -7,7 +7,7 @@
 	import Select from '#lib/components/ui/Select.svelte';
 	import { usuario } from '#lib/stores/auth.ts';
 	import { podeEscrever } from '#lib/nav.ts';
-	import { rotuloNovo, type Recurso, moduloDe, texturaModulo } from '#lib/recursos.ts';
+	import { rotuloNovo, type Recurso, moduloDe } from '#lib/recursos.ts';
 	import { untrack } from 'svelte';
 	import { Plus, Eye } from 'lucide-svelte';
 
@@ -36,6 +36,7 @@
 		})
 	);
 	const escreve = $derived(podeEscrever($usuario?.perfil, r.slug));
+	const filtrosAtivos = $derived(Object.values(filtros).filter(Boolean).length + (busca ? 1 : 0) + (de ? 1 : 0) + (ate ? 1 : 0));
 	const limpar = () => { busca = ''; filtros = Object.fromEntries((r.filtros ?? []).map((f) => [f.chave, ''])); de = ate = ''; };
 </script>
 
@@ -44,9 +45,13 @@
 	titulo={r.titulo}
 	subtitulo={r.singular}
 	uc="{r.rf} · {r.uc.consultar}"
-	texturaForaDoModulo={texturaModulo(modulo ?? 'cooperados')}
 >
-	{#snippet acoes()}{#if escreve && r.uc.cadastrar}<Button href="/gestao/{r.slug}/nova"><Plus size={18} aria-hidden="true" />{rotuloNovo(r)}</Button>{/if}{/snippet}
+	{#snippet acoes()}{#if escreve && r.uc.cadastrar}<Button href="/gestao/{r.slug}/nova" grande><Plus size={18} aria-hidden="true" />{rotuloNovo(r)}</Button>{/if}{/snippet}
+	{#snippet metricas()}
+		<div><p class="metrica">{($itens as any[]).length}</p><p class="text-xs font-semibold tracking-wide text-areia/80 uppercase">no sistema</p></div>
+		<div><p class="metrica">{lista.length}</p><p class="text-xs font-semibold tracking-wide text-areia/80 uppercase">nesta consulta</p></div>
+		<div><p class="metrica">{filtrosAtivos}</p><p class="text-xs font-semibold tracking-wide text-areia/80 uppercase">filtros ativos</p></div>
+	{/snippet}
 </ModuloHero>
 
 <div class="mb-4 grid gap-3 rounded-[var(--radius-card)] border border-borda bg-areia p-4 sm:grid-cols-2 lg:grid-cols-4">

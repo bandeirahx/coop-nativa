@@ -15,7 +15,6 @@
 	titulo="Consolidação de pedidos"
 	subtitulo="Agrupa solicitações por insumo, define quantidades e gera a compra coletiva com o fornecedor."
 	uc="RF06: Gerenciar Compras Coletivas · UC06.2"
-	texturaForaDoModulo="graos"
 >
 	{#snippet acoes()}<Button href="/gestao/consolidacao/nova"><Plus size={18} aria-hidden="true" />Consolidar solicitações</Button>{/snippet}
 </ModuloHero>

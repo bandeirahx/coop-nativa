@@ -40,7 +40,6 @@
 	titulo="Estoque de insumos"
 	subtitulo="Saldos, mínimos, alertas de estoque baixo e histórico de movimentações (RN11)."
 	uc="RF09: Gerenciar Estoque · UC09.2 · UC09.3"
-	texturaForaDoModulo="couro"
 >
 	{#snippet acoes()}{/snippet}
 </ModuloHero>
@@ -70,7 +69,7 @@
 		cabecalhoClasses="bg-vinho text-areia"
 	>
 		{#each movs as m}
-			<tr><td data-label="Identificador" class="font-mono">{m.id}</td><td data-label="Data">{data(m.data)}</td>
+			<tr><td data-label="Identificador" class="font-titulo">{m.id}</td><td data-label="Data">{data(m.data)}</td>
 				<td data-label="Tipo"><span class="inline-flex items-center gap-1 font-semibold {m.tipo === 'entrada' ? 'text-verde-escuro' : 'text-aviso-texto'}">{#if m.tipo === 'entrada'}<ArrowDownToLine size={16} aria-hidden="true" />Entrada{:else}<ArrowUpFromLine size={16} aria-hidden="true" />Saída{/if}</span></td>
 				<td data-label="Insumo">{nomeInsumo(m.insumoId)}</td><td data-label="Quantidade">{m.quantidade}</td><td data-label="Descrição">{m.descricao}</td></tr>
 		{/each}

@@ -80,7 +80,6 @@
 	titulo="Registrar distribuição"
 	subtitulo="Verifica cooperado, pedido autorizado e estoque antes de registrar (sem baixa de estoque)."
 	uc="RF10: Gerenciar Distribuição de Insumos · UC10.1"
-	texturaForaDoModulo="couro"
 >
 	{#snippet acoes()}{/snippet}
 </ModuloHero>

@@ -40,7 +40,6 @@
 	titulo="Registrar pedido do comprador"
 	subtitulo="Escolha o comprador e os produtos do catálogo dentro da produção disponível."
 	uc="RF13: Gerenciar Pedidos de Comercialização · UC13.1"
-	texturaForaDoModulo="folhas"
 >
 	{#snippet acoes()}{/snippet}
 </ModuloHero>
@@ -54,7 +53,7 @@
 					<div><p class="font-semibold">{l.nome}</p><p class="text-sm text-marrom">{moeda(l.preco)} / {l.unidade}</p></div>
 					<div class="text-sm"><p class="font-semibold text-marrom">Disponível</p><p class="font-titulo text-xl font-bold text-verde-escuro">{l.disp.toLocaleString('pt-BR')}</p><p class="text-marrom">produção − reservado</p></div>
 					<div class="flex flex-col gap-1"><label for="q{l.id}" class="text-sm font-semibold text-marrom">Quantidade</label>
-						<input id="q{l.id}" type="number" min="0" bind:value={qtds[l.id]} class="min-h-11 rounded-lg border bg-branco px-3 {erros[`q${l.id}`] ? 'border-erro' : 'border-borda'}" aria-invalid={!!erros[`q${l.id}`]} />
+						<input id="q{l.id}" type="number" min="0" bind:value={qtds[l.id]} class="campo {erros[`q${l.id}`] ? 'border-erro' : ''}" aria-invalid={!!erros[`q${l.id}`]} />
 						{#if erros[`q${l.id}`]}<p role="alert" class="text-sm font-medium text-erro">{erros[`q${l.id}`]}</p>{/if}</div>
 					<div class="text-sm"><p class="font-semibold text-marrom">Subtotal</p><p class="text-lg font-bold">{moeda(l.sub)}</p></div>
 				</div>

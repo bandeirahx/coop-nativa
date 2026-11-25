@@ -2,7 +2,7 @@
 	import { goto } from '$app/navigation';
 	import ModuloHero from './ModuloHero.svelte';
 	import Card from '#lib/components/ui/Card.svelte';
-	import { moduloDe, texturaModulo } from '#lib/recursos.ts';
+	import { moduloDe } from '#lib/recursos.ts';
 	import Input from '#lib/components/ui/Input.svelte';
 	import Select from '#lib/components/ui/Select.svelte';
 	import Button from '#lib/components/ui/Button.svelte';
@@ -79,7 +79,6 @@
 	titulo={editando ? `Editar ${r.singular.toLowerCase()}` : rotuloNovo(r)}
 	subtitulo={r.singular}
 	uc="{r.rf} · {uc}"
-	texturaForaDoModulo={texturaModulo(modulo ?? 'cooperados')}
 >
 	{#snippet acoes()}{/snippet}
 </ModuloHero>

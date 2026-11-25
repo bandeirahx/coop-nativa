@@ -65,6 +65,7 @@ a:hover { color: var(--mod-accent, var(--cor-acento-terracota)); }
 .text-vinho { color: var(--cor-acento-vinho); }
 .text-folha { color: var(--cor-acento-folha); }
 .text-azul { color: var(--cor-acento-azul); }
+.text-mod { color: var(--mod-accent, var(--cor-base-oliva)); }
 .bg-oliva { background-color: var(--cor-base-oliva); }
 .bg-cafe { background-color: var(--cor-base-cafe); }
 .bg-marrom { background-color: var(--cor-base-cafe); }
@@ -76,7 +77,6 @@ a:hover { color: var(--mod-accent, var(--cor-acento-terracota)); }
 .bg-vinho { background-color: var(--cor-acento-vinho); }
 .bg-folha { background-color: var(--cor-acento-folha); }
 .bg-azul { background-color: var(--cor-acento-azul); }
-.bg-branco { background-color: var(--cor-base-areia); }
 .text-branco { color: var(--cor-texto-sobre-imagem); }
 .text-marrom-escuro { color: var(--cor-marrom-escuro); }
 .bg-marrom-claro { background-color: var(--cor-marrom-claro); }
@@ -217,14 +217,6 @@ a:hover { color: var(--mod-accent, var(--cor-acento-terracota)); }
 	opacity: var(--grao-opacidade);
 }
 
-/* Variações de textura (todas reaproveitam as fotos fornecidas) */
-.textura-madeira { background-image: var(--tex-madeira); }
-.textura-graos { background-image: var(--tex-graos); }
-.textura-couro { background-image: var(--tex-couro); }
-.textura-folhas { background-image: var(--tex-folhas); }
-.textura-fruta { background-image: var(--tex-fruta); }
-.textura-terra { background-image: var(--tex-terra); }
-
 /* Overlays por módulo */
 .overlay-cooperados { background: var(--overlay-cooperados); }
 .overlay-compras { background: var(--overlay-compras); }
@@ -236,7 +228,7 @@ a:hover { color: var(--mod-accent, var(--cor-acento-terracota)); }
 .hero-modulo {
 	min-height: 252px;
 	background-image:
-		linear-gradient(135deg, var(--mod-overlay-a, rgba(46, 36, 27, 0.7)), var(--mod-overlay-b, rgba(62, 44, 28, 0.68))),
+		linear-gradient(135deg, var(--mod-overlay-a, color-mix(in srgb, var(--cor-base-marrom-profundo) 70%, transparent)), var(--mod-overlay-b, color-mix(in srgb, var(--cor-base-cafe) 68%, transparent))),
 		var(--mod-image, var(--img-fundo));
 	background-size: cover;
 	background-position: center;
@@ -271,6 +263,7 @@ a:hover { color: var(--mod-accent, var(--cor-acento-terracota)); }
 	background-position: center;
 	transition: transform var(--transicao);
 }
+.card-foto.compacto { min-width: 0; min-height: 0; }
 .card-foto:hover { transform: translateY(-4px); box-shadow: var(--sombra-card-hover); }
 .card-foto:hover > .card-foto-foto { transform: scale(1.06); }
 .card-foto::before {
@@ -279,12 +272,12 @@ a:hover { color: var(--mod-accent, var(--cor-acento-terracota)); }
 	inset: 0;
 	z-index: -1;
 	background-image:
-		linear-gradient(135deg, var(--mod-overlay-a, rgba(46, 36, 27, 0.7)), var(--mod-overlay-b, rgba(62, 44, 28, 0.68)));
+		linear-gradient(135deg, var(--mod-overlay-a, color-mix(in srgb, var(--cor-base-marrom-profundo) 70%, transparent)), var(--mod-overlay-b, color-mix(in srgb, var(--cor-base-cafe) 68%, transparent)));
 	background-blend-mode: multiply;
 }
 
 /* Métricas grandes */
-.metrica { font-family: var(--fonte-titulo); font-size: var(--tamanho-5xl); font-weight: var(--peso-titulo-forte); line-height: 1; letter-spacing: var(--tracking-titulo); }
+.metrica { font-family: var(--fonte-titulo); font-size: var(--tamanho-4xl); font-weight: var(--peso-titulo-forte); line-height: 1; letter-spacing: var(--tracking-titulo); }
 
 /* Badges semânticos */
 .badge {
@@ -417,20 +410,6 @@ dialog::backdrop { background: color-mix(in srgb, var(--cor-base-marrom-profundo
 /* ==========================================================================
    ALTO CONTRASTE — sem branco puro
    ========================================================================== */
-html.alto-contraste {
-	--cor-base-oliva: #2E4A0C;
-	--cor-base-cafe: #1A1208;
-	--cor-base-areia: #FFFCF5;
-	--cor-base-marrom-profundo: #120D08;
-	--cor-acento-terracota: #8A3108;
-	--cor-acento-ouro: #7A5600;
-	--cor-acento-vinho: #5C1414;
-	--cor-acento-folha: #2E4A0C;
-	--cor-acento-azul: #162E4A;
-	--cor-texto-principal: #1A1208;
-	--cor-texto-claro: #FFFCF5;
-	--cor-borda: #1A1208;
-}
 html.alto-contraste :focus-visible { outline-color: var(--cor-acento-terracota); }
 html.alto-contraste .textura-fundo::after,
 html.alto-contraste .secao-textura::after,

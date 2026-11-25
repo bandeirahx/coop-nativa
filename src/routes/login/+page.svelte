@@ -6,7 +6,7 @@
 	import { entrar, areaDoPerfil, nomesPerfil, usuariosDemo, type Perfil } from '#lib/stores/auth.ts';
 	import { validarCPF, validarCNPJ } from '#lib/utils/validacao.ts';
 	import AccessibilityBar from '#lib/components/layout/AccessibilityBar.svelte';
-	import { UserCog, ClipboardList, Wheat } from 'lucide-svelte';
+	import { UserCog, ClipboardList, Wheat, ArrowLeft } from 'lucide-svelte';
 
 	let login = $state('');
 	let senha = $state('');
@@ -39,32 +39,49 @@
 
 <svelte:head><title>Entrar · Nativa Coop</title></svelte:head>
 
-<div class="grid min-h-screen md:grid-cols-2">
-	<aside class="relative hidden md:block">
-		<img src="/images/webp/hero.webp" alt="" class="absolute inset-0 h-full w-full object-cover" />
-		<div class="absolute inset-0 bg-marrom-profundo/75"></div>
-		<p class="absolute bottom-10 left-10 max-w-sm font-titulo text-3xl font-bold text-areia">Juntos, plantamos mais e compramos melhor.</p>
+<div class="fundo-app grid min-h-screen md:grid-cols-2">
+	<aside class="hero-modulo relative hidden overflow-hidden rounded-none md:flex md:flex-col md:justify-between mod-cooperados p-10 lg:p-14"
+		style="--mod-image: url('/images/novas/heroes/login.webp'); --mod-overlay-a: color-mix(in srgb, var(--cor-base-marrom-profundo) 74%, transparent); --mod-overlay-b: color-mix(in srgb, var(--cor-base-cafe) 72%, transparent);">
+		<div class="relative z-10"><Logo tamanho="h-14" fundo="areia" /></div>
+		<div class="relative z-10 max-w-lg">
+			<p class="mb-3 text-xs font-bold tracking-[0.2em] text-areia/80 uppercase">Do campo para a cooperativa</p>
+			<p class="font-titulo text-4xl leading-tight font-extrabold text-areia lg:text-5xl">Juntos, plantamos mais e compramos melhor.</p>
+			<p class="mt-5 text-lg text-areia/90">Pessoas, insumos, produção e vendas organizados em um só lugar.</p>
+		</div>
 	</aside>
 
-	<main class="flex min-w-0 flex-col justify-center gap-6 px-6 py-10 sm:px-16 bg-areia">
-		<div class="flex flex-wrap items-center justify-between gap-3"><Logo tamanho="h-14" fundo="areia" /><AccessibilityBar /></div>
-		<h1 class="text-3xl font-titulo font-bold text-marrom-profundo">Entrar</h1>
-
-		<form onsubmit={enviar} class="flex flex-col gap-4" novalidate>
-			{#if erroGeral}<p role="alert" class="rounded-card bg-erro/10 p-3 text-sm font-medium text-erro border border-erro/20">{erroGeral}</p>{/if}
-			<Input id="login" label="CPF, CNPJ ou e-mail" bind:value={login} erro={erroLogin} autocomplete="username" required />
-			<Input id="senha" label="Senha" type="password" bind:value={senha} erro={erroSenha} autocomplete="current-password" required />
-			<a href="#esqueci" onclick={(e) => { e.preventDefault(); erroGeral = 'Recuperação de senha indisponível no protótipo.'; }} class="text-sm font-semibold text-oliva underline">Esqueci minha senha</a>
-			<Button type="submit" grande>Entrar</Button>
-		</form>
-
-		<section aria-labelledby="demo" class="rounded-card border border-borda bg-areia p-5">
-			<h2 id="demo" class="mb-3 text-base font-titulo font-bold text-marrom-profundo">Entrar como demonstração</h2>
-			<div class="flex flex-col gap-2">
-				{#each demos as d}
-					<Button variante="secundario" class="justify-start" onclick={() => demo(d.p)}><d.icone size={20} aria-hidden="true" />{nomesPerfil[d.p]} <span class="font-normal text-marrom-profundo">· {usuariosDemo[d.p].nome}</span></Button>
-				{/each}
+	<main class="flex min-w-0 flex-col justify-center gap-6 p-4 sm:p-8 lg:px-16">
+		<div class="painel painel-conteudo mx-auto w-full max-w-lg">
+			<div class="mb-6 flex flex-wrap items-center justify-between gap-3">
+				<div class="md:hidden"><Logo tamanho="h-11" fundo="areia" /></div>
+				<div class="hidden md:block"><AccessibilityBar /></div>
+				<div class="md:hidden"><AccessibilityBar /></div>
 			</div>
-		</section>
+			<h1 class="text-3xl text-marrom-profundo">Entrar</h1>
+			<p class="mt-2 text-marrom">Use seu CPF, CNPJ ou e-mail cadastrado na cooperativa.</p>
+
+			<form onsubmit={enviar} class="mt-6 flex flex-col gap-4" novalidate>
+				{#if erroGeral}
+					<p role="alert" class="rounded-btn border border-erro bg-erro-claro p-3 text-sm font-semibold text-erro">{erroGeral}</p>
+				{/if}
+				<Input id="login" label="CPF, CNPJ ou e-mail" bind:value={login} erro={erroLogin} autocomplete="username" required />
+				<Input id="senha" label="Senha" type="password" bind:value={senha} erro={erroSenha} autocomplete="current-password" required />
+				<a href="#esqueci" onclick={(e) => { e.preventDefault(); erroGeral = 'Recuperação de senha indisponível no protótipo.'; }} class="text-sm font-semibold text-oliva underline">Esqueci minha senha</a>
+				<Button type="submit" grande modulo="cooperados" class="w-full">Entrar</Button>
+			</form>
+
+			<section aria-labelledby="demo" class="mt-7 border-t border-borda pt-6">
+				<h2 id="demo" class="mb-3 text-lg font-titulo font-bold text-marrom-profundo">Entrar como demonstração</h2>
+				<div class="flex flex-col gap-2">
+					{#each demos as d}
+						<Button variante="contorno" class="justify-start" onclick={() => demo(d.p)}>
+							<d.icone size={20} aria-hidden="true" />{nomesPerfil[d.p]} <span class="font-normal text-marrom-profundo">· {usuariosDemo[d.p].nome}</span>
+						</Button>
+					{/each}
+				</div>
+			</section>
+
+			<a href="/" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-marrom"><ArrowLeft size={16} aria-hidden="true" />Voltar para o início</a>
+		</div>
 	</main>
 </div>

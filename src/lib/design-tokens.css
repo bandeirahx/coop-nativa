@@ -47,7 +47,7 @@
 	--cor-modulo-comercializacao: var(--cor-acento-azul);
 
 	/* Tipografia */
-	--fonte-titulo: 'Fraunces', 'Merriweather', Georgia, serif;
+	--fonte-titulo: 'Fraunces', Georgia, serif;
 	--fonte-corpo: 'Inter', 'Arial', sans-serif;
 	--peso-titulo: 700;
 	--peso-titulo-forte: 800;
@@ -103,8 +103,12 @@
 	--overlay-compras: linear-gradient(135deg, rgba(217, 160, 32, 0.70), rgba(62, 44, 28, 0.66));
 	--overlay-estoque: linear-gradient(135deg, rgba(122, 46, 46, 0.74), rgba(46, 36, 27, 0.70));
 	--overlay-comercializacao: linear-gradient(135deg, rgba(46, 74, 107, 0.74), rgba(46, 36, 27, 0.68));
-	--overlay-login: linear-gradient(135deg, rgba(46, 36, 27, 0.78), rgba(62, 44, 28, 0.72));
-	--overlay-fundo: linear-gradient(rgba(46, 36, 27, 0.88), rgba(46, 36, 27, 0.88));
+	--overlay-login: linear-gradient(135deg, rgba(46, 36, 27, 0.74), rgba(62, 44, 28, 0.72));
+	--overlay-fundo: linear-gradient(rgba(46, 36, 27, 0.74), rgba(46, 36, 27, 0.74));
+	--overlay-landing: linear-gradient(135deg, rgba(74, 93, 35, 0.74), rgba(46, 36, 27, 0.72));
+	--overlay-servicos: linear-gradient(135deg, rgba(46, 36, 27, 0.74), rgba(62, 44, 28, 0.72));
+	--overlay-galeria: linear-gradient(135deg, rgba(46, 36, 27, 0.38), rgba(62, 44, 28, 0.34));
+	--overlay-muda: linear-gradient(135deg, rgba(74, 93, 35, 0.30), rgba(46, 36, 27, 0.38));
 
 	/* Fotografias — exclusivamente as 10 imagens fornecidas, convertidas com sharp */
 	--img-hero-cooperados: url('/images/novas/heroes/cooperados.webp');
@@ -142,6 +146,16 @@
 	--tex-aneis-arvore: var(--img-card-estoque);
 	--tex-folhagem: var(--img-card-comercializacao);
 	--tex-argila: var(--img-card-cooperados);
+}
+
+/* Alto contraste: mesma paleta, sem grão e com bordas reforçadas */
+html.alto-contraste {
+	--cor-texto-principal: var(--cor-base-marrom-profundo);
+	--cor-texto-claro: var(--cor-base-areia);
+	--cor-texto-suave: var(--cor-base-cafe);
+	--cor-borda: var(--cor-base-marrom-profundo);
+	--cor-borda-fraca: var(--cor-base-cafe);
+	--grao-opacidade: 0;
 }
 
 /* ==========================================================================
@@ -183,7 +197,7 @@
 /* Receita de imagem: foto real + overlay da cor do módulo */
 .textura {
 	background-image:
-		linear-gradient(135deg, var(--mod-overlay-a, rgba(46, 36, 27, 0.7)), var(--mod-overlay-b, rgba(62, 44, 28, 0.68))),
+		linear-gradient(135deg, var(--mod-overlay-a, color-mix(in srgb, var(--cor-base-marrom-profundo) 70%, transparent)), var(--mod-overlay-b, color-mix(in srgb, var(--cor-base-cafe) 68%, transparent))),
 		var(--mod-image, var(--img-fundo));
 	background-size: cover;
 	background-position: center;

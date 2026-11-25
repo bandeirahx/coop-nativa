@@ -1,1 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#F5F1E8"/><path d="M14 14c12-2 18 4 18 16-12 0-20-4-18-16z" fill="#4A5D23"/><path d="M50 22c0 10-6 14-16 12 0-8 6-13 16-12z" fill="#6B8E23"/><path d="M8 38c14 0 26 5 34 14-14 4-30-2-34-14z" fill="#3E2C1C"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Nativa Coop">
+	<title>Nativa Coop</title>
+	<rect width="64" height="64" rx="14" fill="#4A5D23" />
+	<circle cx="32" cy="32" r="24" fill="none" stroke="#F5F1E8" stroke-width="2" opacity="0.7" />
+	<path d="M23 43V21l18 22V21" fill="none" stroke="#F5F1E8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+	<path d="M32 20c0-5 3-9 9-11-1 6-4 10-9 11Z" fill="#C4552A" />
+</svg>
